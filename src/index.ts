@@ -1,21 +1,21 @@
-import Handlebars from 'handlebars/runtime';
-// @ts-ignore
-import greetings from './templates/greetings.hbs';
-// @ts-ignore
-import button from './partials/button.hbs';
+import CreateApp from './modules/create-app';
+import Chat from './modules/chat';
 
-Handlebars.registerPartial('button', button);
+import AppType from './types/app';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app');
+const app = {
+    init() {
+        new CreateApp('#app').render(Chat as AppType);
+    },
+    // load() {
+    // },
+    // resize() {
+    // },
+    // scroll() {
+    // },
+};
 
-    if (!root) {
-        return;
-    }
-
-    root.innerHTML = greetings({username: 'John'});
-
-    setTimeout(() => {
-        root.innerHTML = greetings({username: 'TEST!!!!'});
-    }, 2000)
-});
+document.addEventListener('DOMContentLoaded', app.init);
+// window.addEventListener('load', app.load);
+// window.addEventListener('resize', app.resize);
+// document.addEventListener('scroll', app.scroll);
