@@ -1,0 +1,140 @@
+@use "sass:math";
+
+@import './utils/index';
+
+//* colors */
+$white: #fff;
+
+//* dynamic colors */
+
+
+//* gaps */
+$gap-miniature: 8px;
+$gap-small: 10px;
+$gap-mini: 12px;
+$gap-normal: 16px;
+$gap-medium: 26px;
+$gap-large: 32px;
+$gap-average: 36px;
+$gap-huge: 40px;
+$gap-awesome: 42px;
+$gap-big: 48px;
+
+//* dynamic gaps */
+
+
+//* fonts */
+$base-font-size: 16px;
+$base-line-height: 24px;
+$base-font-family: Verdana, Geneva, sans-serif;
+$font-family: 'Inter';
+
+//* dynamic fonts */
+$font-family-default: $font-family, $base-font-family;
+
+
+//* font-size */
+$font-size-text-main: 14px;
+$font-size: $base-font-size;
+$font-size-medium: 22px;
+$font-size-average: 28px;
+$font-size-very-average: 36px;
+$font-size-big: 40px;
+$font-size-very-big: 48px;
+
+//* dynamic font-size */
+
+
+//* font-weight */
+$font-weight-medium: 500;
+
+//* dynamic font-weight */
+$font-weight-default-text: 500;
+
+
+//* line-height */
+$line-height-small: 16px;
+$line-height: $base-line-height;
+$line-height-medium: 32px;
+$line-height-average: 36px;
+$line-height-very-average: 44px;
+$line-height-big: 48px;
+$line-height-very-big: 56px;
+
+//* dynamic line-height */
+
+
+//* sizes */
+$container-max-width: 1280px;
+
+//* dynamic sizes */
+
+
+//* transition */
+$transition-duration: .3s;
+$transition-easing: ease-out;
+
+//* dynamic transition */
+$transition-default: all $transition-duration $transition-easing;
+
+
+//* border radius */
+$border-radius-micro: rem(2px);
+$border-radius-tiny: rem(4px);
+$border-radius-small: rem(5px);
+$border-radius: rem(6px);
+$border-radius-semi: rem(8px);
+$border-radius-medium: rem(10px);
+$border-radius-average: rem(12px);
+$border-radius-big: rem(16px);
+$border-radius-circle: 50%;
+
+//* dynamic border radius */
+
+
+//* box shadows */
+
+//* dynamic box shadows */
+
+
+//* z-index */
+
+//* dynamic z-index */
+
+//* paths */
+$pathImages: '../images/';
+$pathFonts: '../fonts/';
+
+//* rules */
+$rulesDisplay: (
+        hidden: (
+                display: none,
+        ),
+        block: (
+                display: block,
+        ),
+        inline: (
+                display: inline,
+        ),
+        inline-block: (
+                display: inline-block,
+        ),
+        flex: (
+                display: flex,
+        ),
+        inline-flex: (
+                display: inline-flex,
+        )
+);
+
+//* media queries */
+$screen-width: (
+        mobileSmall: 320,
+        mobile: 375,
+        tablet: 768,
+        laptop: 1024,
+        desktop: 1280,
+        desktopMedium: 1440,
+        desktopLarge: 1920,
+);
+$screen: (tablet, desktop, desktopBig, desktopLarge);
