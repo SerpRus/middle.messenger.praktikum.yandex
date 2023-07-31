@@ -1,0 +1,15 @@
+{{#> main classes="error-page"}}
+    {{#*inline "content"}}
+        <div class="error-page__wrapper">
+            <h1 class="error-page__title">
+                {{code}}
+            </h1>
+
+            <div class="error-page__description">
+                {{description}}
+            </div>
+
+            {{> link}}
+        </div>
+    {{/inline}}
+{{/main}}

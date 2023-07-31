@@ -1,1 +1,19 @@
-<button>{{text}}</button>
+{{#if button.href}}
+    <a class="button {{button.classes}}"
+       href="{{button.href}}"
+       target="{{button.target}}"
+    >
+        {{button.text}}
+    </a>
+{{else}}
+    <button class="button {{button.classes}}"
+       type="{{button.type}}"
+       {{#each button.attributes}}
+           {{this.key}}="{{this.value}}"
+       {{/each}}
+    >
+        {{button.text}}
+    </button>
+{{/if}}
+
+

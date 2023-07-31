@@ -1,4 +1,4 @@
-type TemplateType =  new ($root:HTMLElement ,props?: object) => {
+type TemplateType = new ($root:HTMLElement ,props?: object) => {
     changeHTML: () => string,
 }
 

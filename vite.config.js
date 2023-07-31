@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from './vite-plugin-handlebars-precompile';
+import cleanPlugin from 'vite-plugin-clean';
 
 export default defineConfig({
     root: resolve(__dirname, 'src'),
@@ -8,7 +9,10 @@ export default defineConfig({
     build: {
         outDir: resolve(__dirname, 'dist'),
     },
-    plugins: [handlebars()],
+    plugins: [
+        handlebars(),
+        cleanPlugin(),
+    ],
     css: {
         preprocessorOptions: {
             scss: {

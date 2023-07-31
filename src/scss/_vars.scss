@@ -4,8 +4,28 @@
 
 //* colors */
 $white: #fff;
+$dusty-gray: #999;
+$cod-gray: #1e1e1e;
+$royal-blue: #3369f3;
+$malibu: #6590ff;
+$red-orange: #ff2f2f;
 
 //* dynamic colors */
+$color-text: $cod-gray;
+$color-not-highlighted-text: $dusty-gray;
+$color-text-button: $white;
+$color-link: $royal-blue;
+$color-error: $red-orange;
+
+$color-hover-link: $malibu;
+
+$color-border-input: $royal-blue;
+
+$color-outline-button: $cod-gray;
+
+$color-bg-button: $royal-blue;
+$color-bg-hover-button: $malibu;
+
 
 
 //* gaps */
@@ -64,18 +84,20 @@ $line-height-very-big: 56px;
 //* dynamic line-height */
 
 
-//* sizes */
-$container-max-width: 1280px;
-
 //* dynamic sizes */
+$size-form: 340px;
+$size-big-form: 738px;
+$size-button: 280px;
 
 
 //* transition */
-$transition-duration: .3s;
+$transition-small-duration: 0.1s;
+$transition-duration: 0.3s;
 $transition-easing: ease-out;
 
 //* dynamic transition */
-$transition-default: all $transition-duration $transition-easing;
+$transition-default: $transition-duration $transition-easing;
+$transition-input: $transition-small-duration $transition-easing;
 
 
 //* border radius */
@@ -90,12 +112,11 @@ $border-radius-big: rem(16px);
 $border-radius-circle: 50%;
 
 //* dynamic border radius */
-
-
-//* box shadows */
+$border-radius-block: $border-radius-average;
+$border-radius-button: $border-radius-semi;
 
 //* dynamic box shadows */
-
+$box-shadow-block: 0 0 rem(6) 0 rgba(0, 0, 0, 0.14);
 
 //* z-index */
 

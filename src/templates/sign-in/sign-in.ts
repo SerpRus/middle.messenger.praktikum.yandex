@@ -1,8 +1,10 @@
 import Template from '../../modules/template';
 
-import home from './home.hbs';
+import signIn from './sign-in.hbs';
 
-export default class Home extends Template {
+import Authorization from '../../modules/authorization';
+
+export default class SignIn extends Template {
     $root: HTMLElement;
     props: object;
 
@@ -12,9 +14,11 @@ export default class Home extends Template {
         this.props = props;
 
         this.changeHTML();
+
+        new Authorization();
     }
 
     changeHTML() {
-        this.$root.innerHTML = home(this.props);
+        this.$root.innerHTML = signIn(this.props);
     }
 }
