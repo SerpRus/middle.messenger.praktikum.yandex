@@ -1,0 +1,54 @@
+.form {
+    display: flex;
+    flex-direction: column;
+
+    width: rem($size-form);
+    max-width: 100%;
+    min-height: rem(450);
+    padding: rem(50) rem(30) rem(30);
+
+    border-radius: $border-radius-block;
+    box-shadow: $box-shadow-block;
+
+    &--big {
+        min-height: rem($size-big-form);
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        height: 100%;
+    }
+
+    &__title {
+        @include text-props(20, 20);
+
+        &:not(:last-child) {
+            margin-bottom: rem(40);
+        }
+    }
+
+    &__fileds {
+        flex-grow: 1;
+
+        &:not(:last-child) {
+            margin-bottom: rem(40);
+        }
+
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: rem(24);
+            }
+        }
+    }
+
+    &__actions {
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: rem(14);
+            }
+        }
+    }
+}

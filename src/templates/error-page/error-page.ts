@@ -1,9 +1,8 @@
 import Template from '../../modules/template';
 
-// @ts-ignore
-import notFound from './not-found.hbs';
+import errorPage from './error-page.hbs';
 
-export default class NotFound extends Template {
+export default class ErrorPage extends Template {
     $root: HTMLElement;
     props: object;
 
@@ -16,9 +15,6 @@ export default class NotFound extends Template {
     }
 
     changeHTML() {
-        this.$root.innerHTML = notFound(this.props);
-        document.querySelector('button')?.addEventListener('click', () => {
-            console.log('click')
-        })
+        this.$root.innerHTML = errorPage(this.props);
     }
 }

@@ -1,9 +1,8 @@
 import Template from '../../modules/template';
 
-// @ts-ignore
-import login from './login.hbs';
+import signUp from './sign-up.hbs';
 
-export default class Login extends Template {
+export default class SignUp extends Template {
     $root: HTMLElement;
     props: object;
 
@@ -16,9 +15,6 @@ export default class Login extends Template {
     }
 
     changeHTML() {
-        this.$root.innerHTML = login(this.props);
-        document.querySelector('button')?.addEventListener('click', () => {
-            console.log('click1')
-        })
+        this.$root.innerHTML = signUp(this.props);
     }
 }

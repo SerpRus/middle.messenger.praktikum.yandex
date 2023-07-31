@@ -1,0 +1,14 @@
+{{#if link.href}}
+    <a class="link {{link.classes}}"
+       href="{{link.href}}"
+       target="{{link.target}}"
+    >
+        {{link.text}}
+    </a>
+{{else}}
+    <button class="link {{link.classes}}"
+            type="{{link.type}}"
+    >
+        {{link.text}}
+    </button>
+{{/if}}

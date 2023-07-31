@@ -1,0 +1,25 @@
+<form class="form {{form.classes}}"
+      {{#each form.attributes}}
+          {{this.key}}="{{this.value}}"
+      {{/each}}
+>
+    <div class="form__wrapper">
+        <h1 class="form__title">
+            {{title}}
+        </h1>
+
+        <div class="form__fileds">
+            {{#each formfields}}
+                {{> formfield
+                    settings=this
+                }}
+            {{/each}}
+        </div>
+
+        <div class="form__actions">
+            {{> button}}
+
+            {{> link}}
+        </div>
+    </div>
+</form>

@@ -1,15 +1,11 @@
 import RouteType from '../types/route';
 
-import NotFound from '../templates/not-found';
+import ErrorPage from '../templates/error-page';
 
 export default class Router {
     $root: HTMLElement | null;
 
     routes: RouteType;
-
-    attributes = {
-        props: 'data-props',
-    }
 
     constructor($root: HTMLElement | null) {
         this.$root = $root;
@@ -35,15 +31,9 @@ export default class Router {
 
         const $target = e.target as HTMLLinkElement;
 
-        const propsString: string | null = $target.getAttribute(this.attributes.props);
-        let props: object | undefined;
-        if (propsString) {
-            props = JSON.parse(propsString);
-        }
-
         const { pathname } = new URL($target.href);
 
-        this.render(pathname, props);
+        this.render(pathname);
     };
 
     render(path: string, props?: object) {
@@ -54,10 +44,22 @@ export default class Router {
         const route = this.routes[path];
 
         if (!route) {
-            new NotFound(this.$root, {username: 'Dima'}).changeHTML();
+            new ErrorPage(this.$root, {
+                code: '404',
+                description: 'Не туда попали',
+                link: {
+                    href: '/',
+                    text: 'Назад к чатам',
+                },
+            });
         } else {
-            const { component } = route;
-            new component(this.$root, props);
+            const { page } = route;
+
+            if (!props) {
+                props = route.props
+            }
+
+            new page(this.$root, props);
         }
 
         this.initHandlers();
