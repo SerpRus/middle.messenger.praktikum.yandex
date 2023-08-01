@@ -22,15 +22,16 @@ export default class Chat {
     init() {
         this.registerPartials();
 
-        window.router = new Router(this.$root);
+        const router = new Router(this.$root);
+        window.router = router;
 
-        window.router.routes = routes;
+        router.routes = routes;
 
         let pathname;
 
         // TODO: тестовый редирект на страницу входа, если пользователь не авторизован
         if (localStorage.getItem('isAuthorized')) {
-            pathname = window.router.render(new URL(window.location.href).pathname);;
+            pathname = new URL(window.location.href).pathname;
         } else {
             pathname = '/sign-in'
         }
