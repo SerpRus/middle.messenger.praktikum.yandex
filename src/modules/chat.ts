@@ -30,7 +30,7 @@ export default class Chat {
 
         // TODO: тестовый редирект на страницу входа, если пользователь не авторизован
         if (localStorage.getItem('isAuthorized')) {
-            pathname = '/';
+            pathname = window.router.render(new URL(window.location.href).pathname);;
         } else {
             pathname = '/sign-in'
         }
