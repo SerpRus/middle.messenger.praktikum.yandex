@@ -6,6 +6,10 @@ import Router from './router';
 import partials from './partials';
 import routes from './routes.ts';
 
+declare global {
+    interface Window { router: any; }
+}
+
 export default class Chat {
     $root: HTMLElement;
 
@@ -18,9 +22,9 @@ export default class Chat {
     init() {
         this.registerPartials();
 
-        const router = new Router(this.$root);
+        window.router = new Router(this.$root);
 
-        router.routes = routes;
+        window.router.routes = routes;
 
         let pathname;
 
@@ -31,7 +35,7 @@ export default class Chat {
             pathname = '/sign-in'
         }
 
-        router.render(pathname);
+        window.router.render(pathname);
     }
 
     registerPartials() {

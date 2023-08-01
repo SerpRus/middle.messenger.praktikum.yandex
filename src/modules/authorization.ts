@@ -11,6 +11,8 @@ export default class Authorization {
         // TODO: тестовая авторизация
         document.querySelector('[data-authorization-button]')?.addEventListener('click', () => {
             localStorage.setItem('isAuthorized', 'true');
+
+            window.router.render('/');
         });
     }
 }
