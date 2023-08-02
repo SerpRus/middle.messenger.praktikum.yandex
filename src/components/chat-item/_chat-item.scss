@@ -1,0 +1,89 @@
+.chat-item {
+    &:last-child & {
+        &__wrapper {
+            border-bottom: rem(1) solid $color-border-light-gray;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+
+        padding: rem(12) rem(10);
+
+        cursor: pointer;
+
+        border-top: rem(1) solid $color-border-light-gray;
+    }
+
+    &__img {
+        width: rem(47);
+        height: rem(47);
+
+        border-radius: 50%;
+
+        @include object-fit(cover);
+    }
+
+    &__content {
+        flex-grow: 1;
+
+        margin: 0 rem(16) 0 rem(10);
+
+        text-align: left;
+    }
+
+    &__name {
+        @include text-props(13, 13);
+
+        &:not(:last-child) {
+            margin-bottom: rem(4);
+        }
+    }
+
+    &__last-message {
+        @include text-props(12, 15);
+
+        &-you {
+            color: $color-text;
+        }
+
+        &-text {
+            padding-right: rem(10);
+
+            @include text-truncate-by-row();
+
+            color: $color-unobtrusive;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__date {
+        @include text-props(10, 13);
+
+        flex-grow: 1;
+
+        color: $color-unobtrusive;
+    }
+
+    &__notifications {
+        @include text-props(12, 12);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: rem(20);
+
+        padding: rem(4);
+
+        align-self: flex-end;
+
+        color: $color-text-notifications;
+        border-radius: 50%;
+        background-color: $color-bg-notifications;
+    }
+}

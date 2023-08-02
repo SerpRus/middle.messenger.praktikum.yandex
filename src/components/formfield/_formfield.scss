@@ -1,8 +1,51 @@
 .formfield {
+    $root: &;
+
     $label-default: 13px;
     $label-size: 11px;
 
     position: relative;
+
+    &--filled & {
+        &__element {
+            @include text-props(12, 12);
+
+            padding: rem(10) rem(10) rem(10) rem(34);
+            height: rem(32);
+
+            border: none;
+            border-radius: rem(5);
+            background-color: $color-bg-inout-filled;
+        }
+
+        &__label {
+            top: 50%;
+            left: 50%;
+
+            transition: none;
+            transform: translate(-50%, -50%);
+
+            &-icon {
+                width: rem(20);
+                height: rem(20);
+            }
+        }
+
+        &__element:focus,
+        &__element:not(:placeholder-shown),
+        &__element:read-only {
+            & + #{$root}__label {
+                top: 50%;
+                left: rem(10);
+
+                transform: translate(0, -50%);
+
+                & #{$root}__label-text {
+                    display: none;
+                }
+            }
+        }
+    }
 
     &__element {
         @include text-props(13, 13);
@@ -12,6 +55,11 @@
 
         border: none;
         border-bottom: rem(1) solid $color-border-input;
+        background-color: transparent;
+
+        &::placeholder {
+            color: $color-unobtrusive;
+        }
     }
 
     &__label {
@@ -21,10 +69,19 @@
         top: rem(8);
         left: 0;
 
+        display: flex;
+        align-items: center;
+
         cursor: text;
         transition: $transition-input;
 
-        color: $color-not-highlighted-text;
+        color: $color-unobtrusive;
+
+        &-icon {
+            &:not(:last-child) {
+                margin-right: rem(4);
+            }
+        }
     }
 
     &__element:focus + &,

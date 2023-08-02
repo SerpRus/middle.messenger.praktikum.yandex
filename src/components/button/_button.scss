@@ -3,6 +3,7 @@
 
     display: inline-flex;
     justify-content: center;
+    align-items: center;
 
     min-width: rem($size-button);
     padding: rem(12);
@@ -12,6 +13,27 @@
     color: $color-text-button;
     border-radius: $border-radius-button;
     background-color: $color-bg-button;
+
+    &#{&}--transparent {
+        padding: rem(7);
+        min-width: initial;
+
+        color: $color-text;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $color-bg-hover-button-transparent;
+
+            @media (hover: none) {
+                background-color: transparent;
+            }
+        }
+        &:active {
+            outline: none;
+
+            background-color: transparent;
+        }
+    }
 
     &:hover {
         background-color: $color-bg-hover-button;

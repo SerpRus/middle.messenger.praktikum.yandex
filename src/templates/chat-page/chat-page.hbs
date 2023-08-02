@@ -1,0 +1,73 @@
+{{#> main classes="chat-page"}}
+    {{#*inline "content"}}
+        {{#> asidePanel classes="chat-page__aside"}}
+            {{#*inline "content"}}
+                {{> link classes="aside-panel__link"}}
+
+                {{> formfield
+                    formfield=searchFiled
+                }}
+
+                <div class="aside-panel__chats">
+                    {{#each chats}}
+                        {{> chatItem
+                            classes="aside-panel__chats-item"
+                            chatItem=this
+                        }}
+                    {{/each}}
+                </div>
+            {{/inline}}
+        {{/asidePanel}}
+
+        <div class="chat-page__chat">
+            {{#if isChatSelected}}
+                <header class="chat-page__chat-header">
+                    <div class="chat-page__chat-user">
+                        <img class="chat-page__chat-user-img"
+                             src="{{chat.user.imgSrc}}"
+                             alt="{{chat.user.imgAlt}}"
+                        >
+
+                        <div class="chat-page__chat-user-name">
+                            {{chat.user.name}}
+                        </div>
+                    </div>
+
+                    {{#>dropdown }}
+                        {{#*inline "button"}}
+                            <button class="chat-page__dropdown-button dropdown__button">
+                                <span class="dropdown__button-icon-dot"></span>
+                            </button>
+                        {{/inline}}
+
+                        {{#*inline "content"}}
+                            <ul class="chat-page__chat-header-dropdown-list">
+                                {{#each chat.headerDropdownOptions}}
+                                    <li class="chat-page__chat-header-dropdown-list-item">
+                                        {{#> button}}
+                                            {{#*inline "content"}}
+                                                {{> icon
+                                                    icon=this.icon
+                                                }}
+                                                {{this.text}}
+                                            {{/inline}}
+                                        {{/button}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/inline}}
+                    {{/dropdown}}
+
+                </header>
+
+                <div class="chat-page__chat-content">
+                    Круто
+                </div>
+            {{else}}
+                <div class="chat-page__chat-message">
+                    Выберите чат чтобы отправить сообщение
+                </div>
+            {{/if}}
+        </div>
+    {{/inline}}
+{{/main}}

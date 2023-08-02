@@ -24,17 +24,25 @@ export default class Router {
         $links.forEach((el) => {
             el.addEventListener('click', this.linkClickHandler);
         });
+
+        window.addEventListener('popstate', this.onPopstateHandler)
     }
 
     linkClickHandler = (e: Event) => {
         e.preventDefault();
 
-        const $target = e.target as HTMLLinkElement;
+        const $target = e.currentTarget as HTMLLinkElement;
 
         const { pathname } = new URL($target.href);
 
         this.render(pathname);
     };
+
+    onPopstateHandler = (e: PopStateEvent) => {
+        const { path } = e.state;
+
+        this.render(path);
+    }
 
     render(path: string, props?: object) {
         if (!this.$root) {

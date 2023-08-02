@@ -1,8 +1,8 @@
 import Template from '../../modules/template';
 
-import home from './home.hbs';
+import chatPage from './chat-page.hbs';
 
-export default class Home extends Template {
+export default class ChatPage extends Template {
     $root: HTMLElement;
     props: object;
 
@@ -15,6 +15,6 @@ export default class Home extends Template {
     }
 
     changeHTML() {
-        this.$root.innerHTML = home(this.props);
+        this.$root.innerHTML = chatPage(this.props);
     }
 }

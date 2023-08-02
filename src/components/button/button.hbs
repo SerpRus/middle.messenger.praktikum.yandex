@@ -12,7 +12,11 @@
            {{this.key}}="{{this.value}}"
        {{/each}}
     >
-        {{button.text}}
+        {{#if button.inlineContent}}
+            {{> content}}
+        {{else}}
+            {{button.text}}
+        {{/if}}
     </button>
 {{/if}}
 

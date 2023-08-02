@@ -105,9 +105,10 @@
 
 @mixin text-truncate-by-row($row: 2) {
     display: -webkit-box;
-    overflow: hidden;
     -webkit-line-clamp: $row;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @mixin text-truncate() {

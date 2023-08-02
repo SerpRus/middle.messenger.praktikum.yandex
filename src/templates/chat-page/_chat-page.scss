@@ -1,0 +1,88 @@
+.chat-page {
+    display: flex;
+
+    &__aside {
+        flex-shrink: 0;
+
+        width: rem(310);
+        height: 100%;
+    }
+
+    &__chat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+
+        height: 100%;
+        padding: rem(10) rem(10) rem(10) rem(20);
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+            padding-bottom: rem(10);
+
+            border-bottom: rem(1) solid $color-border-light-gray;
+
+            &-dropdown {
+                &-content {
+                    width: rem(210);
+                }
+
+                &-list {
+                    width: rem(194);
+
+                    &-item {
+                        display: flex;
+                        align-items: center;
+
+                        &:not(:last-child) {
+                            margin-bottom: rem(4);
+                        }
+                    }
+
+                    &-button {
+                        @include text-props(12, 14);
+
+                        justify-content: flex-start;
+
+                        width: 100%;
+                    }
+
+                    &-icon {
+                        margin-right: rem(15);
+
+                        color: $color-icon;
+                    }
+                }
+            }
+        }
+
+        &-user {
+            display: flex;
+            align-items: center;
+
+            &-img {
+                width: rem(34);
+                height: rem(34);
+                margin-right: rem(10);
+
+                border-radius: 50%;
+            }
+
+            &-name {
+                @include text-props(13, 13);
+            }
+        }
+
+        &-content {
+            flex-grow: 1;
+
+            width: 100%;
+        }
+    }
+}

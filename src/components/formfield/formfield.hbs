@@ -1,14 +1,23 @@
-<div class="formfield {{settings.classes}}">
-    <input id="{{settings.id}}"
+<div class="{{formfield.classes}} formfield {{#if formfield.thema}}formfield--{{formfield.thema}}{{/if}}">
+    <input id="{{formfield.id}}"
            class="formfield__element"
-           name="{{settings.name}}"
-           type="{{settings.type}}"
-           placeholder="{{settings.placeholder}}"
+           name="{{formfield.name}}"
+           type="{{formfield.type}}"
+           placeholder="{{formfield.placeholder}}"
     >
-    <label for="{{settings.id}}"
+    <label for="{{formfield.id}}"
            class="formfield__label"
     >
-        {{settings.label}}
+        {{#if formfield.icon}}
+                {{> icon
+                    classes="formfield__label-icon"
+                    icon=formfield.icon
+                }}
+        {{/if}}
+
+        <span class="formfield__label-text">
+            {{formfield.label}}
+        </span>
     </label>
 
     <div class="formfield__error"></div>

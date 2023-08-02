@@ -1,0 +1,31 @@
+.aside-panel {
+    width: rem(100);
+    padding-top: rem(22);
+
+    text-align: right;
+
+    border-right: rem(1) solid $color-border-light-gray;
+    background-color: $color-bg-light-gray;
+
+    &__link {
+        @include text-props(12, 12);
+
+        color: $color-unobtrusive;
+
+        &:not(:last-child) {
+            margin-bottom: rem(22);
+        }
+    }
+
+    &__search {
+        &:not(:last-child) {
+            margin-bottom: rem(14);
+        }
+    }
+
+    &__chats {
+        overflow: auto;
+
+        max-height: calc(100vh - #{rem(110)});
+    }
+}

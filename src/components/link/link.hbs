@@ -1,14 +1,54 @@
 {{#if link.href}}
-    <a class="link {{link.classes}}"
+    <a class="{{classes}} link {{#if link.thema}}link--{{link.thema}}{{/if}}"
        href="{{link.href}}"
        target="{{link.target}}"
     >
-        {{link.text}}
+        {{#if link.icon}}
+            {{#if link.icon.isLeft}}
+                {{> icon
+                    classes="link__icon"
+                    icon=link.icon
+                }}
+            {{/if}}
+        {{/if}}
+
+        <span class="link__text">
+            {{link.text}}
+        </span>
+
+        {{#if link.icon}}
+            {{#unless link.icon.isLeft}}
+                {{> icon
+                    classes="link__icon"
+                    icon=link.icon
+                }}
+            {{/unless}}
+        {{/if}}
     </a>
 {{else}}
     <button class="link {{link.classes}}"
             type="{{link.type}}"
     >
-        {{link.text}}
+        {{#if link.icon}}
+            {{#if link.icon.isLeft}}
+                {{> icon
+                    classes="link__icon"
+                    icon=link.icon
+                }}
+            {{/if}}
+        {{/if}}
+
+        <span class="link__text">
+            {{link.text}}
+        </span>
+
+        {{#if link.icon}}
+            {{#unless link.icon.isLeft}}
+                {{> icon
+                    classes="link__icon"
+                    icon=link.icon
+                }}
+            {{/unless}}
+        {{/if}}
     </button>
 {{/if}}
