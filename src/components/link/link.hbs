@@ -1,54 +1,22 @@
-{{#if link.href}}
-    <a class="{{classes}} link {{#if link.thema}}link--{{link.thema}}{{/if}}"
-       href="{{link.href}}"
-       target="{{link.target}}"
+{{#if href}}
+    <a class="{{classes}} link"
+       href="{{href}}"
+       target="{{target}}"
     >
-        {{#if link.icon}}
-            {{#if link.icon.isLeft}}
-                {{> icon
-                    classes="link__icon"
-                    icon=link.icon
-                }}
-            {{/if}}
-        {{/if}}
-
-        <span class="link__text">
-            {{link.text}}
-        </span>
-
-        {{#if link.icon}}
-            {{#unless link.icon.isLeft}}
-                {{> icon
-                    classes="link__icon"
-                    icon=link.icon
-                }}
-            {{/unless}}
+        {{#if text}}
+            {{text}}
+        {{else}}
+            {{> slot}}
         {{/if}}
     </a>
 {{else}}
-    <button class="link {{link.classes}}"
-            type="{{link.type}}"
+    <button class="{{classes}} link"
+            type="{{type}}"
     >
-        {{#if link.icon}}
-            {{#if link.icon.isLeft}}
-                {{> icon
-                    classes="link__icon"
-                    icon=link.icon
-                }}
-            {{/if}}
-        {{/if}}
-
-        <span class="link__text">
-            {{link.text}}
-        </span>
-
-        {{#if link.icon}}
-            {{#unless link.icon.isLeft}}
-                {{> icon
-                    classes="link__icon"
-                    icon=link.icon
-                }}
-            {{/unless}}
+        {{#if text}}
+            {{text}}
+        {{else}}
+            {{> slot}}
         {{/if}}
     </button>
 {{/if}}

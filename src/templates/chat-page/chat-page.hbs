@@ -2,14 +2,62 @@
     {{#*inline "content"}}
         {{#> asidePanel classes="chat-page__aside"}}
             {{#*inline "content"}}
-                {{> link classes="aside-panel__link"}}
-
-                {{> formfield
-                    formfield=searchFiled
+                {{#> link
+                    (object
+                        classes='aside-panel__link'
+                        href='/profile'
+                    )
                 }}
+                    {{#*inline "slot"}}
+                        <span class="link__text">
+                            Профиль
+                        </span>
+
+                        {{> icon
+                            classes='link__icon icon--12'
+                            name='icon-arrow-right'
+                        }}
+                    {{/inline}}
+                {{/link}}
+
+                {{#> formfield
+                    (object
+                        classes='aside-panel__search formfield--filled'
+                        id='search'
+                        name='search'
+                        type='text'
+                        thema='filled'
+                        label='Поиск'
+                        icon=(object
+                            classes='icon--20'
+                            name='icon-loupe'
+                        )
+                    )
+                }}
+                    {{#*inline "slot"}}
+                        Поиск
+
+                        {{> icon
+                                classes='link__icon icon--12'
+                                name='icon-arrow-right'
+                        }}
+                    {{/inline}}
+                {{/formfield}}
 
                 <div class="aside-panel__chats">
-                    {{#each chats}}
+                    {{#each chats
+                        chats=(arrayObjects
+                            (object
+                                    name='Андрей'
+                                    imgSrc='/images/users/user-plug.jpg'
+                                    imgAlt='user'
+                                    lastMessage='Изображение'
+                                    date='10:49'
+                                    notifications='2'
+                            )
+                        )
+
+                    }}
                         {{> chatItem
                             classes="aside-panel__chats-item"
                             chatItem=this

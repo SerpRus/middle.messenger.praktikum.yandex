@@ -1,0 +1,30 @@
+{{#if href}}
+    <a class="action {{classes}}"
+       href="{{href}}"
+       target="{{target}}"
+       {{#each attributes}}
+           {{this.key}}="{{this.value}}"
+       {{/each}}
+    >
+        {{#if text}}
+            {{text}}
+        {{else}}
+            {{> content}}
+        {{/if}}
+    </a>
+{{else}}
+    <button class="action {{classes}}"
+       type="{{type}}"
+       {{#each attributes}}
+           {{this.key}}="{{this.value}}"
+       {{/each}}
+    >
+        {{#if text}}
+            {{text}}
+        {{else}}
+            {{> content}}
+        {{/if}}
+    </button>
+{{/if}}
+
+

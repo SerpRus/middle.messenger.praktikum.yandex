@@ -11,27 +11,6 @@ export default {
     '/': {
         page: ChatPage as unknown as TemplateType,
         props: {
-            link: {
-                text: 'Профиль',
-                href: '/profile',
-                thema: 'unobtrusive',
-                icon: {
-                    classes: 'icon--12',
-                    name: 'icon-arrow-right',
-                },
-            },
-            searchFiled: {
-                classes: 'aside-panel__search',
-                id: 'search',
-                name: 'search',
-                type: 'text',
-                thema: 'filled',
-                label: 'Поиск',
-                icon: {
-                    classes: 'icon--20',
-                    name: 'icon-loupe',
-                },
-            },
             chats: [{
                 name: 'Андрей',
                 imgSrc: '/images/users/user-plug.jpg',
@@ -174,27 +153,6 @@ export default {
                     text: 'Удалить пользователя'
                 },],
             },
-            link: {
-                text: 'Профиль',
-                href: '/profile',
-                thema: 'unobtrusive',
-                icon: {
-                    classes: 'icon--12',
-                    name: 'icon-arrow-right',
-                },
-            },
-            searchFiled: {
-                classes: 'aside-panel__search',
-                id: 'search',
-                name: 'search',
-                type: 'text',
-                thema: 'filled',
-                label: 'Поиск',
-                icon: {
-                    classes: 'icon--20',
-                    name: 'icon-loupe',
-                },
-            },
             chats: [{
                 name: 'Андрей',
                 imgSrc: '/images/users/user-plug.jpg',
@@ -305,12 +263,6 @@ export default {
     },
     '/profile': {
         page: Profile as unknown as TemplateType,
-        props: {
-            link: {
-                href: '/',
-                text: 'Назад к чатам',
-            },
-        },
     },
     '/sign-in': {
         page: SignIn as unknown as TemplateType,
