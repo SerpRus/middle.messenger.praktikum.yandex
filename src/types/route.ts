@@ -1,8 +1,8 @@
-import TemplateType from '../types/template';
+import { TemplateDelegate } from 'handlebars'
 
 type RouteType = {
     [key: string]: {
-        page: TemplateType,
+        page: TemplateDelegate,
         props?: object,
     },
 };

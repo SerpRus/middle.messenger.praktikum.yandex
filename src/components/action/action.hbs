@@ -1,7 +1,9 @@
 {{#if href}}
-    <a class="action {{classes}}"
+    <a class="{{classes}}
+              action action--link
+              {{#if thema}}action--{{thema}}{{/if}}"
        href="{{href}}"
-       target="{{target}}"
+       {{#if target}}target="{{target}}"{{/if}}
        {{#each attributes}}
            {{this.key}}="{{this.value}}"
        {{/each}}
@@ -9,22 +11,22 @@
         {{#if text}}
             {{text}}
         {{else}}
-            {{> content}}
+            {{> @partial-block}}
         {{/if}}
     </a>
 {{else}}
-    <button class="action {{classes}}"
-       type="{{type}}"
-       {{#each attributes}}
-           {{this.key}}="{{this.value}}"
-       {{/each}}
+    <button class="{{classes}}
+                   action action--button
+                   {{#if thema}}action--{{thema}}{{/if}}"
+            {{#if target}}type="{{target}}"{{/if}}
+            {{#each attributes}}
+                {{this.key}}="{{this.value}}"
+            {{/each}}
     >
         {{#if text}}
             {{text}}
         {{else}}
-            {{> content}}
+            {{> @partial-block}}
         {{/if}}
     </button>
 {{/if}}
-
-

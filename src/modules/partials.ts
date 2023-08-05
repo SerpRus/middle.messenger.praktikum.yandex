@@ -1,19 +1,19 @@
 import PartialType from '../types/partial';
 
-import button from '/components/button/button.hbs';
-import link from '/components/link/link.hbs';
+import action from '/components/action/action.hbs';
 import form from '/components/form/form.hbs';
 import formfield from '/components/formfield/formfield.hbs';
 import icon from '/components/icon/icon.hbs';
 import chatItem from '/components/chat-item/chat-item.hbs';
 import dropdown from '/components/dropdown/dropdown.hbs';
+import user from '/components/user/user.hbs';
+import dropdownActionsList from '/components/dropdown-actions-list/dropdown-actions-list.hbs';
 
 import main from '/layouts/main/main.hbs';
 import asidePanel from '/layouts/aside-panel/aside-panel.hbs';
 
 const partials: PartialType = [
-    {button},
-    {link},
+    {action},
     {main},
     {form},
     {formfield},
@@ -21,6 +21,8 @@ const partials: PartialType = [
     {icon},
     {chatItem},
     {dropdown},
+    {user},
+    {dropdownActionsList},
 ];
 
 export default partials;

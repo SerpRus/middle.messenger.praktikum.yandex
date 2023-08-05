@@ -1,27 +1,10 @@
-<article class="{{classes}} chat-item">
+<article class="{{classes}}
+                chat-item"
+>
     <div class="chat-item__wrapper">
-        <img class="chat-item__img"
-             src="{{imgSrc}}"
-             alt="{{imgAlt}}"
-        >
-
-        <div class="chat-item__content">
-            <div class="chat-item__name">
-                {{name}}
-            </div>
-
-            <div class="chat-item__last-message">
-                <span class="chat-item__last-message-text">
-                    {{#if isYourLastMessage}}
-                        <span class="chat-item__last-message-you">
-                        Вы:
-                    </span>
-                    {{/if}}
-
-                    {{lastMessage}}
-                </span>
-            </div>
-        </div>
+        {{> user
+            classes="chat-item__user"
+        }}
 
         <div class="chat-item__info">
             <time class="chat-item__date">
