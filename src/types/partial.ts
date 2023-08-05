@@ -1,7 +1,7 @@
-// import Handlebars from 'handlebars/runtime';
+import { TemplateDelegate } from 'handlebars';
 
 type PartialType = {
-    [key: string]: any,
+    [key: string]: TemplateDelegate,
 }
 
 export default PartialType;

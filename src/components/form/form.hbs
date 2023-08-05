@@ -1,5 +1,6 @@
-<form class="form {{form.classes}}"
-      {{#each form.attributes}}
+<form class="form
+            {{classes}}"
+      {{#each attributes}}
           {{this.key}}="{{this.value}}"
       {{/each}}
 >
@@ -17,9 +18,20 @@
         </div>
 
         <div class="form__actions">
-            {{> button}}
+            {{> action
+                classes="form__actions-item"
+                thema="button-brand"
+                text=button.text
+                type="button"
+                attributes=button.attributes
+            }}
 
-            {{> link}}
+            {{> action
+                classes="form__actions-item"
+                thema="link"
+                href=link.href
+                text=link.text
+            }}
         </div>
     </div>
 </form>

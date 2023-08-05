@@ -1,4 +1,6 @@
-<div class="{{classes}} formfield">
+<div class="{{classes}}
+            formfield"
+>
     <input id="{{id}}"
            class="formfield__element"
            name="{{name}}"
@@ -11,9 +13,11 @@
         {{#if label}}
             {{label}}
         {{else}}
-            {{> slot}}
+            {{> @partial-block}}
         {{/if}}
     </label>
 
-    <div class="formfield__error"></div>
+    <div class="formfield__error">
+        {{error}}
+    </div>
 </div>

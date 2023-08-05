@@ -1,121 +1,90 @@
 {{#> main classes="chat-page"}}
-    {{#*inline "content"}}
-        {{#> asidePanel classes="chat-page__aside"}}
-            {{#*inline "content"}}
-                {{#> link
-                    (object
-                        classes='aside-panel__link'
-                        href='/profile'
-                    )
+    {{#> asidePanel classes="chat-page__aside"}}
+        <div class="aside-panel__header">
+            {{#> action
+                 classes="aside-panel__link"
+                 thema="link-unobtrusive"
+                 href="/profile"
+            }}
+                <span class="action__text">
+                Профиль
+            </span>
+
+                {{> icon
+                    classes='action__icon'
+                    size='12'
+                    name='icon-arrow-right'
                 }}
-                    {{#*inline "slot"}}
-                        <span class="link__text">
-                            Профиль
-                        </span>
+            {{/action}}
 
-                        {{> icon
-                            classes='link__icon icon--12'
-                            name='icon-arrow-right'
-                        }}
-                    {{/inline}}
-                {{/link}}
-
-                {{#> formfield
-                    (object
-                        classes='aside-panel__search formfield--filled'
-                        id='search'
-                        name='search'
-                        type='text'
-                        thema='filled'
-                        label='Поиск'
-                        icon=(object
-                            classes='icon--20'
-                            name='icon-loupe'
-                        )
-                    )
+            {{#> formfield
+                 classes='aside-panel__search formfield--filled'
+                 id='search'
+                 name='search'
+                 type='text'
+                 thema='filled'
+            }}
+                {{> icon
+                    classes='formfield__label-icon'
+                    size='20'
+                    name='icon-loupe'
                 }}
-                    {{#*inline "slot"}}
-                        Поиск
 
-                        {{> icon
-                                classes='link__icon icon--12'
-                                name='icon-arrow-right'
-                        }}
-                    {{/inline}}
-                {{/formfield}}
-
-                <div class="aside-panel__chats">
-                    {{#each chats
-                        chats=(arrayObjects
-                            (object
-                                    name='Андрей'
-                                    imgSrc='/images/users/user-plug.jpg'
-                                    imgAlt='user'
-                                    lastMessage='Изображение'
-                                    date='10:49'
-                                    notifications='2'
-                            )
-                        )
-
-                    }}
-                        {{> chatItem
-                            classes="aside-panel__chats-item"
-                            chatItem=this
-                        }}
-                    {{/each}}
-                </div>
-            {{/inline}}
-        {{/asidePanel}}
-
-        <div class="chat-page__chat">
-            {{#if isChatSelected}}
-                <header class="chat-page__chat-header">
-                    <div class="chat-page__chat-user">
-                        <img class="chat-page__chat-user-img"
-                             src="{{chat.user.imgSrc}}"
-                             alt="{{chat.user.imgAlt}}"
-                        >
-
-                        <div class="chat-page__chat-user-name">
-                            {{chat.user.name}}
-                        </div>
-                    </div>
-
-                    {{#>dropdown }}
-                        {{#*inline "button"}}
-                            <button class="chat-page__dropdown-button dropdown__button">
-                                <span class="dropdown__button-icon-dot"></span>
-                            </button>
-                        {{/inline}}
-
-                        {{#*inline "content"}}
-                            <ul class="chat-page__chat-header-dropdown-list">
-                                {{#each chat.headerDropdownOptions}}
-                                    <li class="chat-page__chat-header-dropdown-list-item">
-                                        {{#> button}}
-                                            {{#*inline "content"}}
-                                                {{> icon
-                                                    icon=this.icon
-                                                }}
-                                                {{this.text}}
-                                            {{/inline}}
-                                        {{/button}}
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        {{/inline}}
-                    {{/dropdown}}
-
-                </header>
-
-                <div class="chat-page__chat-content">
-                    Круто
-                </div>
-            {{else}}
-                <div class="chat-page__chat-message">
-                    Выберите чат чтобы отправить сообщение
-                </div>
-            {{/if}}
+                <span class="formfield__label-text">
+                Поиск
+            </span>
+            {{/formfield}}
         </div>
-    {{/inline}}
+
+        <div class="aside-panel__chats">
+            {{#each chats
+            }}
+                {{> chatItem
+                    classes="aside-panel__chats-item"
+                    imgSrc=this.imgSrc
+                    name=this.name
+                }}
+            {{/each}}
+        </div>
+    {{/asidePanel}}
+
+    <div class="chat-page__chat">
+        {{#if isChatSelected}}
+            <header class="chat-page__chat-header">
+                {{> user
+                    classes="chat-page__chat-user"
+                    imgSrc=chat.user.imgSrc
+                    imgAlt=chat.user.imgAlt
+                    name=chat.user.name
+                }}
+
+                {{#> dropdown
+                     classes="chat-page__heare-chat-dropdown-wrapper"
+                }}
+                    {{#*inline "action"}}
+                        {{#> action
+                             thema="button-dots"
+                             classes="chat-page__dropdown-button"
+                        }}
+                            <span class="action__icon"></span>
+                        {{/action}}
+                    {{/inline}}
+
+                    {{#*inline "content"}}
+                        {{> dropdownActionsList
+                            dropdownActionsList=chat.dropdownActionsList
+                        }}
+                    {{/inline}}
+                {{/dropdown}}
+            </header>
+
+            <div class="chat-page__chat-content">
+                Круто
+            </div>
+        {{else}}
+            <div class="chat-page__chat-message">
+                Выберите чат чтобы отправить сообщение
+            </div>
+        {{/if}}
+    </div>
 {{/main}}

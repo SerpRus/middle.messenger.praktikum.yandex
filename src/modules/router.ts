@@ -1,6 +1,8 @@
 import RouteType from '../types/route';
 
-import ErrorPage from '../templates/error-page';
+import errorPage from '../templates/error-page/error-page.hbs';
+
+import Template from './template.ts';
 
 export default class Router {
     $root: HTMLElement | null;
@@ -25,7 +27,7 @@ export default class Router {
             el.addEventListener('click', this.linkClickHandler);
         });
 
-        window.addEventListener('popstate', this.onPopstateHandler)
+        window.addEventListener('popstate', this.onPopstateHandler);
     }
 
     linkClickHandler = (e: Event) => {
@@ -52,7 +54,7 @@ export default class Router {
         const route = this.routes[path];
 
         if (!route) {
-            new ErrorPage(this.$root, {
+            new Template(errorPage, this.$root, {
                 code: '404',
                 description: 'Не туда попали',
                 link: {
@@ -64,10 +66,10 @@ export default class Router {
             const { page } = route;
 
             if (!props) {
-                props = route.props
+                props = route.props;
             }
 
-            new page(this.$root, props);
+            new Template(page, this.$root, props);
         }
 
         this.initHandlers();

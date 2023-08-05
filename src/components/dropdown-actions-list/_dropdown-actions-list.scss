@@ -1,0 +1,12 @@
+.dropdown-actions-list {
+    width: rem(210);
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: rem(4);
+        }
+    }
+}

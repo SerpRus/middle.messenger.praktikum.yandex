@@ -1,5 +1,4 @@
 {{#> main classes="error-page"}}
-    {{#*inline "content"}}
         <div class="error-page__wrapper">
             <h1 class="error-page__title">
                 {{code}}
@@ -9,7 +8,10 @@
                 {{description}}
             </div>
 
-            {{> link}}
+            {{>action
+                thema="link"
+                href="/"
+                text="Назад к чатам"
+            }}
         </div>
-    {{/inline}}
 {{/main}}

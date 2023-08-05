@@ -4,7 +4,6 @@ import '../scss/style.scss';
 
 import Router from './router';
 import partials from './partials';
-import registerHelpers from './helpers';
 import routes from './routes.ts';
 
 declare global {
@@ -22,7 +21,6 @@ export default class Chat {
 
     init() {
         this.registerPartials();
-        registerHelpers();
 
         const router = new Router(this.$root);
         window.router = router;

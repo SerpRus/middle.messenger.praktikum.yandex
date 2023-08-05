@@ -1,15 +1,13 @@
-import ChatPage from '../templates/chat-page';
-import SignIn from '../templates/sign-in';
-import SignUp from '../templates/sign-up';
-import ErrorPage from '../templates/error-page';
-import Profile from '../templates/profile';
-import SiteMap from '../templates/site-map';
-
-import TemplateType from '../types/template';
+import chatPage from '../templates/chat-page/chat-page.hbs';
+import signIn from '../templates/sign-in/sign-in.hbs';
+import signUp from '../templates/sign-up/sign-up.hbs';
+import errorPage from '../templates/error-page/error-page.hbs';
+import profile from '../templates/profile/profile.hbs';
+import siteMap from '../templates/site-map/site-map.hbs';
 
 export default {
     '/': {
-        page: ChatPage as unknown as TemplateType,
+        page: chatPage,
         props: {
             chats: [{
                 name: 'Андрей',
@@ -120,7 +118,7 @@ export default {
         },
     },
     '/selected-chat': {
-        page: ChatPage as unknown as TemplateType,
+        page: chatPage,
         props: {
             isChatSelected: true,
             chat: {
@@ -129,28 +127,21 @@ export default {
                     imgSrc: '/images/users/user-plug.jpg',
                     imgAlt: 'user',
                 },
-                headerDropdownOptions: [{
-                    button: {
-                        classes: 'chat-page__chat-header-dropdown-list-button button--transparent',
-                        inlineContent: true,
-                        text: 'test button',
+                dropdownActionsList: [{
+                    action: {
+                        text: 'Добавить пользователя',
                     },
                     icon: {
-                        classes: 'chat-page__chat-header-dropdown-list-icon icon--22',
                         name: 'cross-in-circle',
                     },
-                    text: 'Добавить пользователя'
                 }, {
-                    button: {
-                        classes: 'chat-page__chat-header-dropdown-list-button button--transparent',
-                        inlineContent: true,
-                        text: 'test button',
+                    action: {
+                        text: 'Удалить пользователя',
                     },
                     icon: {
-                        classes: 'chat-page__chat-header-dropdown-list-icon icon--22 icon--rotate-45',
+                        rotate: '45',
                         name: 'cross-in-circle',
                     },
-                    text: 'Удалить пользователя'
                 },],
             },
             chats: [{
@@ -262,10 +253,10 @@ export default {
         },
     },
     '/profile': {
-        page: Profile as unknown as TemplateType,
+        page: profile,
     },
     '/sign-in': {
-        page: SignIn as unknown as TemplateType,
+        page: signIn,
         props: {
             form: {
                 attributes: [{
@@ -288,22 +279,19 @@ export default {
                 },
             ],
             button: {
-                classes: 'form__actions-item',
                 text: 'Войти',
-                type: 'button',
                 attributes: [{
                     key: 'data-authorization-button',
                 },],
             },
             link: {
-                classes: 'form__actions-item',
                 text: 'Нет аккаунта?',
                 href: '/sign-up',
             },
         },
     },
     '/sign-up': {
-        page: SignUp as unknown as TemplateType,
+        page: signUp,
         props: {
             form: {
                 classes: 'form--big',
@@ -354,30 +342,23 @@ export default {
                 },
             ],
             button: {
-                classes: 'form__actions-item',
                 text: 'Зарегистрироваться',
-                type: 'button',
             },
             link: {
-                classes: 'form__actions-item',
                 text: 'Войти',
                 href: '/sign-in',
             },
         },
     },
     '/test500': {
-        page: ErrorPage as unknown as TemplateType,
+        page: errorPage,
         props: {
             code: '500',
             description: 'Мы уже фиксим',
-            link: {
-                href: '/',
-                text: 'Назад к чатам',
-            },
         },
     },
     '/site-map': {
-        page: SiteMap as unknown as TemplateType,
+        page: siteMap,
         props: {
             links: [{
                 href: '/sign-in',

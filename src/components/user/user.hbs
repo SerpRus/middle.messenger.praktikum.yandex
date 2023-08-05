@@ -1,0 +1,26 @@
+<div class="{{classes}}
+            user"
+>
+    <img class="user__img"
+         src="{{imgSrc}}"
+         alt="{{imgAlt}}"
+    >
+
+    <div class="user__content">
+        <div class="user__name">
+            {{name}}
+        </div>
+
+        <div class="user__last-message">
+            <span class="user__last-message-text">
+                {{#if isYourLastMessage}}
+                    <span class="user__last-message-you">
+                        Вы:
+                    </span>
+                {{/if}}
+
+                {{lastMessage}}
+            </span>
+        </div>
+    </div>
+</div>

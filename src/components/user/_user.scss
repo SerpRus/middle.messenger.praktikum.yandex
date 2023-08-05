@@ -1,0 +1,44 @@
+.user {
+    display: flex;
+
+    text-align: left;
+
+    &__img {
+        width: rem(47);
+        height: rem(47);
+
+        border-radius: 50%;
+
+        @include object-fit(cover);
+    }
+
+    &__content {
+        &:not(:first-child) {
+            margin-left: rem(10);
+        }
+    }
+
+    &__name {
+        @include text-props(13, 13);
+
+        &:not(:last-child) {
+            margin-bottom: rem(4);
+        }
+    }
+
+    &__last-message {
+        @include text-props(12, 15);
+
+        &-you {
+            color: $color-text;
+        }
+
+        &-text {
+            padding-right: rem(10);
+
+            @include text-truncate-by-row();
+
+            color: $color-unobtrusive;
+        }
+    }
+}

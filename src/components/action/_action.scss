@@ -1,45 +1,119 @@
 .action {
     &--button {
-        &-brand {
-            @include text-props(13, 13);
+        @include text-props(13, 13);
 
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
-            min-width: rem($size-button);
-            padding: rem(12);
+        padding: rem(12);
 
-            transition: background-color $transition-default;
+        transition: background-color $transition-default;
+    }
 
-            color: $color-text-button;
-            border-radius: $border-radius-button;
-            background-color: $color-bg-button;
+    &--button-brand {
+        min-width: rem($size-button);
 
-            &:hover {
-                background-color: $color-bg-hover-button;
+        color: $color-text-button;
+        border-radius: $border-radius-button;
+        background-color: $color-bg-button;
 
-                @media (hover: none) {
-                    background-color: $color-bg-button;
-                }
-            }
+        &:hover {
+            background-color: $color-bg-hover-button;
 
-            &:focus {
-                outline: rem(2) solid $color-outline-button;
-                outline-offset: 0;
-
-                &:hover {
-                    outline: none;
-                }
-            }
-
-            &:active {
-                outline: none;
-
+            @media (hover: none) {
                 background-color: $color-bg-button;
             }
         }
+
+        &:focus {
+            outline: rem(2) solid $color-outline-button;
+            outline-offset: 0;
+
+            &:hover {
+                outline: none;
+            }
+        }
+
+        &:active {
+            outline: none;
+
+            background-color: $color-bg-button;
+        }
     }
+
+    &--button-dots {
+        display: block;
+
+        padding: rem(5) rem(11);
+
+        border-radius: 50%;
+
+        &:hover {
+            background-color: $color-bg-hover-button-dot;
+        }
+
+        &::before,
+        &::after {
+            display: block;
+
+            width: rem(3);
+            height: rem(3);
+
+            content: "";
+
+            border-radius: 50%;
+            background-color: $color-bg-icon-dot;
+        }
+    }
+
+    &--button-dots & {
+        &__icon {
+            display: block;
+
+            width: rem(3);
+            height: rem(3);
+            margin: rem(3) 0;
+
+            border-radius: 50%;
+            background-color: $color-bg-icon-dot;
+        }
+    }
+
+    &--button-transparent {
+        @include text-props(12, 14);
+
+        justify-content: flex-start;
+
+        padding: rem(7);
+        min-width: initial;
+
+        color: $color-text;
+        background-color: transparent;
+        border-radius: $border-radius-button;
+
+        &:hover {
+            background-color: $color-bg-hover-button-transparent;
+
+            @media (hover: none) {
+                background-color: transparent;
+            }
+        }
+
+        &:active {
+            outline: none;
+
+            background-color: transparent;
+        }
+    }
+    &--button-transparent & {
+        &__icon {
+            margin-right: rem(15);
+
+            color: $color-icon;
+        }
+    }
+
 
     &--link {
         @include text-props(11, 11);
@@ -114,28 +188,21 @@
         }
     }
 
+    &--link-unobtrusive {
+        color: $color-unobtrusive;
 
-    // TODO: реализовать отдельный компонент для кнопок в dropdown
-    //&#{&}--transparent {
-    //    padding: rem(7);
-    //    min-width: initial;
-    //
-    //    color: $color-text;
-    //    background-color: transparent;
-    //
-    //    &:hover {
-    //        background-color: $color-bg-hover-button-transparent;
-    //
-    //        @media (hover: none) {
-    //            background-color: transparent;
-    //        }
-    //    }
-    //    &:active {
-    //        outline: none;
-    //
-    //        background-color: transparent;
-    //    }
-    //}
+        &:hover {
+            color: $color-unobtrusive;
 
+            @media (hover: none) {
+                color: $color-unobtrusive;
+            }
+        }
 
+        &:active {
+            outline: none;
+
+            color: $color-unobtrusive;
+        }
+    }
 }
