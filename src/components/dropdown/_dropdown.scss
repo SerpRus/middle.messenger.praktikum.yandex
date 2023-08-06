@@ -1,8 +1,11 @@
 .dropdown {
     position: relative;
 
+    display: flex;
+
     &__content {
         position: absolute;
+        z-index: 100;
         top: calc(100% + #{rem(25)});
         right: 0;
 

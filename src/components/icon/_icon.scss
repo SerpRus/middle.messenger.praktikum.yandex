@@ -6,6 +6,16 @@
     max-height: 100%;
 
     &--size {
+        &-11-5 {
+            width: rem(11);
+            height: rem(5);
+        }
+
+        &-13-12 {
+            width: rem(13);
+            height: rem(12);
+        }
+
         &-12 {
             $size: 12px;
 
@@ -26,11 +36,29 @@
             width: rem($size);
             height: rem($size);
         }
+
+        &-32 {
+            $size: 32px;
+
+            width: rem($size);
+            height: rem($size);
+        }
+
+        &-40 {
+            $size: 40px;
+
+            width: rem($size);
+            height: rem($size);
+        }
     }
 
     &--rotate {
         &-45 {
             transform: rotate(45deg);
+        }
+
+        &-180 {
+            transform: rotate(180deg);
         }
     }
 }

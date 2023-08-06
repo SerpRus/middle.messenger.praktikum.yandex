@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "18.8.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "start": "npm run build && node src/server.js",
-    "preview": "vite preview"
+    "start": "npm run build && node src/server.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

@@ -1,0 +1,123 @@
+.chat-content {
+    padding-top: rem(48);
+
+    &__item {
+        margin-bottom: rem(30);
+
+        text-align: left;
+
+        &--current-user {
+            text-align: right;
+        }
+    }
+
+    &__item--current-user & {
+        &__message {
+            margin-left: auto;
+
+            text-align: left;
+
+            background-color: $color-bg-user-message;
+
+            &-info {
+                color: $color-brand;
+            }
+        }
+
+        &__img {
+            &-wrapper {
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__date {
+        @include text-props(12, 12);
+
+        &:not(:last-child) {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__message {
+        @include text-props(12, 15);
+
+        width: max-content;
+        max-width: rem(402);
+        padding: rem(11);
+
+        border-radius: $border-radius-block;
+        background-color: $color-chat-message;
+
+        &:not(:last-child) {
+            margin-bottom: rem(10);
+        }
+
+        &-info {
+            float: right;
+
+            margin-left: rem(14);
+
+            color: $color-unobtrusive;
+
+            &--img {
+                position: absolute;
+                right: rem(11);
+                bottom: rem(11);
+            }
+        }
+
+        &-date {
+            @include text-props(9, 9);
+        }
+
+        &-check-icon {
+            &.icon {
+                display: inline-block;
+            }
+        }
+
+        & p {
+            &:not(:last-child) {
+                margin-bottom: rem(16);
+            }
+        }
+    }
+
+    &__img {
+        max-width: rem(316);
+
+        border: rem(1) solid $color-border-light-gray;
+        border-radius: $border-radius-block;
+
+        &-wrapper {
+            position: relative;
+
+            display: inline-flex;
+
+            text-align: left;
+
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+
+        &-date {
+            @include text-props(9, 9);
+
+            padding: rem(2) rem(7);
+
+            opacity: 0.5;
+
+            color: $color-text-notifications;
+            border-radius: rem(30);
+            background-color: $color-bg-time;
+
+            &-wrapper {
+                position: absolute;
+                right: rem(11);
+                bottom: rem(11);
+            }
+        }
+    }
+}

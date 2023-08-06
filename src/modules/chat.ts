@@ -30,11 +30,11 @@ export default class Chat {
         let pathname;
 
         // TODO: тестовый редирект на страницу входа, если пользователь не авторизован
-        if (localStorage.getItem('isAuthorized')) {
+        // if (localStorage.getItem('isAuthorized')) {
             pathname = new URL(window.location.href).pathname;
-        } else {
-            pathname = '/sign-in'
-        }
+        // } else {
+        //     pathname = '/sign-in'
+        // }
 
         window.router.render(pathname);
     }

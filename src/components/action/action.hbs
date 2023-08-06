@@ -1,6 +1,7 @@
 {{#if href}}
     <a class="{{classes}}
-              action action--link
+              action
+              {{#if themaType}}action--{{themaType}}{{/if}}
               {{#if thema}}action--{{thema}}{{/if}}"
        href="{{href}}"
        {{#if target}}target="{{target}}"{{/if}}
@@ -16,7 +17,8 @@
     </a>
 {{else}}
     <button class="{{classes}}
-                   action action--button
+                   action
+                   {{#if themaType}}action--{{themaType}}{{/if}}
                    {{#if thema}}action--{{thema}}{{/if}}"
             {{#if target}}type="{{target}}"{{/if}}
             {{#each attributes}}

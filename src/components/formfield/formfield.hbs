@@ -1,11 +1,14 @@
 <div class="{{classes}}
-            formfield"
+            formfield
+            {{#if thema}}formfield--{{thema}}{{/if}}"
 >
     <input id="{{id}}"
            class="formfield__element"
            name="{{name}}"
            type="{{type}}"
+           {{#if value}}value="{{value}}"{{/if}}
            placeholder="{{placeholder}}"
+           {{#if disabled}}disabled{{/if}}
     >
     <label for="{{id}}"
            class="formfield__label"

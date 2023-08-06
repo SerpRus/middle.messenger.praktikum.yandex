@@ -3,6 +3,7 @@
         <div class="aside-panel__header">
             {{#> action
                  classes="aside-panel__link"
+                 themaType="link"
                  thema="link-unobtrusive"
                  href="/profile"
             }}
@@ -18,7 +19,7 @@
             {{/action}}
 
             {{#> formfield
-                 classes='aside-panel__search formfield--filled'
+                 classes='aside-panel__search'
                  id='search'
                  name='search'
                  type='text'
@@ -31,8 +32,8 @@
                 }}
 
                 <span class="formfield__label-text">
-                Поиск
-            </span>
+                    Поиск
+                </span>
             {{/formfield}}
         </div>
 
@@ -43,13 +44,14 @@
                     classes="aside-panel__chats-item"
                     imgSrc=this.imgSrc
                     name=this.name
+                    selected=this.selected
                 }}
             {{/each}}
         </div>
     {{/asidePanel}}
 
-    <div class="chat-page__chat">
-        {{#if isChatSelected}}
+    {{#if isChatSelected}}
+        <div class="chat-page__chat">
             <header class="chat-page__chat-header">
                 {{> user
                     classes="chat-page__chat-user"
@@ -59,10 +61,11 @@
                 }}
 
                 {{#> dropdown
-                     classes="chat-page__heare-chat-dropdown-wrapper"
+                     classes="chat-page__header-chat-dropdown-wrapper"
                 }}
                     {{#*inline "action"}}
                         {{#> action
+                             themaType="button"
                              thema="button-dots"
                              classes="chat-page__dropdown-button"
                         }}
@@ -78,13 +81,191 @@
                 {{/dropdown}}
             </header>
 
-            <div class="chat-page__chat-content">
-                Круто
+            <div class="chat-page__chat-content chat-content">
+                <div class="chat-content__date-content">
+                    <div class="chat-content__date">
+                        18 июня
+                    </div>
+
+                    <div class="chat-content__item">
+                        <div class="chat-content__message">
+                            <p>
+                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+
+                                <span class="chat-content__message-info">
+                                    <time class="chat-content__message-date">
+                                        11:30
+                                    </time>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="chat-content__img-wrapper">
+                            <img class="chat-content__img"
+                                 src="images/tests/test-img.jpg"
+                                 alt="test img"
+                            >
+
+                            <span class="chat-content__message-info chat-content__message-info--img">
+                                <time class="chat-content__img-date">
+                                    11:56
+                                </time>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="chat-content__item chat-content__item--current-user">
+                        <div class="chat-content__message">
+                            <p>
+                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                            </p>
+
+                            <p>
+                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+
+                                <span class="chat-content__message-info">
+                                    {{> icon
+                                        classes="chat-content__message-check-icon"
+                                        size="11-5"
+                                        name="check"
+                                    }}
+
+                                    <time class="chat-content__message-date">
+                                        11:56
+                                    </time>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="chat-content__img-wrapper">
+                            <img class="chat-content__img"
+                                 src="images/tests/test-img.jpg"
+                                 alt="test img"
+                            >
+
+                            <span class="chat-content__message-info chat-content__message-info--img">
+                                {{> icon
+                                    classes="chat-content__message-check-icon"
+                                    size="11-5"
+                                    name="check"
+                                }}
+
+                                <time class="chat-content__img-date">
+                                    11:56
+                                </time>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-content__date-content">
+                    <div class="chat-content__date">
+                        19 июня
+                    </div>
+
+                    <div class="chat-content__item">
+                        <div class="chat-content__message">
+                            <p>
+                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                            </p>
+
+                            <p>
+                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+
+                                <span class="chat-content__message-info">
+                                    <time class="chat-content__message-date">
+                                        11:56
+                                    </time>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="chat-content__img-wrapper">
+                            <img class="chat-content__img"
+                                 src="/images/users/user-plug.jpg"
+                                 alt="test img"
+                            >
+
+                            <span class="chat-content__message-info chat-content__message-info--img">
+                                <time class="chat-content__img-date">
+                                    11:56
+                                </time>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="chat-content__item chat-content__item--current-user">
+                        <div class="chat-content__message">
+                            <p>
+                                Круто!
+
+                                <span class="chat-content__message-info">
+                                    {{> icon
+                                        classes="chat-content__message-check-icon"
+                                        size="11-5"
+                                        name="check"
+                                    }}
+
+                                        <time class="chat-content__message-date">
+                                        11:56
+                                    </time>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {{else}}
+
+            <footer class="chat-page__footer">
+                {{#> dropdown
+                     classes="chat-page__footer-chat-dropdown-wrapper"
+                     contentStyle="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px"
+                }}
+                    {{#*inline "action"}}
+                        {{#> action
+                             thema="button-transparent-icon"
+                        }}
+                            {{> icon
+                                classes="chat-content__message-check-icon"
+                                size="32"
+                                name="clip"
+                            }}
+                        {{/action}}
+                    {{/inline}}
+
+                    {{#*inline "content"}}
+                        {{> dropdownActionsList
+                            dropdownActionsList=chat.footerDropdownActionsList
+                        }}
+                    {{/inline}}
+                {{/dropdown}}
+
+                {{#> formfield
+                        classes='chat-page__footer-message-field'
+                        id="message"
+                        name="message"
+                        type="text"
+                        thema="filled-2"
+                        placeholder="Сообщение"
+                }}{{/formfield}}
+
+                {{#> action
+                     themaType="button"
+                     thema="button-circle-icon"
+                }}
+                    {{> icon
+                        classes="chat-content__message-check-icon"
+                        size="13-12"
+                        name="arrow-right-2"
+                    }}
+                {{/action}}
+            </footer>
+        </div>
+    {{else}}
+        <div class="chat-page__chat chat-page__chat--no-selected-chat">
             <div class="chat-page__chat-message">
                 Выберите чат чтобы отправить сообщение
             </div>
-        {{/if}}
-    </div>
+        </div>
+    {{/if}}
 {{/main}}

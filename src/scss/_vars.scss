@@ -5,13 +5,17 @@
 //* colors */
 $white: #fff;
 $alabaster: #fbfbfb;
+$alabaster-2: #f8f8f8;
 $gallery: #eaeaea;
-$gallery-2: #eaeaea;
 $wild-sand: #f5f5f5;
+$silver: #cdcdcd;
 $dusty-gray: #999;
+$emperor: #525252;
+$black: #000;
 $cod-gray: #1e1e1e;
 $royal-blue: #3369f3;
 $malibu: #6590ff;
+$hawkes-blue: #e4edfd;
 $red-orange: #ff2f2f;
 
 //* dynamic colors */
@@ -23,8 +27,11 @@ $color-text-button: $white;
 $color-text-notifications: $white;
 $color-link: $color-brand;
 $color-error: $red-orange;
+$color-highlighted: $red-orange;
+$color-chat-message: $alabaster-2;
 
 $color-icon: $color-brand;
+$color-icon-unobtrusive: $silver;
 
 $color-hover-link: $malibu;
 
@@ -34,7 +41,7 @@ $color-border-light-gray: $gallery;
 $color-outline-button: $cod-gray;
 
 $color-bg-button: $color-brand;
-$color-bg-inout-filled: $gallery-2;
+$color-bg-inout-filled: $gallery;
 $color-bg-hover-button: $malibu;
 $color-bg-light: $white;
 $color-bg-light-gray: $alabaster;
@@ -42,6 +49,9 @@ $color-bg-notifications: $color-brand;
 $color-bg-icon-dot: $color-brand;
 $color-bg-hover-button-dot: $wild-sand;
 $color-bg-hover-button-transparent: $wild-sand;
+$color-bg-time: $emperor;
+$color-bg-user-message: $hawkes-blue;
+$color-bg-overlay: $black;
 
 
 //* gaps */

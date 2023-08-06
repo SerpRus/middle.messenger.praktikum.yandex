@@ -1,7 +1,15 @@
 .chat-item {
-    &:last-child & {
+    border-top: rem(1) solid $color-border-light-gray;
+
+    &:last-child {
+        border-bottom: rem(1) solid $color-border-light-gray;
+    }
+
+    &--selected & {
         &__wrapper {
-            border-bottom: rem(1) solid $color-border-light-gray;
+            margin: rem(1) 0;
+
+            background-color: $color-bg-user-message;
         }
     }
 
@@ -11,8 +19,6 @@
         padding: rem(12) rem(10);
 
         cursor: pointer;
-
-        border-top: rem(1) solid $color-border-light-gray;
     }
 
     &__user {

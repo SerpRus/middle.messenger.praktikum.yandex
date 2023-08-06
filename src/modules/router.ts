@@ -7,11 +7,12 @@ import Template from './template.ts';
 export default class Router {
     $root: HTMLElement | null;
 
-    routes: RouteType;
+    routes: RouteType = {};
+
+    pageHistory: string[] = [];
 
     constructor($root: HTMLElement | null) {
         this.$root = $root;
-        this.routes = {};
 
         this.init();
     }
@@ -33,6 +34,11 @@ export default class Router {
     linkClickHandler = (e: Event) => {
         e.preventDefault();
 
+        const currentPath = location.pathname;
+
+        this.pageHistory.push(currentPath);
+
+
         const $target = e.currentTarget as HTMLLinkElement;
 
         const { pathname } = new URL($target.href);
@@ -40,8 +46,13 @@ export default class Router {
         this.render(pathname);
     };
 
-    onPopstateHandler = (e: PopStateEvent) => {
-        const { path } = e.state;
+    onPopstateHandler = () => {
+        if (!this.pageHistory.length) {
+            return;
+        }
+
+        const path = this.pageHistory[this.pageHistory.length - 1];
+        this.pageHistory.pop();
 
         this.render(path);
     }
