@@ -69,7 +69,7 @@ export default class Router {
                 code: '404',
                 description: 'Не туда попали',
                 link: {
-                    href: '/',
+                    href: '/chats',
                     text: 'Назад к чатам',
                 },
             });
