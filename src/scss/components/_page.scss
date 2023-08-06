@@ -1,0 +1,46 @@
+.page {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    &__main {
+        flex-grow: 1;
+    }
+
+    &__bottom-right-fixed-button {
+        position: fixed;
+        right: rem(32);
+        bottom: rem(32);
+    }
+
+    & .modals {
+        display: flex;
+        flex-direction: column;
+
+        background-color: $color-unobtrusive;
+
+        &-item {
+            margin: 0 auto;
+        }
+
+        & .modal {
+            position: static;
+            transform: translate(0, 0);
+
+            height: auto;
+
+            &:not(:last-child) {
+                margin-bottom: rem(16);
+            }
+
+            &__content {
+                position: static;
+
+                margin: 0 auto;
+
+                transform: translate(0, 0);
+            }
+        }
+    }
+}

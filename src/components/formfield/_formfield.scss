@@ -1,0 +1,280 @@
+.formfield {
+    $root: &;
+
+    $label-default: 13px;
+    $label-size: 11px;
+
+    position: relative;
+
+    &--filled & {
+        &__element {
+            @include text-props(12, 12);
+
+            padding: rem(10) rem(10) rem(10) rem(34);
+            height: rem(32);
+
+            border: none;
+            border-radius: rem(5);
+            background-color: $color-bg-inout-filled;
+        }
+
+        &__label {
+            top: 50%;
+            left: 50%;
+
+            transition: none;
+            transform: translate(-50%, -50%);
+
+            &-icon {
+                width: rem(20);
+                height: rem(20);
+            }
+        }
+
+        &__element:focus,
+        &__element:not(:placeholder-shown),
+        &__element:read-only {
+            & + #{$root}__label {
+                top: 50%;
+                left: rem(10);
+
+                transform: translate(0, -50%);
+
+                & #{$root}__label-text {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--filled-2 & {
+        &__element {
+            @include text-props(12, 12);
+
+            padding: rem(10) rem(20) rem(10) rem(20);
+            height: rem(32);
+
+            border: none;
+            border-radius: rem(30);
+            background-color: $color-bg-inout-filled;
+        }
+
+        &__label {
+            top: 50%;
+            left: rem(20);
+
+            transition: none;
+            transform: translateY(-50%);
+        }
+
+        &__element:focus,
+        &__element:not(:placeholder-shown),
+        &__element:read-only {
+            & + #{$root}__label {
+                display: none;
+            }
+        }
+    }
+
+    &#{&}--edges-row & {
+        &__element {
+            padding: rem(10) 0;
+
+            text-align: right;
+
+            border: none;
+
+            &:disabled {
+                color: $color-unobtrusive;
+            }
+        }
+
+        &__element:focus +,
+        &__element:not(:placeholder-shown) + {
+            & #{$root}__label {
+                @include text-props(13, 13);
+
+                top: 50%;
+
+                cursor: text;
+                transform: translateY(-50%);
+            }
+        }
+
+        &__label {
+            @include text-props(13, 13);
+
+            color: $color-text;
+        }
+    }
+
+    &#{&}--file & {
+        &__element {
+            display: none;
+        }
+
+        &__element:focus +,
+        &__element:not(:placeholder-shown) + {
+            #{$root}__label {
+                @include text-props(12, 16);
+
+                cursor: pointer;
+            }
+        }
+
+        &__label {
+            @include text-props(12, 16);
+
+            position: static;
+
+            width: rem(122);
+            margin: 0 auto;
+
+            cursor: pointer;
+            text-decoration: underline;
+
+            color: $color-brand;
+        }
+    }
+
+    &#{&}--button-big-circle-icon {
+        position: relative;
+
+        display: inline-flex;
+
+        width: rem(130);
+        height: rem(130);
+
+        transition: $transition-default;
+
+        border-radius: 50%;
+        background-color: $color-bg-inout-filled;
+
+        &:hover {
+            & #{$root}__text {
+                display: block;
+
+                opacity: 0.5;
+
+                background-color: #000;
+            }
+        }
+    }
+
+    &#{&}--button-big-circle-icon & {
+        &__element {
+            display: none;
+        }
+
+        &__element:focus +,
+        &__element:not(:placeholder-shown) + {
+            #{$root}__label {
+                top: 0;
+                left: 0;
+
+                width: 100%;
+                height: 100%;
+
+                cursor: pointer;
+            }
+        }
+
+        &__icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            color: $color-icon-unobtrusive;
+        }
+
+        &__text {
+            @include text-props(13, 14);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+            padding: rem(51) rem(33);
+
+            transition: $transition-default;
+
+            opacity: 0;
+            color: $color-text-button;
+            border-radius: 50%;
+        }
+    }
+
+    &__element {
+        @include text-props(13, 13);
+
+        width: 100%;
+        padding: rem(8) 0 rem(7);
+
+        border: none;
+        border-bottom: rem(1) solid $color-border-input;
+        background-color: transparent;
+
+        &::placeholder {
+            color: $color-unobtrusive;
+        }
+    }
+
+    &__label {
+        @include text-props($label-default, $label-default);
+
+        position: absolute;
+        top: rem(8);
+        left: 0;
+
+        display: flex;
+        align-items: center;
+
+        cursor: text;
+        transition: $transition-input;
+
+        color: $color-unobtrusive;
+
+        &-icon {
+            &:not(:last-child) {
+                margin-right: rem(4);
+            }
+        }
+    }
+
+    &__element:focus + &,
+    &__element:not(:placeholder-shown) + & {
+        &__label {
+            @include text-props($label-size, $label-size);
+
+            cursor: default;
+
+            top: rem(-$label-size);
+        }
+    }
+
+    &__error {
+        @include text-props(10, 10);
+
+        display: none;
+
+        margin-top: rem(7);
+
+        text-align: left;
+
+        color: $color-error;
+    }
+
+    &.has-error & {
+        &__error {
+            display: block;
+        }
+    }
+
+    &.password-mismatch-error {
+        color: $color-error;
+    }
+}

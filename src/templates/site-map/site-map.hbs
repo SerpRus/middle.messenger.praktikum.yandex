@@ -1,0 +1,14 @@
+{{#> main classes="site-map"}}
+    <nav class="site-map__nav">
+        <ul class="site-map__list">
+            {{#each links}}
+                <li class="site-map__list-item">
+                    {{> action
+                        classes="site-map__list-link"
+                        link=this
+                    }}
+                </li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/main}}

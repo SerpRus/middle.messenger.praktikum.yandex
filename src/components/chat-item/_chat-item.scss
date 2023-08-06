@@ -1,0 +1,60 @@
+.chat-item {
+    border-top: rem(1) solid $color-border-light-gray;
+
+    &:last-child {
+        border-bottom: rem(1) solid $color-border-light-gray;
+    }
+
+    &--selected & {
+        &__wrapper {
+            margin: rem(1) 0;
+
+            background-color: $color-bg-user-message;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+
+        padding: rem(12) rem(10);
+
+        cursor: pointer;
+    }
+
+    &__user {
+        flex-grow: 1;
+
+        margin: 0 rem(16) 0 rem(10);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__date {
+        @include text-props(10, 13);
+
+        flex-grow: 1;
+
+        color: $color-unobtrusive;
+    }
+
+    &__notifications {
+        @include text-props(12, 12);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: rem(20);
+
+        padding: rem(4);
+
+        align-self: flex-end;
+
+        color: $color-text-notifications;
+        border-radius: 50%;
+        background-color: $color-bg-notifications;
+    }
+}
