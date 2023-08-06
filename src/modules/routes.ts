@@ -7,7 +7,7 @@ import modals from '../templates/modals/modals.hbs';
 import siteMap from '../templates/site-map/site-map.hbs';
 
 export default {
-    '/': {
+    '/chats': {
         page: chatPage,
         props: {
             chats: [{
@@ -591,7 +591,7 @@ export default {
             ],
         }
     },
-    '/site-map': {
+    '/': {
         page: siteMap,
         props: {
             links: [{
@@ -601,7 +601,7 @@ export default {
                 href: '/sign-up',
                 text: 'Регистрация',
             }, {
-                href: '/',
+                href: '/chats',
                 text: 'Список чатов и лента переписки',
             }, {
                 href: '/selected-chat',
