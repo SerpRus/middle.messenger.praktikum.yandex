@@ -1,0 +1,24 @@
+@import './page';
+@import './chat-content';
+
+// components
+@import '/components/action/action';
+@import '/components/formfield/formfield';
+@import '/components/form/form';
+@import '/components/icon/icon';
+@import '/components/chat-item/chat-item';
+@import '/components/dropdown/dropdown';
+@import '/components/user/user';
+@import '/components/dropdown-actions-list/dropdown-actions-list';
+@import '/components/modal/modal';
+
+// layouts
+@import '/layouts/main/main';
+@import '/layouts/aside-panel/aside-panel';
+
+// templates
+@import '/templates/error-page/error-page';
+@import '/templates/chat-page/chat-page';
+@import '/templates/site-map/site-map';
+@import '/templates/profile/profile';
+

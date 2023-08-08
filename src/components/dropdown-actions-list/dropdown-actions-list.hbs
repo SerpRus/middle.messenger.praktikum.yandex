@@ -1,0 +1,24 @@
+<ul class="dropdown-actions-list
+           {{#if thema}}dropdown-actions-list--{{thema}}{{/if}}"
+>
+    {{#each dropdownActionsList}}
+        <li class="dropdown-actions-list__item">
+            {{#> action
+                classes="dropdown__item"
+                themaType="button"
+                thema="button-transparent"
+            }}
+                {{> icon
+                        classes="action__icon"
+                        size="22"
+                        rotate=icon.rotate
+                        name=icon.name
+                }}
+
+                <span class="action__text">
+                    {{action.text}}
+                </span>
+            {{/action}}
+        </li>
+    {{/each}}
+</ul>

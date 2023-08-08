@@ -1,0 +1,187 @@
+@use "sass:math";
+
+@import './utils/index';
+
+//* colors */
+$white: #fff;
+$alabaster: #fbfbfb;
+$alabaster-2: #f8f8f8;
+$gallery: #eaeaea;
+$wild-sand: #f5f5f5;
+$silver: #cdcdcd;
+$dusty-gray: #999;
+$emperor: #525252;
+$black: #000;
+$cod-gray: #1e1e1e;
+$royal-blue: #3369f3;
+$malibu: #6590ff;
+$hawkes-blue: #e4edfd;
+$red-orange: #ff2f2f;
+
+//* dynamic colors */
+$color-brand: $royal-blue;
+
+$color-text: $cod-gray;
+$color-unobtrusive: $dusty-gray;
+$color-text-button: $white;
+$color-text-notifications: $white;
+$color-link: $color-brand;
+$color-error: $red-orange;
+$color-highlighted: $red-orange;
+$color-chat-message: $alabaster-2;
+
+$color-icon: $color-brand;
+$color-icon-unobtrusive: $silver;
+
+$color-hover-link: $malibu;
+
+$color-border-input: $color-brand;
+$color-border-light-gray: $gallery;
+
+$color-outline-button: $cod-gray;
+
+$color-bg-button: $color-brand;
+$color-bg-inout-filled: $gallery;
+$color-bg-hover-button: $malibu;
+$color-bg-light: $white;
+$color-bg-light-gray: $alabaster;
+$color-bg-notifications: $color-brand;
+$color-bg-icon-dot: $color-brand;
+$color-bg-hover-button-dot: $wild-sand;
+$color-bg-hover-button-transparent: $wild-sand;
+$color-bg-time: $emperor;
+$color-bg-user-message: $hawkes-blue;
+$color-bg-overlay: $black;
+
+
+//* gaps */
+$gap-miniature: 8px;
+$gap-small: 10px;
+$gap-mini: 12px;
+$gap-normal: 16px;
+$gap-medium: 26px;
+$gap-large: 32px;
+$gap-average: 36px;
+$gap-huge: 40px;
+$gap-awesome: 42px;
+$gap-big: 48px;
+
+//* dynamic gaps */
+
+
+//* fonts */
+$base-font-size: 16px;
+$base-line-height: 24px;
+$base-font-family: Verdana, Geneva, sans-serif;
+$font-family: 'Inter';
+
+//* dynamic fonts */
+$font-family-default: $font-family, $base-font-family;
+
+
+//* font-size */
+$font-size-text-main: 14px;
+$font-size: $base-font-size;
+$font-size-medium: 22px;
+$font-size-average: 28px;
+$font-size-very-average: 36px;
+$font-size-big: 40px;
+$font-size-very-big: 48px;
+
+//* dynamic font-size */
+
+
+//* font-weight */
+$font-weight-medium: 500;
+
+//* dynamic font-weight */
+$font-weight-default-text: 500;
+
+
+//* line-height */
+$line-height-small: 16px;
+$line-height: $base-line-height;
+$line-height-medium: 32px;
+$line-height-average: 36px;
+$line-height-very-average: 44px;
+$line-height-big: 48px;
+$line-height-very-big: 56px;
+
+//* dynamic line-height */
+
+
+//* dynamic sizes */
+$size-form: 340px;
+$size-big-form: 738px;
+$size-button: 280px;
+
+
+//* transition */
+$transition-small-duration: 0.1s;
+$transition-duration: 0.3s;
+$transition-easing: ease-out;
+
+//* dynamic transition */
+$transition-default: $transition-duration $transition-easing;
+$transition-input: $transition-small-duration $transition-easing;
+
+
+//* border radius */
+$border-radius-micro: rem(2px);
+$border-radius-tiny: rem(4px);
+$border-radius-small: rem(5px);
+$border-radius: rem(6px);
+$border-radius-semi: rem(8px);
+$border-radius-medium: rem(10px);
+$border-radius-average: rem(12px);
+$border-radius-big: rem(16px);
+$border-radius-circle: 50%;
+
+//* dynamic border radius */
+$border-radius-block: $border-radius-average;
+$border-radius-button: $border-radius-semi;
+
+//* dynamic box shadows */
+$box-shadow-block: 0 0 rem(6) 0 rgba(0, 0, 0, 0.14);
+
+//* z-index */
+
+//* dynamic z-index */
+
+//* paths */
+$pathImages: '../images/';
+$pathFonts: '../fonts/';
+
+//* rules */
+$rulesDisplay: (
+        hidden: (
+                display: none,
+        ),
+        block: (
+                display: block,
+        ),
+        inline: (
+                display: inline,
+        ),
+        inline-block: (
+                display: inline-block,
+        ),
+        flex: (
+                display: flex,
+        ),
+        inline-flex: (
+                display: inline-flex,
+        )
+);
+
+//* media queries */
+$screen-width: (
+        mobileSmall: 320,
+        mobile: 375,
+        tablet: 768,
+        laptop: 1024,
+        desktop: 1280,
+        desktopMedium: 1440,
+        desktopLarge: 1920,
+);
+$screen: (tablet, desktop, desktopBig, desktopLarge);
