@@ -9,11 +9,11 @@ export default class CreateApp {
         this.$root = document.querySelector(rootSelector);
     }
 
-    render(app: AppType) {
+    render(App: AppType) {
         if (!this.$root) {
             return;
         }
 
-        new app(this.$root);
+        new App(this.$root);
     }
 }

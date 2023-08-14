@@ -1,13 +1,13 @@
 export default class Authorization {
     constructor() {
-        this.init();
+        Authorization.init();
     }
 
-    init() {
-        this.initHandlers();
+    static init() {
+        Authorization.initHandlers();
     }
 
-    initHandlers() {
+    static initHandlers() {
         // TODO: тестовая авторизация
         document.querySelector('[data-authorization-button]')?.addEventListener('click', () => {
             localStorage.setItem('isAuthorized', 'true');

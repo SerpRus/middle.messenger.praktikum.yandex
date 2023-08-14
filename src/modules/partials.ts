@@ -14,17 +14,17 @@ import main from '/layouts/main/main.hbs';
 import asidePanel from '/layouts/aside-panel/aside-panel.hbs';
 
 const partials: PartialType[] = [
-    {action},
-    {main},
-    {form},
-    {formfield},
-    {asidePanel},
-    {icon},
-    {chatItem},
-    {dropdown},
-    {user},
-    {dropdownActionsList},
-    {modal},
+    { action },
+    { main },
+    { form },
+    { formfield },
+    { asidePanel },
+    { icon },
+    { chatItem },
+    { dropdown },
+    { user },
+    { dropdownActionsList },
+    { modal },
 ];
 
 export default partials;

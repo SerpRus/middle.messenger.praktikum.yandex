@@ -1,13 +1,10 @@
-import RouteType from '../types/route';
-
-import errorPage from '../templates/error-page/error-page.hbs';
-
-import Template from './template.ts';
+import ErrorPage from '../pages/error-page';
+import Template from './template';
 
 export default class Router {
     $root: HTMLElement | null;
 
-    routes: RouteType = {};
+    routes: any = {};
 
     pageHistory: string[] = [];
 
@@ -34,10 +31,9 @@ export default class Router {
     linkClickHandler = (e: Event) => {
         e.preventDefault();
 
-        const currentPath = location.pathname;
+        const currentPath = window.location.pathname;
 
         this.pageHistory.push(currentPath);
-
 
         const $target = e.currentTarget as HTMLLinkElement;
 
@@ -55,7 +51,7 @@ export default class Router {
         this.pageHistory.pop();
 
         this.render(path);
-    }
+    };
 
     render(path: string, props?: object) {
         if (!this.$root) {
@@ -65,7 +61,7 @@ export default class Router {
         const route = this.routes[path];
 
         if (!route) {
-            new Template(errorPage, this.$root, {
+            new Template(ErrorPage, this.$root, {
                 code: '404',
                 description: 'Не туда попали',
                 link: {
@@ -75,12 +71,9 @@ export default class Router {
             });
         } else {
             const { page } = route;
+            const currentProps = (props) || route.props;
 
-            if (!props) {
-                props = route.props;
-            }
-
-            new Template(page, this.$root, props);
+            new Template(page, this.$root, currentProps);
         }
 
         this.initHandlers();
