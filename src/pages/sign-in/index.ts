@@ -1,15 +1,10 @@
 import Block from '../../utils/block';
-import template from './site-map.hbs';
+import template from './sign-in.hbs';
 import data from './data';
 
-export default class SiteMap extends Block {
+export default class SignIn extends Block {
     init() {
         this.children = this.createChildrenObject(data);
-        // setTimeout(() => {
-        //     this.setProps({
-        //         title: 'new title',
-        //     });
-        // }, 1000);
     }
 
     render() {

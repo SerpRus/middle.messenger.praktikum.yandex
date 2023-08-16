@@ -216,4 +216,20 @@ export default class Block {
             }
         });
     }
+
+    protected createChildrenObject(data: any) {
+        const result: any = {};
+
+        data.forEach((item: any) => {
+            const { key, ClassName, props } = item;
+
+            result[key] = [];
+
+            props.forEach((prop: any) => {
+                result[key].push(new ClassName(prop));
+            });
+        });
+
+        return result;
+    }
 }

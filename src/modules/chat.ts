@@ -6,6 +6,9 @@ import Router from './router';
 import partials from './partials';
 import routes from './routes';
 
+import registerComponent from '../utils/handlebars';
+import Button from "../components/button";
+
 declare global {
     interface Window { router: any; }
 }
@@ -14,9 +17,12 @@ export default class Chat {
     $root: HTMLElement;
 
     constructor($app: HTMLElement) {
+        registerComponent(Button);
+
         this.$root = $app;
 
         this.init();
+
     }
 
     init() {
