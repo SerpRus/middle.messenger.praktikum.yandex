@@ -1,10 +1,10 @@
 import Block from '../../utils/block';
 import template from './site-map.hbs';
-import data from './data';
+// import data from './data';
 
 export default class SiteMap extends Block {
     init() {
-        this.children = this.createChildrenObject(data);
+        // this.children = {};
         // setTimeout(() => {
         //     this.setProps({
         //         title: 'new title',
@@ -13,6 +13,11 @@ export default class SiteMap extends Block {
     }
 
     render() {
-        return this.compile(template, { ...this.props });
+        // return this.compile(template, { ...this.props });
+        return `<div>
+            Email: {{ email }}<br/>
+            Login: {{ login }}<br/>
+            {{{Button label="Выйти" onClick=onLogout}}}
+        </div>`
     }
 }

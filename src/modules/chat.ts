@@ -6,7 +6,7 @@ import Router from './router';
 import partials from './partials';
 import routes from './routes';
 
-import registerComponent from '../utils/handlebars';
+import registerComponent from '../utils/register-component';
 import Button from "../components/button";
 
 declare global {

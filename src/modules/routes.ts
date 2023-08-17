@@ -10,6 +10,7 @@ import ErrorPage from '../pages/error-page';
 import SiteMap from '../pages/site-map';
 import SignIn from '../pages/sign-in';
 import SignUp from '../pages/sign-up';
+import Profile2 from '../pages/Profile2';
 
 export default {
     // '/chats': {
@@ -549,7 +550,8 @@ export default {
     //     },
     // },
     '/': {
-        page: SiteMap,
+        page: Profile2,
+        // page: SiteMap,
         props: {
             title: 'Карта сайта',
         },
