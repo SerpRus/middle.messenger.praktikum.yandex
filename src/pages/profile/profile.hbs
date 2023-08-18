@@ -1,15 +1,15 @@
 {{#> main classes="profile"}}
     <div class="profile__wrapper">
         {{#> action
-             classes="profile__back-link"
-             thema="full-height-with-icon"
-             href="/chats"
+                classes="profile__back-link"
+                thema="full-height-with-icon"
+                href="/chats"
         }}
             {{> icon
-                classes="action__icon"
-                size="13-12"
-                rotate="180"
-                name="arrow-right-2"
+                    classes="action__icon"
+                    size="13-12"
+                    rotate="180"
+                    name="arrow-right-2"
             }}
         {{/action}}
 
@@ -17,16 +17,16 @@
             <div class="profile__content">
                 <header class="profile__header">
                     {{#> formfield
-                         id="avatar"
-                         name="avatar"
-                         thema="button-big-circle-icon"
-                         type="file"
-                         classes="profile__change-img-button"
+                            id="avatar"
+                            name="avatar"
+                            thema="button-big-circle-icon"
+                            type="file"
+                            classes="profile__change-img-button"
                     }}
                         {{> icon
-                            classes="formfield__icon"
-                            size="40"
-                            name="preview-2"
+                                classes="formfield__icon"
+                                size="40"
+                                name="preview-2"
                         }}
 
                         <span class="formfield__text">
@@ -54,7 +54,7 @@
                         {{#each footerActions}}
                             <li class="profile__footer-actions-item">
                                 {{> action
-                                    action=this
+                                        action=this
                                 }}
                             </li>
                         {{/each}}

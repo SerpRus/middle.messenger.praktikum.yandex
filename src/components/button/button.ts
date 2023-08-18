@@ -1,26 +1,25 @@
 import Block from '../../utils/block';
+import teplate from './template';
 
 interface ButtonProps {
     label: string;
     onClick?: () => void;
 }
 
-export class Button extends Block {
-    constructor({label, onClick}: ButtonProps) {
+export default class Button extends Block<ButtonProps> {
+    constructor({ label, onClick }: ButtonProps) {
         super({
             label,
             events: {
                 click: onClick
             }
         });
+
+        console.log(teplate)
     }
 
     render() {
         // language=hbs
-        return `
-      <button type="button">
-          {{ label }}
-      </button>
-    `;
+        return teplate;
     }
 }

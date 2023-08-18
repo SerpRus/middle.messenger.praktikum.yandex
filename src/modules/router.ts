@@ -1,10 +1,13 @@
 import ErrorPage from '../pages/error-page';
 import Template from './template';
 
+import RouteType from '../types/route';
+import PropsType from '../types/props';
+
 export default class Router {
     $root: HTMLElement | null;
 
-    routes: any = {};
+    routes: Record<string, RouteType> = {};
 
     pageHistory: string[] = [];
 
@@ -53,7 +56,7 @@ export default class Router {
         this.render(path);
     };
 
-    render(path: string, props?: object) {
+    render(path: string, props?: PropsType) {
         if (!this.$root) {
             return;
         }

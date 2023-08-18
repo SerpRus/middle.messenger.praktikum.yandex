@@ -1,10 +1,9 @@
-import { TemplateDelegate } from 'handlebars';
+import Block from '../utils/block';
+import PropsType from './props';
 
 type RouteType = {
-    [key: string]: {
-        page: TemplateDelegate,
-        props?: object,
-    },
+    page: Block,
+    props: PropsType,
 };
 
 export default RouteType;

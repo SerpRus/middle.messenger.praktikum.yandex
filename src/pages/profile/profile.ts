@@ -1,19 +1,30 @@
-import Block from "../../utils/Block";
-import AuthController from "../../controllers/AuthController";
+import Block from '../../utils/block';
 
-export class ProfilePage extends Block {
-    constructor(props) {
+import PropsType from '../../types/props';
+
+export default class ProfilePage extends Block<PropsType> {
+    constructor(props: PropsType) {
         super({
             ...props,
-            onLogout: () => AuthController.logout()
+            onLogout: () => {
+                console.log(23213123123);
+            }
         });
     }
 
     protected render(): string {
-        return `<div>
-            Email: {{ email }}<br/>
-            Login: {{ login }}<br/>
-            {{{Button label="Выйти" onClick=onLogout}}}
-        </div>`
+        // language=hbs
+        return `
+            <div>
+                Email: {{ email }}<br/>
+                Login: {{ login }}<br/>
+                {{{Action
+                    text='Выйти123123'
+                    onClick=onLogout
+                    themaType='button'
+                    thema='button-brand'
+                }}}
+            </div>
+        `;
     }
 }

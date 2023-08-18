@@ -1,9 +1,12 @@
-import EventBus from './event-bus';
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 
+import EventBus from './event-bus';
+
+import PropsType from '../../types/props';
+
 // Нельзя создавать экземпляр данного класса
-class Block {
+class Block<P extends PropsType> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -14,9 +17,9 @@ class Block {
     public id = nanoid(6);
 
     private _element: HTMLElement | null = null;
-    private _meta: { props: any };
+    private _meta: { props: P };
 
-    protected props: any;
+    protected props: P;
     protected children: Record<string, Block>;
     private eventBus: () => EventBus;
 
@@ -35,7 +38,6 @@ class Block {
         const { props, children } = this.getChildren(propsAndChildren);
 
         this.children = children;
-
 
         this._meta = {
             props,
@@ -113,11 +115,13 @@ class Block {
     };
 
     get element(): HTMLElement | null {
+        console.log(this._element)
         return this._element;
     }
 
     _render() {
         const templateString = this.render();
+        console.log(templateString)
 
         const fragment = this.compile(templateString, { ...this.props });
 
@@ -244,8 +248,6 @@ class Block {
 
     compile(templateString: string, context: any) {
         const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-
-        console.log(templateString)
 
         const template = Handlebars.compile(templateString);
 

@@ -1,13 +1,15 @@
 import Block from '../utils/block';
 
-export default class Template {
+import PropsType from '../types/props';
+
+export default class Template<P extends PropsType> {
     template: Block;
 
     $root: HTMLElement;
 
-    props?: object;
+    props?: PropsType;
 
-    constructor(template: any, $root: HTMLElement, props?: object) {
+    constructor(template: Block, $root: HTMLElement, props?: P) {
         this.template = template;
         this.$root = $root;
         this.props = props;
@@ -17,8 +19,10 @@ export default class Template {
 
     changeHTML() {
         const TemplateClass = this.template;
+        console.log(TemplateClass )
         // @ts-ignore
         const templateInstance = new TemplateClass(this.props);
+        console.log(templateInstance.getContent())
 
         this.$root.innerHTML = '';
         this.$root.append(templateInstance.getContent());
