@@ -10,11 +10,11 @@ export default `
                 {{description}}
             </div>
 
-            {{{Action 
+            {{{Action
                 classes='error-page__link'
                 href='/chats'
                 text='Назад к чатам'
-                onClick=onLogout
+                themaType='link'
             }}}
         </div>
     {{/Main}}

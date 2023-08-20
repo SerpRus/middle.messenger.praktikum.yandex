@@ -4,7 +4,6 @@
 // components
 @import '/components/action/action';
 @import '/components/formfield/formfield';
-@import '/components/form/form';
 @import '/components/icon/icon';
 @import '/components/chat-item/chat-item';
 @import '/components/dropdown/dropdown';
@@ -15,6 +14,7 @@
 // layouts
 @import '/layouts/main/main';
 @import '/layouts/aside-panel/aside-panel';
+@import '/layouts/form/form';
 
 // templates
 @import '/pages/error-page/error-page';

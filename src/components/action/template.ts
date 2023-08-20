@@ -7,15 +7,10 @@ export default `
                   {{#if thema}}action--{{thema}}{{/if}}"
            href="{{href}}"
            {{#if target}}target="{{target}}"{{/if}}
-           {{#each attributes}}
-               {{this.key}}="{{this.value}}"
-           {{/each}}
         >
-            {{#if text}}
+            <span class="action__text">
                 {{text}}
-            {{else}}
-                {{> @partial-block}}
-            {{/if}}
+            </span>
         </a>
     {{else}}
         <button class="{{classes}}
@@ -23,15 +18,10 @@ export default `
                        {{#if themaType}}action--{{themaType}}{{/if}}
                        {{#if thema}}action--{{thema}}{{/if}}"
                 {{#if target}}type="{{target}}"{{/if}}
-                {{#each attributes}}
-                {{this.key}}="{{this.value}}"
-                {{/each}}
         >
-            {{#if text}}
+            <span class="action__text">
                 {{text}}
-            {{else}}
-                {{> @partial-block}}
-            {{/if}}
+            </span>
         </button>
     {{/if}}
 `;

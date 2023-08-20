@@ -6,28 +6,31 @@ export default function registerComponent(this: unknown, Component: typeof Block
     Handlebars.registerHelper(
         Component.componentName || Component.name,
         ({ hash, data, fn }: HelperOptions) => {
-            if (!data.root.children) {
-                data.root.children = {};
-            }
-
-            if (!data.root.refs) {
-                data.root.refs = {};
-            }
-
-            const { children } = data.root;
-
             const component = new Component(hash);
+            const dataAttribute = `data-id="${component.id}"`;
 
-            if (hash.ref) {
-                data.root.refs[hash.ref] = component;
+            if ('ref' in hash) {
+                data.root.__refs[hash.ref] = component;
             }
 
-            children[component.id] = component;
+            data.root.__children.push({
+                component,
+                embed(node: HTMLElement) {
+                    const placeholder = node.querySelector('[data-id]');
+
+                    if (!placeholder) {
+                        throw new Error('Error!');
+                    }
+
+                    const element = component.element();
+                    element.append(...Array.from(placeholder.childNodes));
+                    placeholder.replaceWith(element);
+                }
+            });
 
             const contents = fn ? fn(this) : '';
-            console.log(data.root)
 
-            return `<div data-id="id-${component.id}">${contents}</div>`;
+            return `<div ${dataAttribute}>${contents}</div>`;
         }
     );
 }

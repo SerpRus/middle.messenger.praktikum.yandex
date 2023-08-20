@@ -1,3 +1,4 @@
+// import NotFoundPage from '../pages/not-found-page';
 import ErrorPage from '../pages/error-page';
 import Template from './template';
 
@@ -64,14 +65,14 @@ export default class Router {
         const route = this.routes[path];
 
         if (!route) {
-            new Template(ErrorPage, this.$root, {
-                code: '404',
-                description: 'Не туда попали',
-                link: {
-                    href: '/chats',
-                    text: 'Назад к чатам',
-                },
-            });
+            new Template(
+                ErrorPage,
+                this.$root,
+                {
+                    code: '404',
+                    description: 'Не туда попали'
+                } as PropsType
+            );
         } else {
             const { page } = route;
             const currentProps = (props) || route.props;

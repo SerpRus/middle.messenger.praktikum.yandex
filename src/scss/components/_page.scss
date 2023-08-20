@@ -1,4 +1,6 @@
 .page {
+    $root: &;
+
     display: flex;
     flex-direction: column;
 
@@ -42,5 +44,10 @@
                 transform: translate(0, 0);
             }
         }
+    }
+
+    #{$root} &__form-page {
+        padding-top: rem(100);
+        align-items: flex-start;
     }
 }

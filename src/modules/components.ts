@@ -1,10 +1,12 @@
-import Button from '../components/button';
 import Action from '../components/action';
+import Formfield from '../components/formfield';
 
 import Main from '../layouts/main';
+import Form from '../layouts/form';
 
 export default [
-    Button,
     Action,
+    Formfield,
     Main,
+    Form,
 ];

@@ -3,18 +3,14 @@ import template from './template';
 
 import PropsType from '../../types/props';
 
-export default class ErrorPage extends Block<PropsType> {
-    constructor(props: PropsType) {
+export default class ErrorPage extends Block {
+    static componentName = 'ErrorPage';
+
+    static template = template;
+
+    constructor(props?: PropsType) {
         super({
             ...props,
-            onLogout: () => {
-                console.log(23213123123);
-            }
-        });
-    }
-
-    protected render(): string {
-        // language=hbs
-        return template;
+        }, template);
     }
 }

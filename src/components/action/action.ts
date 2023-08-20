@@ -1,5 +1,5 @@
 import Block from '../../utils/block';
-import teplate from './template';
+import template from './template';
 
 interface ActionProps {
     classes: string,
@@ -10,18 +10,17 @@ interface ActionProps {
     href: string,
 }
 
-export default class Action extends Block<ActionProps> {
+export default class Action extends Block {
+    static componentName = 'Action';
+
+    static template = template;
+
     constructor({ onClick, ...props }: ActionProps) {
         super({
             events: {
                 click: onClick
             },
             ...props,
-        });
-    }
-
-    render() {
-        // language=hbs
-        return teplate;
+        }, template);
     }
 }

@@ -1,9 +1,8 @@
-import Block from '../utils/block';
 import PropsType from './props';
 
 type RouteType = {
-    page: Block,
-    props: PropsType,
+    page: any,
+    props?: PropsType,
 };
 
 export default RouteType;

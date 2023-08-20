@@ -1,10 +1,9 @@
-import Handlebars from 'handlebars';
-
 import '../scss/style.scss';
 
 import Router from './router';
 import routes from './routes';
 
+import Block from '../utils/block';
 import components from './components';
 import registerComponent from '../utils/register-component';
 
@@ -16,10 +15,7 @@ export default class Chat {
     $root: HTMLElement;
 
     constructor($app: HTMLElement) {
-        components.forEach((component) => registerComponent(component));
-        Handlebars.registerHelper("bold", function(options) {
-            return new Handlebars.SafeString('<div class="mybold">' + options.fn(this) + "</div>");
-        });
+        components.forEach((component: typeof Block) => registerComponent(component));
 
         this.$root = $app;
 

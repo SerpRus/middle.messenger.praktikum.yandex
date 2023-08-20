@@ -6,11 +6,11 @@
 // import modals from '../templates/modals/modals.hbs';
 // import siteMap from '../templates/site-map/site-map.hbs';
 
-// import ErrorPage from '../pages/error-page';
-// import SiteMap from '../pages/site-map';
-// import SignIn from '../pages/sign-in';
-// import SignUp from '../pages/sign-up';
-import Profile from '../pages/profile';
+import ErrorPage from '../pages/error-page';
+import SiteMap from '../pages/site-map';
+import SignIn from '../pages/sign-in';
+import SignUp from '../pages/sign-up';
+// import Profile from '../pages/profile';
 
 export default {
     // '/chats': {
@@ -462,36 +462,19 @@ export default {
     //         ],
     //     },
     // },
-    // '/sign-in': {
-    //     page: SignIn,
-    //     props: {
-    //         title: 'Вход',
-    //         attributes: [{
-    //             key: 'data-authorization',
-    //         }],
-    //     },
-    // },
-    // '/sign-up': {
-    //     page: SignUp,
-    //     props: {
-    //         title: 'Регистрация',
-    //         classes: 'form--big',
-    //         button: {
-    //             text: 'Зарегистрироваться',
-    //         },
-    //         link: {
-    //             text: 'Войти',
-    //             href: '/sign-in',
-    //         },
-    //     },
-    // },
-    // '/test500': {
-    //     page: ErrorPage,
-    //     props: {
-    //         code: '500',
-    //         description: 'Мы уже фиксим',
-    //     },
-    // },
+    '/sign-in': {
+        page: SignIn,
+    },
+    '/sign-up': {
+        page: SignUp,
+    },
+    '/test500': {
+        page: ErrorPage,
+        props: {
+            code: '500',
+            description: 'Мы уже фиксим',
+        },
+    },
     // '/modals': {
     //     page: modals,
     // },
@@ -550,11 +533,18 @@ export default {
     //     },
     // },
     '/': {
-        page: Profile,
-        // page: SiteMap,
+        page: SiteMap,
         props: {
             title: 'Карта сайта',
-            email: 'email'
+            list: [
+                {
+                    text: 'Вход'
+                }, {
+                    text: 'Вход123'
+                }, {
+                    text: 'Вход456'
+                },
+            ],
         },
     },
 };

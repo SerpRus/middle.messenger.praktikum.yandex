@@ -1,17 +1,20 @@
-import Block from '../utils/block';
+// import Block from '../utils/block';
+// import { IBlock } from '../types/block';
 
 import PropsType from '../types/props';
 
-export default class Template<P extends PropsType> {
-    template: Block;
+export default class Template {
+    // template: IBlock;
+    template: any;
 
     $root: HTMLElement;
 
     props?: PropsType;
 
-    constructor(template: Block, $root: HTMLElement, props?: P) {
+    constructor(template: any, $root: HTMLElement, props?: PropsType) {
         this.template = template;
         this.$root = $root;
+
         this.props = props;
 
         this.changeHTML();
@@ -19,12 +22,9 @@ export default class Template<P extends PropsType> {
 
     changeHTML() {
         const TemplateClass = this.template;
-        console.log(TemplateClass )
-        // @ts-ignore
         const templateInstance = new TemplateClass(this.props);
-        console.log(templateInstance.getContent())
 
         this.$root.innerHTML = '';
-        this.$root.append(templateInstance.getContent());
+        this.$root.append(templateInstance.element());
     }
 }
