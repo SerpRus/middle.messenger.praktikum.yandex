@@ -2,8 +2,7 @@
 import ErrorPage from '../pages/error-page';
 import Template from './template';
 
-import RouteType from '../types/route';
-import PropsType from '../types/props';
+import { RouteType, PropsType } from '../types';
 
 export default class Router {
     $root: HTMLElement | null;

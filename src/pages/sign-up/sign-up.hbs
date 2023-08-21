@@ -1,9 +1,10 @@
-// language=hbs
-export default `
-    {{#Main classes="page__form-page form-page"}}
-        {{#Form
-            title='Регистраниция'
-        }}
+{{#Main classes='page__form-page form-page'}}
+    {{#Form}}
+        <div class="form__wrapper">
+            <h1 class="form__title">
+                Регистрация
+            </h1>
+
             <div class="form__fileds">
                 {{{Formfield
                     classes='form__fileds-item'
@@ -80,6 +81,6 @@ export default `
                     text='Войти'
                 }}}
             </div>
-        {{/Form}}
-    {{/Main}}
-`;
+        </div>
+    {{/Form}}
+{{/Main}}

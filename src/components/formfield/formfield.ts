@@ -1,5 +1,5 @@
 import Block from '../../utils/block';
-import template from './template';
+import template from './formfield.hbs';
 
 interface FormfieldProps {
     // classes: string,
@@ -11,10 +11,6 @@ interface FormfieldProps {
 }
 
 export default class Formfield extends Block {
-    static componentName = 'Formfield';
-
-    static template = template;
-
     constructor(props: FormfieldProps) {
         super({
             ...props,

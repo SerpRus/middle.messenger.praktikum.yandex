@@ -1,7 +1,7 @@
 // import Block from '../utils/block';
 // import { IBlock } from '../types/block';
 
-import PropsType from '../types/props';
+import { PropsType } from '../types';
 
 export default class Template {
     // template: IBlock;
@@ -23,8 +23,9 @@ export default class Template {
     changeHTML() {
         const TemplateClass = this.template;
         const templateInstance = new TemplateClass(this.props);
+        console.log(templateInstance)
 
         this.$root.innerHTML = '';
-        this.$root.append(templateInstance.element());
+        this.$root.append(templateInstance.getElement());
     }
 }

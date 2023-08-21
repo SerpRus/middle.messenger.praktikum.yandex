@@ -1,5 +1,5 @@
 import Block from '../../utils/block';
-import template from './template';
+import template from './action.hbs';
 
 interface ActionProps {
     classes: string,
@@ -11,14 +11,10 @@ interface ActionProps {
 }
 
 export default class Action extends Block {
-    static componentName = 'Action';
-
-    static template = template;
-
-    constructor({ onClick, ...props }: ActionProps) {
+    constructor(props: ActionProps) {
         super({
             events: {
-                click: onClick
+                click: props.onClick
             },
             ...props,
         }, template);

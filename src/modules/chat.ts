@@ -3,7 +3,6 @@ import '../scss/style.scss';
 import Router from './router';
 import routes from './routes';
 
-import Block from '../utils/block';
 import components from './components';
 import registerComponent from '../utils/register-component';
 
@@ -15,7 +14,7 @@ export default class Chat {
     $root: HTMLElement;
 
     constructor($app: HTMLElement) {
-        components.forEach((component: typeof Block) => registerComponent(component));
+        components.forEach((component: any) => registerComponent(component));
 
         this.$root = $app;
 

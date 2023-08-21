@@ -1,12 +1,8 @@
 import Block from '../../utils/block';
-import template from './template';
-import PropsType from '../../types/props';
+import template from './main.hbs';
+import { PropsType } from '../../types';
 
 export default class Main extends Block {
-    static componentName = 'Main';
-
-    static template = template;
-
     constructor(props: PropsType) {
         super({
             ...props

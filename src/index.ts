@@ -1,7 +1,7 @@
 import CreateApp from './modules/create-app';
 import Chat from './modules/chat';
 
-import AppType from './types/app';
+import { AppType } from './types';
 
 const app = {
     init() {

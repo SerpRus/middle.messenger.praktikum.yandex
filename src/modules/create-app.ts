@@ -1,6 +1,6 @@
 import '../scss/style.scss';
 
-import AppType from '../types/app';
+import { AppType } from '../types';
 
 export default class CreateApp {
     $root: HTMLElement | null;

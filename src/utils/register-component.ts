@@ -2,29 +2,29 @@ import Handlebars, { HelperOptions } from 'handlebars';
 
 import Block from './block';
 
-export default function registerComponent(this: unknown, Component: typeof Block) {
+export default function registerComponent(Component: typeof Block) {
     Handlebars.registerHelper(
-        Component.componentName || Component.name,
-        ({ hash, data, fn }: HelperOptions) => {
+        Component.name,
+        function (this: unknown, { hash, data, fn }: HelperOptions) {
             const component = new Component(hash);
             const dataAttribute = `data-id="${component.id}"`;
 
             if ('ref' in hash) {
-                data.root.__refs[hash.ref] = component;
+                (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
             }
 
-            data.root.__children.push({
+            (data.root.__children = data.root.__children || []).push({
                 component,
-                embed(node: HTMLElement) {
-                    const placeholder = node.querySelector('[data-id]');
+                embed(fragment: DocumentFragment) {
+                    const stub = fragment.querySelector(`[${dataAttribute}]`);
 
-                    if (!placeholder) {
-                        throw new Error('Error!');
+                    if (!stub) {
+                        return;
                     }
 
-                    const element = component.element();
-                    element.append(...Array.from(placeholder.childNodes));
-                    placeholder.replaceWith(element);
+                    component.getElement()?.append(...Array.from(stub.childNodes));
+
+                    stub.replaceWith(component.getElement()!);
                 }
             });
 
