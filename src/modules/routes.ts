@@ -536,13 +536,52 @@ export default {
         page: SiteMap,
         props: {
             title: 'Карта сайта',
-            list: [
+            links: [
                 {
-                    text: 'Вход'
+                    text: 'Регистрация',
+                    href: '/sign-up',
                 }, {
-                    text: 'Вход123'
+                    text: 'Список чатов и лента переписки',
+                    href: '/chats',
                 }, {
-                    text: 'Вход456'
+                    text: 'Список чатов и лента переписки (с выбранным чатом)',
+                    href: '/selected-chat',
+                }, {
+                    text: 'Настройки пользователя',
+                    href: '/profile',
+                }, {
+                    text: 'Настройки пользователя: изменение данных',
+                    href: '/profile-change-info',
+                }, {
+                    text: 'Настройки пользователя: изменение пароля',
+                    href: '/profile-change-password',
+                }, {
+                    text: '404 страница',
+                    href: '/test404',
+                }, {
+                    text: '5** страница',
+                    href: '/test500',
+                }, {
+                    text: 'Страница с модальными окнами',
+                    href: '/modals',
+                }, {
+                    text: 'Страница с открытым модальным окном',
+                    href: '/modal-open',
+                }, {
+                    text: '',
+                    href: '',
+                }, {
+                    text: '',
+                    href: '',
+                }, {
+                    text: '',
+                    href: '',
+                }, {
+                    text: '',
+                    href: '',
+                }, {
+                    text: '',
+                    href: '',
                 },
             ],
         },
