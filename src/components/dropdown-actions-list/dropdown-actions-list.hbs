@@ -3,22 +3,22 @@
 >
     {{#each dropdownActionsList}}
         <li class="dropdown-actions-list__item">
-            {{#> action
+            {{#Action
                 classes="dropdown__item"
                 themaType="button"
                 thema="button-transparent"
             }}
-                {{> icon
-                        classes="action__icon"
-                        size="22"
-                        rotate=icon.rotate
-                        name=icon.name
-                }}
+                {{{Icon
+                    classes="action__icon"
+                    size="22"
+                    rotate=icon.rotate
+                    name=icon.name
+                }}}
 
                 <span class="action__text">
                     {{action.text}}
                 </span>
-            {{/action}}
+            {{/Action}}
         </li>
     {{/each}}
 </ul>

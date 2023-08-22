@@ -1,4 +1,4 @@
-{{#> main classes="modals"}}
+{{#Main classes="modals"}}
     <div class="modals-item modal open">
         <div class="modal__content">
             <h2 class="modal__title">
@@ -6,22 +6,22 @@
             </h2>
 
             <div class="modal__content-inner">
-                {{> formfield
+                {{{Formfield
                     id="file"
                     name="file"
                     classes="modal__field modal__field--file"
                     thema="file"
                     type="file"
                     label="Выбрать файл на компьютере"
-                }}
+                }}}
             </div>
 
-            {{> action
+            {{{Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Поменять"
-            }}
+            }}}
         </div>
     </div>
 
@@ -32,22 +32,22 @@
             </h2>
 
             <div class="modal__content-inner">
-                {{> formfield
+                {{{ Formfield
                     id="file"
                     name="file"
                     classes="modal__field modal__field--file"
                     thema="file"
                     type="file"
                     label="Выбрать файл на компьютере"
-                }}
+                }}}
             </div>
 
-            {{> action
+            {{{ Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Поменять"
-            }}
+            }}}
         </div>
     </div>
 
@@ -63,24 +63,24 @@
                          src="images/users/user-plug.jpg"
                     >
 
-                    {{> formfield
+                    {{{Formfield
                         id="chat"
                         name="chat"
                         classes="modal__field"
                         type="text"
                         label="Название чата"
                         value="Тестовый чат"
-                    }}
+                    }}}
                 </div>
 
             </div>
 
-            {{> action
+            {{{Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Создать"
-            }}
+            }}}
         </div>
     </div>
 
@@ -96,12 +96,12 @@
                 </div>
             </div>
 
-            {{> action
+            {{{Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Удалить"
-            }}
+            }}}
         </div>
     </div>
 
@@ -112,22 +112,22 @@
             </h2>
 
             <div class="modal__content-inner">
-                {{> formfield
+                {{{Formfield
                     id="login"
                     name="login"
                     classes="modal__field"
                     type="text"
                     label="Логин"
                     value="ivanivanov"
-                }}
+                }}}
             </div>
 
-            {{> action
+            {{{Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Добавить"
-            }}
+            }}}
         </div>
     </div>
 
@@ -138,22 +138,22 @@
             </h2>
 
             <div class="modal__content-inner">
-                {{> formfield
+                {{{Formfield
                     id="login"
                     name="login"
                     classes="modal__field"
                     type="text"
                     label="Логин"
                     value="ivanivanov"
-                }}
+                }}}
             </div>
 
-            {{> action
+            {{{Action
                 classes="modal__action"
                 themaType="button"
                 thema="button-brand"
                 text="Удалить"
-            }}
+            }}}
         </div>
     </div>
-{{/main}}
+{{/Main}}

@@ -1,9 +1,8 @@
 import Block from '../../utils/block';
-import template from './profile.hbs';
-
+import template from './modals.hbs';
 import { PropsType } from '../../types';
 
-export default class ProfilePage extends Block {
+export default class ErrorPage extends Block {
     constructor(props?: PropsType) {
         super({
             ...props,

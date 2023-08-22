@@ -6,9 +6,11 @@
        href="{{href}}"
        {{#if target}}target="{{target}}"{{/if}}
     >
-        <span class="action__text">
-            {{text}}
-        </span>
+        {{#if text}}
+            <span class="action__text">
+                {{text}}
+            </span>
+        {{/if}}
     </a>
 {{else}}
     <button class="{{classes}}
@@ -17,8 +19,10 @@
                    {{#if thema}}action--{{thema}}{{/if}}"
             {{#if target}}type="{{target}}"{{/if}}
     >
-        <span class="action__text">
-            {{text}}
-        </span>
+        {{#if text}}
+            <span class="action__text">
+                {{text}}
+            </span>
+        {{/if}}
     </button>
 {{/if}}

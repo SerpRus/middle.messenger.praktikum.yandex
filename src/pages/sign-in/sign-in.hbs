@@ -6,23 +6,16 @@
             </h1>
 
             <div class='form__fileds'>
-                {{{Formfield
-                    classes='form__fileds-item has-error'
-                    id='login'
-                    name='loginм'
-                    type='text'
-                    label='Логин'
-                    error='Неверный логин'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='password'
-                    name='password'
-                    type='password'
-                    label='Пароль'
-                }}}
-
+                {{#each fields}}
+                    {{{Formfield
+                        classes=this.classes
+                        id=this.id
+                        name=this.name
+                        type=this.type
+                        label=this.label
+                        error=this.error
+                    }}}
+                {{/each}}
             </div>
 
             <div class='form__actions'>

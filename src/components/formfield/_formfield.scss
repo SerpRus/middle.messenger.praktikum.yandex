@@ -151,7 +151,7 @@
         background-color: $color-bg-inout-filled;
 
         &:hover {
-            & #{$root}__text {
+            & #{$root}__label-text {
                 display: block;
 
                 opacity: 0.5;
@@ -179,7 +179,7 @@
             }
         }
 
-        &__icon {
+        &__label-icon {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -189,7 +189,7 @@
             color: $color-icon-unobtrusive;
         }
 
-        &__text {
+        &__label-text {
             @include text-props(13, 14);
 
             position: absolute;

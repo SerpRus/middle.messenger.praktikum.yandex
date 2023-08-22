@@ -1,9 +1,13 @@
 import Block from '../../utils/block';
 import template from './form.hbs';
-import { PropsType } from '../../types';
+
+interface FormProps {
+    classes: string,
+}
+
 
 export default class Form extends Block {
-    constructor(props?: PropsType) {
+    constructor(props?: FormProps) {
         super({
             ...props,
         }, template);

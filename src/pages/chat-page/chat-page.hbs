@@ -1,84 +1,75 @@
-{{#> main classes="chat-page"}}
-    {{#> asidePanel classes="chat-page__aside"}}
+{{#Main classes="chat-page"}}
+    {{#AsidePanel classes="chat-page__aside"}}
         <div class="aside-panel__header">
-            {{#> action
-                 classes="aside-panel__link"
-                 themaType="link"
-                 thema="link-unobtrusive"
-                 href="/profile"
+            {{#Action
+                classes="aside-panel__link"
+                themaType="link"
+                thema="link-unobtrusive"
+                href="/profile"
             }}
                 <span class="action__text">
-                Профиль
-            </span>
+                    Профиль
+                </span>
 
-                {{> icon
+                {{{Icon
                     classes='action__icon'
                     size='12'
                     name='icon-arrow-right'
-                }}
-            {{/action}}
+                }}}
+            {{/Action}}
 
-            {{#> formfield
-                 classes='aside-panel__search'
-                 id='search'
-                 name='search'
-                 type='text'
-                 thema='filled'
-            }}
-                {{> icon
-                    classes='formfield__label-icon'
-                    size='20'
-                    name='icon-loupe'
-                }}
-
-                <span class="formfield__label-text">
-                    Поиск
-                </span>
-            {{/formfield}}
+            {{{Formfield
+                classes='aside-panel__search'
+                id='search'
+                name='search'
+                type='text'
+                thema='filled'
+                label='Поиск'
+                iconName='icon-loupe'
+                iconSize='20'
+            }}}
         </div>
 
         <div class="aside-panel__chats">
-            {{#each chats
-            }}
-                {{> chatItem
+            {{#each chats}}
+                {{{ChatItem
                     classes="aside-panel__chats-item"
-                    imgSrc=this.imgSrc
-                    name=this.name
+                    userImgSrc=this.userImgSrc
+                    userName=this.userName
+                    userLastMessage=this.userLastMessage
                     selected=this.selected
-                }}
+                }}}
             {{/each}}
         </div>
-    {{/asidePanel}}
+    {{/AsidePanel}}
 
     {{#if isChatSelected}}
         <div class="chat-page__chat">
             <header class="chat-page__chat-header">
-                {{> user
+                {{{User
                     classes="chat-page__chat-user"
                     imgSrc=chat.user.imgSrc
                     imgAlt=chat.user.imgAlt
                     name=chat.user.name
-                }}
+                }}}
 
-                {{#> dropdown
-                     classes="chat-page__header-chat-dropdown-wrapper"
+                {{#Dropdown
+                    classes="chat-page__header-chat-dropdown-wrapper"
                 }}
-                    {{#*inline "action"}}
-                        {{#> action
-                             themaType="button"
-                             thema="button-dots"
-                             classes="chat-page__dropdown-button"
-                        }}
-                            <span class="action__icon"></span>
-                        {{/action}}
-                    {{/inline}}
+                    {{#Action
+                        themaType="button"
+                        thema="button-dots"
+                        classes="chat-page__dropdown-button"
+                    }}
+                        <span class="action__icon"></span>
+                    {{/Action}}
 
-                    {{#*inline "content"}}
-                        {{> dropdownActionsList
+                    <div class="dropdown__content" style="{{contentStyle}}">
+                        {{{DropdownActionsList
                             dropdownActionsList=chat.dropdownActionsList
-                        }}
-                    {{/inline}}
-                {{/dropdown}}
+                        }}}
+                    </div>
+                {{/Dropdown}}
             </header>
 
             <div class="chat-page__chat-content chat-content">
@@ -124,11 +115,11 @@
                                 Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
 
                                 <span class="chat-content__message-info">
-                                    {{> icon
+                                    {{{Icon
                                         classes="chat-content__message-check-icon"
                                         size="11-5"
                                         name="check"
-                                    }}
+                                    }}}
 
                                     <time class="chat-content__message-date">
                                         11:56
@@ -144,11 +135,11 @@
                             >
 
                             <span class="chat-content__message-info chat-content__message-info--img">
-                                {{> icon
+                                {{{Icon
                                     classes="chat-content__message-check-icon"
                                     size="11-5"
                                     name="check"
-                                }}
+                                }}}
 
                                 <time class="chat-content__img-date">
                                     11:56
@@ -200,13 +191,13 @@
                                 Круто!
 
                                 <span class="chat-content__message-info">
-                                    {{> icon
+                                    {{{Icon
                                         classes="chat-content__message-check-icon"
                                         size="11-5"
                                         name="check"
-                                    }}
+                                    }}}
 
-                                        <time class="chat-content__message-date">
+                                    <time class="chat-content__message-date">
                                         11:56
                                     </time>
                                 </span>
@@ -217,48 +208,45 @@
             </div>
 
             <footer class="chat-page__footer">
-                {{#> dropdown
-                     classes="chat-page__footer-chat-dropdown-wrapper"
-                     contentStyle="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px"
+                {{#Dropdown
+                    classes="chat-page__footer-chat-dropdown-wrapper"
                 }}
-                    {{#*inline "action"}}
-                        {{#> action
-                             thema="button-transparent-icon"
-                        }}
-                            {{> icon
-                                classes="chat-content__message-check-icon"
-                                size="32"
-                                name="clip"
-                            }}
-                        {{/action}}
-                    {{/inline}}
+                    {{#Action
+                        thema="button-transparent-icon"
+                    }}
+                        {{{Icon
+                            classes="chat-content__message-check-icon"
+                            size="32"
+                            name="clip"
+                        }}}
+                    {{/Action}}
 
-                    {{#*inline "content"}}
-                        {{> dropdownActionsList
-                            dropdownActionsList=chat.footerDropdownActionsList
-                        }}
-                    {{/inline}}
-                {{/dropdown}}
+                    <div class="dropdown__content" style="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px">
+                        {{{DropdownActionsList
+                                dropdownActionsList=chat.footerDropdownActionsList
+                        }}}
+                    </div>
+                {{/Dropdown}}
 
-                {{#> formfield
-                        classes='chat-page__footer-message-field'
-                        id="message"
-                        name="message"
-                        type="text"
-                        thema="filled-2"
-                        placeholder="Сообщение"
-                }}{{/formfield}}
+                {{{Formfield
+                    classes='chat-page__footer-message-field'
+                    id="message"
+                    name="message"
+                    type="text"
+                    thema="filled-2"
+                    placeholder="Сообщение"
+                }}}
 
-                {{#> action
-                     themaType="button"
-                     thema="button-circle-icon"
+                {{#Action
+                    themaType="button"
+                    thema="button-circle-icon"
                 }}
-                    {{> icon
+                    {{{Icon
                         classes="chat-content__message-check-icon"
                         size="13-12"
                         name="arrow-right-2"
-                    }}
-                {{/action}}
+                    }}}
+                {{/Action}}
             </footer>
         </div>
     {{else}}
@@ -268,4 +256,4 @@
             </div>
         </div>
     {{/if}}
-{{/main}}
+{{/Main}}

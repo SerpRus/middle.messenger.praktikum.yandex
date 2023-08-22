@@ -11,10 +11,10 @@ interface ActionProps {
 }
 
 export default class Action extends Block {
-    constructor(props: ActionProps) {
+    constructor(props?: ActionProps) {
         super({
             events: {
-                click: props.onClick
+                click: props?.onClick
             },
             ...props,
         }, template);

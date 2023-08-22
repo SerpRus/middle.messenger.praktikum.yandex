@@ -13,7 +13,19 @@
     <label for="{{id}}"
            class="formfield__label"
     >
-        {{label}}
+        {{#if label}}
+            {{#if iconName}}
+                {{{Icon
+                    classes='formfield__label-icon'
+                    size=iconSize
+                    name=iconName
+                }}}
+            {{/if}}
+
+            <span class="formfield__label-text">
+                {{label}}
+            </span>
+        {{/if}}
     </label>
 
     <div class="formfield__error">

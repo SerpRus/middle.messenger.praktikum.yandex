@@ -23,7 +23,6 @@ export default class Template {
     changeHTML() {
         const TemplateClass = this.template;
         const templateInstance = new TemplateClass(this.props);
-        console.log(templateInstance)
 
         this.$root.innerHTML = '';
         this.$root.append(templateInstance.getElement());

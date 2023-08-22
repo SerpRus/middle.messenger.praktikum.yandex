@@ -6,64 +6,17 @@
             </h1>
 
             <div class="form__fileds">
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='email'
-                    name='email'
-                    type='email'
-                    label='Почта'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='login'
-                    name='login'
-                    type='text'
-                    label='Логин'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='first_name'
-                    name='first_name'
-                    type='text'
-                    label='Имя'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='second_name'
-                    name='second_name'
-                    type='text'
-                    label='Фамилия'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item'
-                    id='phone'
-                    name='phone'
-                    type='tel'
-                    label='Телефон'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item has-error password-mismatch-error'
-                    id='password'
-                    name='password'
-                    type='password'
-                    label='Пароль'
-                    value='test12345'
-                }}}
-
-                {{{Formfield
-                    classes='form__fileds-item has-error password-mismatch-error'
-                    id='password_repeat'
-                    name='password_repeat'
-                    type='password'
-                    label='Пароль'
-                    error='Пароли не совпадают'
-                    value='test12345'
-                }}}
+                {{#each fields}}
+                    {{{Formfield
+                        classes=this.classes
+                        id=this.id
+                        name=this.name
+                        type=this.type
+                        label=this.label
+                        error=this.error
+                        value=this.value
+                    }}}
+                {{/each}}
             </div>
 
             <div class="form__actions">
