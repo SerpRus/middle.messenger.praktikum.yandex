@@ -41,9 +41,15 @@
             margin-bottom: rem(60);
         }
 
-        &-item {
-            &:not(:last-child) {
-                border-bottom: rem(1) solid $color-border-light-gray;
+        & .formfield {
+            &__element {
+                &:not(:last-child) {
+                    border-bottom: rem(1) solid $color-border-light-gray;
+                }
+            }
+
+            &__error {
+                text-align: right;
             }
         }
     }

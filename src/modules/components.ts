@@ -5,6 +5,7 @@ import ChatItem from '../components/chat-item';
 import User from '../components/user';
 import Dropdown from '../components/dropdown';
 import DropdownActionsList from '../components/dropdown-actions-list';
+import FormfieldError from '../components/formfield-error';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -23,4 +24,5 @@ export default [
     Dropdown,
     DropdownActionsList,
     Modal,
+    FormfieldError,
 ];
