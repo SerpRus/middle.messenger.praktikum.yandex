@@ -1,19 +1,30 @@
-import { TemplateDelegate } from 'handlebars'
+// import Block from '../utils/block';
+// import { IBlock } from '../types/block';
+
+import { PropsType } from '../types';
 
 export default class Template {
-    template: TemplateDelegate;
-    $root: HTMLElement;
-    props?: object;
+    // template: IBlock;
+    template: any;
 
-    constructor(template: TemplateDelegate, $root: HTMLElement, props?: object) {
+    $root: HTMLElement;
+
+    props?: PropsType;
+
+    constructor(template: any, $root: HTMLElement, props?: PropsType) {
+        this.template = template;
         this.$root = $root;
+
         this.props = props;
-        this.template = template
 
         this.changeHTML();
     }
 
     changeHTML() {
-        this.$root.innerHTML = this.template(this.props);
+        const TemplateClass = this.template;
+        const templateInstance = new TemplateClass(this.props);
+
+        this.$root.innerHTML = '';
+        this.$root.append(templateInstance.getElement());
     }
 }

@@ -14,9 +14,17 @@
            class="formfield__label"
     >
         {{#if label}}
-            {{label}}
-        {{else}}
-            {{> @partial-block}}
+            {{#if iconName}}
+                {{{Icon
+                    classes="formfield__label-icon"
+                    size=iconSize
+                    name=iconName
+                }}}
+            {{/if}}
+
+            <span class="formfield__label-text">
+                {{label}}
+            </span>
         {{/if}}
     </label>
 

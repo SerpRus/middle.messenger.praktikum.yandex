@@ -1,0 +1,106 @@
+{{#Main classes="profile"}}
+    <div class="profile__wrapper">
+        {{#Action
+            classes="profile__back-link"
+            thema="full-height-with-icon"
+            href="/chats"
+        }}
+            {{{Icon
+                classes="action__icon"
+                size="13-12"
+                rotate="180"
+                name="arrow-right-2"
+            }}}
+        {{/Action}}
+
+        <div class="profile__content-wrapper">
+            <div class="profile__content">
+                {{#Form
+                    isValidate=this.isValidate
+                    eventBus=this.eventBus
+                    classes="form--profile"
+                    ref="form"
+                }}
+                    <header class="profile__header">
+                        {{{Formfield
+                            id="avatar"
+                            name="avatar"
+                            thema="button-big-circle-icon"
+                            type="file"
+                            classes="profile__change-img-button"
+                            label="Поменять аватар"
+                            iconName="preview-2"
+                            iconSize="40"
+                        }}}
+
+                        <div class="profile__name">
+                            {{username}}
+                        </div>
+                    </header>
+
+                    <div class="profile__fields">
+                        {{#each formfields}}
+                            {{{Formfield
+                                classes="profile__fields-item"
+                                thema="edges-row"
+                                id=this.id
+                                name=this.name
+                                type=this.type
+                                label=this.label
+                                value=this.value
+                                disabled=this.disabled
+                            }}}
+                        {{/each}}
+                    </div>
+
+                    <footer class="profile__footer">
+                        <ul class="profile__footer-actions {{footerActionsClasses}}">
+                            {{#each footerActions}}
+                                <li class="profile__footer-actions-item">
+                                    {{{Action
+                                        text=this.text
+                                        themaType=this.themaType
+                                        thema=this.thema
+                                        href=this.href
+                                        ref=this.ref
+                                        onClick=this.onClick
+                                    }}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </footer>
+                {{/Form}}
+            </div>
+        </div>
+    </div>
+
+    {{#if modalOpen}}
+        {{#Modal
+            classes="open"
+        }}
+            <div class="modal__content">
+                <h2 class="modal__title">
+                    Загрузите файл
+                </h2>
+
+                <div class="modal__content-inner">
+                    {{{Formfield
+                        id="file"
+                        name="file"
+                        classes="modal__field modal__field--file"
+                        thema="file"
+                        type="file"
+                        label="Выбрать файл на компьютере"
+                    }}}
+                </div>
+
+                {{{Action
+                    classes="modal__action"
+                    themaType="button"
+                    thema="button-brand"
+                    text="Поменять"
+                }}}
+            </div>
+        {{/Modal}}
+    {{/if}}
+{{/Main}}

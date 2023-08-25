@@ -1,6 +1,6 @@
 import '../scss/style.scss';
 
-import AppType from '../types/app';
+import { AppType } from '../types';
 
 export default class CreateApp {
     $root: HTMLElement | null;
@@ -9,11 +9,11 @@ export default class CreateApp {
         this.$root = document.querySelector(rootSelector);
     }
 
-    render(app: AppType) {
+    render(App: AppType) {
         if (!this.$root) {
             return;
         }
 
-        new app(this.$root);
+        new App(this.$root);
     }
 }

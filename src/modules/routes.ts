@@ -1,125 +1,146 @@
-import chatPage from '../templates/chat-page/chat-page.hbs';
-import signIn from '../templates/sign-in/sign-in.hbs';
-import signUp from '../templates/sign-up/sign-up.hbs';
-import errorPage from '../templates/error-page/error-page.hbs';
-import profile from '../templates/profile/profile.hbs';
-import modals from '../templates/modals/modals.hbs';
-import siteMap from '../templates/site-map/site-map.hbs';
+// import chatPage from '../templates/chat-page/chat-page.hbs';
+// import signIn from '../templates/sign-in/sign-in.hbs';
+// import signUp from '../templates/sign-up/sign-up.hbs';
+// import errorPage from '../templates/error-page/error-page.hbs';
+// import profile from '../templates/profile/profile.hbs';
+// import modals from '../templates/modals/modals.hbs';
+// import siteMap from '../templates/site-map/site-map.hbs';
+
+import ErrorPage from '../pages/error-page';
+import SiteMap from '../pages/site-map';
+import SignIn from '../pages/sign-in';
+import SignUp from '../pages/sign-up';
+import ChatPage from '../pages/chat-page';
+import Profile from '../pages/profile';
+import Modals from '../pages/modals';
 
 export default {
     '/chats': {
-        page: chatPage,
+        page: ChatPage,
         props: {
             chats: [{
-                name: 'Андрей',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
-                lastMessage: 'Изображение',
+                userName: 'Андрей',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
+                userLastMessage: 'Изображение',
                 date: '10:49',
                 notifications: '2',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
                 notifications: '99',
             }, {
-                name: 'Вадим',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Вадим',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Круто!',
+                userLastMessage: 'Круто!',
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
-            },],
+            }],
         },
     },
     '/selected-chat': {
-        page: chatPage,
+        page: ChatPage,
         props: {
             isChatSelected: true,
             chat: {
@@ -143,7 +164,7 @@ export default {
                         rotate: '45',
                         name: 'cross-in-circle',
                     },
-                },],
+                }],
                 footerDropdownActionsList: [{
                     action: {
                         text: 'Фото или Видео',
@@ -165,119 +186,132 @@ export default {
                     icon: {
                         name: 'circle',
                     },
-                },],
+                }],
             },
             chats: [{
-                name: 'Андрей',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
-                lastMessage: 'Изображение',
+                userName: 'Андрей',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
+                userLastMessage: 'Изображение',
                 date: '10:49',
                 notifications: '2',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
                 notifications: '99',
             }, {
-                name: 'Вадим',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Вадим',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Круто!',
-                date: 'Пт',
+                userLastMessage: 'Круто!',
+                date: '12:00',
                 selected: true,
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
             }, {
-                name: 'Киноклуб',
-                imgSrc: '/images/users/user-plug.jpg',
-                imgAlt: 'user',
+                userName: 'Киноклуб',
+                userImgSrc: '/images/users/user-plug.jpg',
+                userImgAlt: 'user',
                 isYourLastMessage: true,
-                lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! asdasdas sa d asd asd asd',
+                userLastMessage: `Друзья, у меня для вас особенный выпуск новостей!
+                    asdasdas sa d asd asd asd`,
                 date: '12:00',
-            },],
+            }],
         },
     },
     '/profile': {
-        page: profile,
+        page: Profile,
         props: {
             username: 'Иван',
             formfields: [
@@ -323,28 +357,32 @@ export default {
                     label: 'Телефон',
                     value: '+79099673030',
                     disabled: true,
-                }
+                },
             ],
             footerActions: [
                 {
                     text: 'Изменить данные',
                     themaType: 'link',
-                    thema: 'link-medium'
+                    thema: 'link-medium',
+                    href: '/profile-change-info',
                 }, {
                     text: 'Изменить пароль',
                     themaType: 'link',
-                    thema: 'link-medium'
+                    thema: 'link-medium',
+                    href: '/profile-change-password',
                 }, {
                     text: 'Выйти',
                     themaType: 'link',
-                    thema: 'link-medium-highlighted'
+                    thema: 'link-medium-highlighted',
+                    type: 'submit',
                 },
             ],
         },
     },
     '/profile-change-info': {
-        page: profile,
+        page: Profile,
         props: {
+            isValidate: true,
             footerActionsClasses: 'profile__footer-actions--change-info',
             username: 'Иван',
             formfields: [
@@ -384,20 +422,23 @@ export default {
                     type: 'tel',
                     label: 'Телефон',
                     value: '+79099673030',
-                }
+                },
             ],
             footerActions: [
                 {
                     text: 'Сохранить',
                     themaType: 'button',
-                    thema: 'button-brand'
+                    thema: 'button-brand',
+                    type: 'submit',
+                    ref: 'changeInfoSumbit',
                 },
             ],
         },
     },
     '/profile-change-password': {
-        page: profile,
+        page: Profile,
         props: {
+            isValidate: true,
             footerActionsClasses: 'profile__footer-actions--change-info',
             username: 'Иван',
             formfields: [
@@ -425,27 +466,24 @@ export default {
                 {
                     text: 'Сохранить',
                     themaType: 'button',
-                    thema: 'button-brand'
+                    thema: 'button-brand',
+                    type: 'submit',
+                    ref: 'password-change-submit'
                 },
             ],
         },
     },
     '/sign-in': {
-        page: signIn,
+        page: SignIn,
         props: {
-            form: {
-                attributes: [{
-                    key: 'data-authorization',
-                },],
-            },
-            formfields: [
+            isValidate: true,
+            fields: [
                 {
-                    classes: 'form__fileds-item has-error',
+                    classes: 'form__fileds-item',
                     id: 'login',
                     name: 'login',
                     type: 'text',
                     label: 'Логин',
-                    error: 'Неверный логин',
                 }, {
                     classes: 'form__fileds-item',
                     id: 'password',
@@ -454,25 +492,13 @@ export default {
                     label: 'Пароль',
                 },
             ],
-            button: {
-                text: 'Войти',
-                attributes: [{
-                    key: 'data-authorization-button',
-                },],
-            },
-            link: {
-                text: 'Нет аккаунта?',
-                href: '/sign-up',
-            },
         },
     },
     '/sign-up': {
-        page: signUp,
+        page: SignUp,
         props: {
-            form: {
-                classes: 'form--big',
-            },
-            formfields: [
+            isValidate: true,
+            fields: [
                 {
                     classes: 'form__fileds-item',
                     id: 'email',
@@ -504,41 +530,33 @@ export default {
                     type: 'tel',
                     label: 'Телефон',
                 }, {
-                    classes: 'form__fileds-item has-error password-mismatch-error',
+                    classes: 'form__fileds-item',
                     id: 'password',
                     name: 'password',
                     type: 'password',
                     label: 'Пароль',
                 }, {
-                    classes: 'form__fileds-item has-error password-mismatch-error',
+                    classes: 'form__fileds-item',
                     id: 'password_repeat',
                     name: 'password_repeat',
                     type: 'password',
                     label: 'Пароль',
-                    error: 'Пароли не совпадают',
                 },
             ],
-            button: {
-                text: 'Зарегистрироваться',
-            },
-            link: {
-                text: 'Войти',
-                href: '/sign-in',
-            },
         },
     },
     '/test500': {
-        page: errorPage,
+        page: ErrorPage,
         props: {
             code: '500',
             description: 'Мы уже фиксим',
         },
     },
     '/modals': {
-        page: modals,
+        page: Modals,
     },
     '/modal-open': {
-        page: profile,
+        page: Profile,
         props: {
             modalOpen: true,
             footerActionsClasses: 'profile__footer-actions--change-info',
@@ -580,54 +598,57 @@ export default {
                     type: 'tel',
                     label: 'Телефон',
                     value: '+79099673030',
-                }
+                },
             ],
             footerActions: [
                 {
                     text: 'Сохранить',
                     themaType: 'button',
-                    thema: 'button-brand'
+                    thema: 'button-brand',
                 },
             ],
-        }
+        },
     },
     '/': {
-        page: siteMap,
+        page: SiteMap,
         props: {
-            links: [{
-                href: '/sign-in',
-                text: 'Вход',
-            }, {
-                href: '/sign-up',
-                text: 'Регистрация',
-            }, {
-                href: '/chats',
-                text: 'Список чатов и лента переписки',
-            }, {
-                href: '/selected-chat',
-                text: 'Список чатов и лента переписки (с выбранным чатом)',
-            }, {
-                href: '/profile',
-                text: 'Настройки пользователя',
-            }, {
-                href: '/profile-change-info',
-                text: 'Настройки пользователя: изменение данных',
-            }, {
-                href: '/profile-change-password',
-                text: 'Настройки пользователя: изменение пароля',
-            }, {
-                href: '/test404',
-                text: '404 страницы',
-            }, {
-                href: '/test500',
-                text: '5** страница',
-            }, {
-                href: '/modals',
-                text: 'Страница с модальными окнами',
-            }, {
-                href: '/modal-open',
-                text: 'Страница с открытым модальным окном',
-            },],
+            title: 'Карта сайта',
+            links: [
+                {
+                    text: 'Вход',
+                    href: '/sign-in',
+                }, {
+                    text: 'Регистрация',
+                    href: '/sign-up',
+                }, {
+                    text: 'Список чатов и лента переписки',
+                    href: '/chats',
+                }, {
+                    text: 'Список чатов и лента переписки (с выбранным чатом)',
+                    href: '/selected-chat',
+                }, {
+                    text: 'Настройки пользователя',
+                    href: '/profile',
+                }, {
+                    text: 'Настройки пользователя: изменение данных',
+                    href: '/profile-change-info',
+                }, {
+                    text: 'Настройки пользователя: изменение пароля',
+                    href: '/profile-change-password',
+                }, {
+                    text: '404 страница',
+                    href: '/test404',
+                }, {
+                    text: '5** страница',
+                    href: '/test500',
+                }, {
+                    text: 'Страница с модальными окнами',
+                    href: '/modals',
+                }, {
+                    text: 'Страница с открытым модальным окном',
+                    href: '/modal-open',
+                },
+            ],
         },
     },
 };

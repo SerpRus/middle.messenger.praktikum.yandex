@@ -94,10 +94,9 @@
             & #{$root}__label {
                 @include text-props(13, 13);
 
-                top: 50%;
+                top: rem(10);
 
                 cursor: text;
-                transform: translateY(-50%);
             }
         }
 
@@ -105,6 +104,12 @@
             @include text-props(13, 13);
 
             color: $color-text;
+        }
+    }
+
+    &#{&}--edges-row {
+        & #{$root}__label {
+            top: rem(10);
         }
     }
 
@@ -151,7 +156,7 @@
         background-color: $color-bg-inout-filled;
 
         &:hover {
-            & #{$root}__text {
+            & #{$root}__label-text {
                 display: block;
 
                 opacity: 0.5;
@@ -179,7 +184,7 @@
             }
         }
 
-        &__icon {
+        &__label-icon {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -189,7 +194,7 @@
             color: $color-icon-unobtrusive;
         }
 
-        &__text {
+        &__label-text {
             @include text-props(13, 14);
 
             position: absolute;
@@ -259,19 +264,11 @@
     &__error {
         @include text-props(10, 10);
 
-        display: none;
-
         margin-top: rem(7);
 
         text-align: left;
 
         color: $color-error;
-    }
-
-    &.has-error & {
-        &__error {
-            display: block;
-        }
     }
 
     &.password-mismatch-error {

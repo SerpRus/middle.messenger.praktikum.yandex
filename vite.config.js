@@ -1,7 +1,8 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import handlebars from './vite-plugin-handlebars-precompile';
 import cleanPlugin from 'vite-plugin-clean';
+import checker from 'vite-plugin-checker';
+import handlebars from './vite-plugin-handlebars-precompile';
 
 export default defineConfig({
     root: resolve(__dirname, 'src'),
@@ -12,6 +13,9 @@ export default defineConfig({
     plugins: [
         handlebars(),
         cleanPlugin(),
+        checker({
+            typescript: true,
+        }),
     ],
     css: {
         preprocessorOptions: {

@@ -5,14 +5,11 @@
               {{#if thema}}action--{{thema}}{{/if}}"
        href="{{href}}"
        {{#if target}}target="{{target}}"{{/if}}
-       {{#each attributes}}
-           {{this.key}}="{{this.value}}"
-       {{/each}}
     >
         {{#if text}}
-            {{text}}
-        {{else}}
-            {{> @partial-block}}
+            <span class="action__text">
+                {{text}}
+            </span>
         {{/if}}
     </a>
 {{else}}
@@ -20,15 +17,12 @@
                    action
                    {{#if themaType}}action--{{themaType}}{{/if}}
                    {{#if thema}}action--{{thema}}{{/if}}"
-            {{#if target}}type="{{target}}"{{/if}}
-            {{#each attributes}}
-                {{this.key}}="{{this.value}}"
-            {{/each}}
+            {{#if type}}type="{{type}}"{{/if}}
     >
         {{#if text}}
-            {{text}}
-        {{else}}
-            {{> @partial-block}}
+            <span class="action__text">
+                {{text}}
+            </span>
         {{/if}}
     </button>
 {{/if}}

@@ -4,21 +4,21 @@
 // components
 @import '/components/action/action';
 @import '/components/formfield/formfield';
-@import '/components/form/form';
 @import '/components/icon/icon';
 @import '/components/chat-item/chat-item';
 @import '/components/dropdown/dropdown';
 @import '/components/user/user';
 @import '/components/dropdown-actions-list/dropdown-actions-list';
-@import '/components/modal/modal';
+@import '/layouts/modal/modal';
 
 // layouts
 @import '/layouts/main/main';
 @import '/layouts/aside-panel/aside-panel';
+@import '/layouts/form/form';
 
 // templates
-@import '/templates/error-page/error-page';
-@import '/templates/chat-page/chat-page';
-@import '/templates/site-map/site-map';
-@import '/templates/profile/profile';
+@import '/pages/error-page/error-page';
+@import '/pages/chat-page/chat-page';
+@import '/pages/site-map/site-map';
+@import '/pages/profile/profile';
 
