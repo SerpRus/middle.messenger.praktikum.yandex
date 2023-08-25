@@ -6,6 +6,8 @@ interface DropdownProps {
 }
 
 export default class Dropdown extends Block {
+    static className = 'Dropdown';
+
     constructor(props?: DropdownProps) {
         super({
             ...props,

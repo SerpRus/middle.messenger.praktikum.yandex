@@ -4,7 +4,7 @@ import Block from './block';
 
 export default function registerComponent(Component: typeof Block) {
     Handlebars.registerHelper(
-        Component.name,
+        Component.className,
         function (this: unknown, { hash, data, fn }: HelperOptions) {
             const component = new Component(hash);
             const dataAttribute = `data-id="${component.id}"`;

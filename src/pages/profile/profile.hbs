@@ -15,51 +15,61 @@
 
         <div class="profile__content-wrapper">
             <div class="profile__content">
-                <header class="profile__header">
-                    {{{Formfield
-                        id="avatar"
-                        name="avatar"
-                        thema="button-big-circle-icon"
-                        type="file"
-                        classes="profile__change-img-button"
-                        label='Поменять аватар'
-                        iconName='preview-2'
-                        iconSize='40'
-                    }}}
-
-                    <div class="profile__name">
-                        {{username}}
-                    </div>
-                </header>
-
-                <div class="profile__fields">
-                    {{#each formfields}}
+                {{#Form
+                    isValidate=this.isValidate
+                    eventBus=this.eventBus
+                    classes="form--profile"
+                    ref="form"
+                }}
+                    <header class="profile__header">
                         {{{Formfield
-                            classes="profile__fields-item"
-                            thema="edges-row"
-                            id=this.id
-                            name=this.name
-                            type=this.type
-                            label=this.label
-                            value=this.value
-                            disabled=this.disabled
+                            id="avatar"
+                            name="avatar"
+                            thema="button-big-circle-icon"
+                            type="file"
+                            classes="profile__change-img-button"
+                            label="Поменять аватар"
+                            iconName="preview-2"
+                            iconSize="40"
                         }}}
-                    {{/each}}
-                </div>
 
-                <footer class="profile__footer">
-                    <ul class="profile__footer-actions {{footerActionsClasses}}">
-                        {{#each footerActions}}
-                            <li class="profile__footer-actions-item">
-                                {{{Action
-                                    text=this.text
-                                    themaType=this.themaType
-                                    thema=this.thema
-                                }}}
-                            </li>
+                        <div class="profile__name">
+                            {{username}}
+                        </div>
+                    </header>
+
+                    <div class="profile__fields">
+                        {{#each formfields}}
+                            {{{Formfield
+                                classes="profile__fields-item"
+                                thema="edges-row"
+                                id=this.id
+                                name=this.name
+                                type=this.type
+                                label=this.label
+                                value=this.value
+                                disabled=this.disabled
+                            }}}
                         {{/each}}
-                    </ul>
-                </footer>
+                    </div>
+
+                    <footer class="profile__footer">
+                        <ul class="profile__footer-actions {{footerActionsClasses}}">
+                            {{#each footerActions}}
+                                <li class="profile__footer-actions-item">
+                                    {{{Action
+                                        text=this.text
+                                        themaType=this.themaType
+                                        thema=this.thema
+                                        href=this.href
+                                        ref=this.ref
+                                        onClick=this.onClick
+                                    }}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </footer>
+                {{/Form}}
             </div>
         </div>
     </div>

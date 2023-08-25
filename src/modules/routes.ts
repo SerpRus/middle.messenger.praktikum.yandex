@@ -364,14 +364,17 @@ export default {
                     text: 'Изменить данные',
                     themaType: 'link',
                     thema: 'link-medium',
+                    href: '/profile-change-info',
                 }, {
                     text: 'Изменить пароль',
                     themaType: 'link',
                     thema: 'link-medium',
+                    href: '/profile-change-password',
                 }, {
                     text: 'Выйти',
                     themaType: 'link',
                     thema: 'link-medium-highlighted',
+                    type: 'submit',
                 },
             ],
         },
@@ -379,6 +382,7 @@ export default {
     '/profile-change-info': {
         page: Profile,
         props: {
+            isValidate: true,
             footerActionsClasses: 'profile__footer-actions--change-info',
             username: 'Иван',
             formfields: [
@@ -425,6 +429,8 @@ export default {
                     text: 'Сохранить',
                     themaType: 'button',
                     thema: 'button-brand',
+                    type: 'submit',
+                    ref: 'changeInfoSumbit',
                 },
             ],
         },
@@ -432,6 +438,7 @@ export default {
     '/profile-change-password': {
         page: Profile,
         props: {
+            isValidate: true,
             footerActionsClasses: 'profile__footer-actions--change-info',
             username: 'Иван',
             formfields: [
@@ -460,6 +467,8 @@ export default {
                     text: 'Сохранить',
                     themaType: 'button',
                     thema: 'button-brand',
+                    type: 'submit',
+                    ref: 'password-change-submit'
                 },
             ],
         },
@@ -467,14 +476,14 @@ export default {
     '/sign-in': {
         page: SignIn,
         props: {
+            isValidate: true,
             fields: [
                 {
-                    classes: 'form__fileds-item has-error',
+                    classes: 'form__fileds-item',
                     id: 'login',
-                    name: 'loginм',
+                    name: 'login',
                     type: 'text',
                     label: 'Логин',
-                    error: 'Неверный логин',
                 }, {
                     classes: 'form__fileds-item',
                     id: 'password',
@@ -488,6 +497,7 @@ export default {
     '/sign-up': {
         page: SignUp,
         props: {
+            isValidate: true,
             fields: [
                 {
                     classes: 'form__fileds-item',
@@ -520,20 +530,17 @@ export default {
                     type: 'tel',
                     label: 'Телефон',
                 }, {
-                    classes: 'form__fileds-item has-error password-mismatch-error',
+                    classes: 'form__fileds-item',
                     id: 'password',
                     name: 'password',
                     type: 'password',
                     label: 'Пароль',
-                    value: 'test12345',
                 }, {
-                    classes: 'form__fileds-item has-error password-mismatch-error',
+                    classes: 'form__fileds-item',
                     id: 'password_repeat',
                     name: 'password_repeat',
                     type: 'password',
                     label: 'Пароль',
-                    error: 'Пароли не совпадают',
-                    value: 'test12345',
                 },
             ],
         },

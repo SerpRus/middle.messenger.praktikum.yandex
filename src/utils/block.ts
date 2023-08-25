@@ -15,6 +15,8 @@ class Block {
 
     public id = nanoid(6);
 
+    public static className: string = '';
+
     protected props: PropsType;
 
     protected refs: Record<string, Block> = {};

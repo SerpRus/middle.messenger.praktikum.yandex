@@ -6,6 +6,8 @@ interface IconProps {
 }
 
 export default class Icon extends Block {
+    static className = 'Icon';
+
     constructor(props?: IconProps) {
         super({
             ...props,

@@ -7,6 +7,8 @@ interface ChatItemProps {
 }
 
 export default class ChatItem extends Block {
+    static className = 'ChatItem';
+
     constructor(props?: ChatItemProps) {
         super({
             ...props,

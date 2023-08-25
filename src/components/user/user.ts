@@ -6,6 +6,8 @@ interface UserProps {
 }
 
 export default class User extends Block {
+    static className = 'User';
+
     constructor(props?: UserProps) {
         super({
             ...props,

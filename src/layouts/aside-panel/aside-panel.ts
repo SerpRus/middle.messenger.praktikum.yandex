@@ -6,6 +6,8 @@ interface AsidePanelProps {
 }
 
 export default class AsidePanel extends Block {
+    static className = 'AsidePanel';
+
     constructor(props?: AsidePanelProps) {
         super({
             ...props,

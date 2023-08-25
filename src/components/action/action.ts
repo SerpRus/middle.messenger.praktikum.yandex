@@ -11,6 +11,8 @@ interface ActionProps {
 }
 
 export default class Action extends Block {
+    static className = 'Action';
+
     constructor(props?: ActionProps) {
         super({
             events: {
