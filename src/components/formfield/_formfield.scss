@@ -1,6 +1,5 @@
 .formfield {
     $root: &;
-
     $label-default: 13px;
     $label-size: 11px;
 
@@ -8,14 +7,29 @@
 
     &--filled & {
         &__element {
-            @include text-props(12, 12);
-
-            padding: rem(10) rem(10) rem(10) rem(34);
             height: rem(32);
+            padding: rem(10) rem(10) rem(10) rem(34);
 
             border: none;
             border-radius: rem(5);
             background-color: $color-bg-inout-filled;
+
+            &:focus,
+            &:not(:placeholder-shown),
+            &:read-only {
+                & + #{$root}__label {
+                    top: 50%;
+                    left: rem(10);
+
+                    transform: translate(0, -50%);
+
+                    & #{$root}__label-text {
+                        display: none;
+                    }
+                }
+            }
+
+            @include text-props(12, 12);
         }
 
         &__label {
@@ -30,33 +44,26 @@
                 height: rem(20);
             }
         }
-
-        &__element:focus,
-        &__element:not(:placeholder-shown),
-        &__element:read-only {
-            & + #{$root}__label {
-                top: 50%;
-                left: rem(10);
-
-                transform: translate(0, -50%);
-
-                & #{$root}__label-text {
-                    display: none;
-                }
-            }
-        }
     }
 
     &--filled-2 & {
         &__element {
-            @include text-props(12, 12);
-
-            padding: rem(10) rem(20) rem(10) rem(20);
             height: rem(32);
+            padding: rem(10) rem(20) rem(10) rem(20);
 
             border: none;
             border-radius: rem(30);
             background-color: $color-bg-inout-filled;
+
+            &:focus,
+            &:not(:placeholder-shown),
+            &:read-only {
+                & + #{$root}__label {
+                    display: none;
+                }
+            }
+
+            @include text-props(12, 12);
         }
 
         &__label {
@@ -65,14 +72,6 @@
 
             transition: none;
             transform: translateY(-50%);
-        }
-
-        &__element:focus,
-        &__element:not(:placeholder-shown),
-        &__element:read-only {
-            & + #{$root}__label {
-                display: none;
-            }
         }
     }
 
@@ -92,18 +91,18 @@
         &__element:focus +,
         &__element:not(:placeholder-shown) + {
             & #{$root}__label {
-                @include text-props(13, 13);
-
                 top: rem(10);
 
                 cursor: text;
+
+                @include text-props(13, 13);
             }
         }
 
         &__label {
-            @include text-props(13, 13);
-
             color: $color-text;
+
+            @include text-props(13, 13);
         }
     }
 
@@ -121,15 +120,13 @@
         &__element:focus +,
         &__element:not(:placeholder-shown) + {
             #{$root}__label {
-                @include text-props(12, 16);
-
                 cursor: pointer;
+
+                @include text-props(12, 16);
             }
         }
 
         &__label {
-            @include text-props(12, 16);
-
             position: static;
 
             width: rem(122);
@@ -139,6 +136,8 @@
             text-decoration: underline;
 
             color: $color-brand;
+
+            @include text-props(12, 16);
         }
     }
 
@@ -195,8 +194,6 @@
         }
 
         &__label-text {
-            @include text-props(13, 14);
-
             position: absolute;
             top: 0;
             left: 0;
@@ -210,12 +207,12 @@
             opacity: 0;
             color: $color-text-button;
             border-radius: 50%;
+
+            @include text-props(13, 14);
         }
     }
 
     &__element {
-        @include text-props(13, 13);
-
         width: 100%;
         padding: rem(8) 0 rem(7);
 
@@ -226,11 +223,11 @@
         &::placeholder {
             color: $color-unobtrusive;
         }
+
+        @include text-props(13, 13);
     }
 
     &__label {
-        @include text-props($label-default, $label-default);
-
         position: absolute;
         top: rem(8);
         left: 0;
@@ -248,27 +245,29 @@
                 margin-right: rem(4);
             }
         }
+
+        @include text-props($label-default, $label-default);
     }
 
     &__element:focus + &,
     &__element:not(:placeholder-shown) + & {
         &__label {
-            @include text-props($label-size, $label-size);
+            top: rem(-$label-size);
 
             cursor: default;
 
-            top: rem(-$label-size);
+            @include text-props($label-size, $label-size);
         }
     }
 
     &__error {
-        @include text-props(10, 10);
-
         margin-top: rem(7);
 
         text-align: left;
 
         color: $color-error;
+
+        @include text-props(10, 10);
     }
 
     &.password-mismatch-error {

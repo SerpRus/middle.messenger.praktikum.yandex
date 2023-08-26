@@ -55,12 +55,6 @@
     }
 
     &__footer-actions {
-        &--change-info & {
-            &-item {
-                text-align: center;
-            }
-        }
-
         &-item {
             text-align: left;
 
@@ -69,6 +63,12 @@
                 padding-bottom: rem(10);
 
                 border-bottom: rem(1) solid $color-border-light-gray;
+            }
+        }
+
+        &--change-info & {
+            &-item {
+                text-align: center;
             }
         }
     }

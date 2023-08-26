@@ -2,15 +2,15 @@
     $root: &;
 
     &--button {
-        @include text-props(13, 13);
-
         display: inline-flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
 
         padding: rem(12);
 
         transition: background-color $transition-default;
+
+        @include text-props(13, 13);
     }
 
     &--button-brand {
@@ -83,16 +83,15 @@
     }
 
     &--button-transparent {
-        @include text-props(12, 14);
-
         justify-content: flex-start;
 
-        padding: rem(7);
         min-width: initial;
 
+        padding: rem(7);
+
         color: $color-text;
-        background-color: transparent;
         border-radius: $border-radius-button;
+        background-color: transparent;
 
         &:hover {
             background-color: $color-bg-hover-button-transparent;
@@ -107,6 +106,8 @@
 
             background-color: transparent;
         }
+
+        @include text-props(12, 14);
     }
 
     &--button-transparent & {
@@ -132,8 +133,6 @@
     }
 
     &--link {
-        @include text-props(11, 11);
-
         display: inline-flex;
         align-items: center;
 
@@ -159,15 +158,16 @@
         }
 
         &:active {
-            outline: none;
-
             color: $color-link;
+            outline: none;
         }
 
         &__text ~ &__icon,
         &__icon ~ &__text {
             margin-left: rem(4);
         }
+
+        @include text-props(11, 11);
     }
 
     &--link-medium {
@@ -175,19 +175,18 @@
     }
 
     &--link-medium-highlighted {
-        @include text-props(13, 13);
-
         color: $color-highlighted;
 
         &:hover {
             color: $color-highlighted;
 
             &:active {
-                outline: none;
-
                 color: $color-highlighted;
+                outline: none;
             }
         }
+
+        @include text-props(13, 13);
     }
 
     &--link-unobtrusive {
@@ -202,9 +201,8 @@
         }
 
         &:active {
-            outline: none;
-
             color: $color-unobtrusive;
+            outline: none;
         }
     }
 

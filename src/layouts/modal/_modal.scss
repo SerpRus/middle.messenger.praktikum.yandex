@@ -6,8 +6,9 @@
     width: 100%;
     height: 100%;
 
-    opacity: 0;
     transition: $transition-default;
+
+    opacity: 0;
 
     &__overlay {
         position: absolute;
@@ -22,11 +23,11 @@
     }
 
     &__title {
-        @include text-props(15, 20);
-
         &:not(:last-child) {
             margin-bottom: rem(50);
         }
+
+        @include text-props(15, 20);
     }
 
     &__content {
@@ -51,9 +52,9 @@
     }
 
     &__text {
-        @include text-props(14, 16);
-
         color: $color-unobtrusive;
+
+        @include text-props(14, 16);
     }
 
     &__chat {

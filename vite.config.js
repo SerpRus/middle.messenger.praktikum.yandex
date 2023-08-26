@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import cleanPlugin from 'vite-plugin-clean';
 import checker from 'vite-plugin-checker';
 import handlebars from './vite-plugin-handlebars-precompile';
+// import stylelint from 'vite-plugin-stylelint';
 
 export default defineConfig({
     root: resolve(__dirname, 'src'),
@@ -16,6 +17,7 @@ export default defineConfig({
         checker({
             typescript: true,
         }),
+        // stylelint(),
     ],
     css: {
         preprocessorOptions: {

@@ -1,7 +1,7 @@
 @import './page';
 @import './chat-content';
 
-// components
+/* components */
 @import '/components/action/action';
 @import '/components/formfield/formfield';
 @import '/components/icon/icon';
@@ -11,12 +11,12 @@
 @import '/components/dropdown-actions-list/dropdown-actions-list';
 @import '/layouts/modal/modal';
 
-// layouts
+/* layouts */
 @import '/layouts/main/main';
 @import '/layouts/aside-panel/aside-panel';
 @import '/layouts/form/form';
 
-// templates
+/* templates */
 @import '/pages/error-page/error-page';
 @import '/pages/chat-page/chat-page';
 @import '/pages/site-map/site-map';
