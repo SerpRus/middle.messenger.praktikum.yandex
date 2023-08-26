@@ -1,9 +1,19 @@
 import Block from '../../utils/block';
 import template from './chat-page.hbs';
-import { PropsType } from '../../types';
 
-export default class ChatPage extends Block {
-    constructor(props?: PropsType) {
+interface ChatPageProps {
+    chats: {
+        userName: string,
+        userImgSrc: string,
+        userImgAlt: string,
+        userLastMessage: string,
+        date: string,
+        notifications?: string,
+    }
+}
+
+export default class ChatPage extends Block<ChatPageProps> {
+    constructor(props: ChatPageProps) {
         super({
             ...props,
         }, template);

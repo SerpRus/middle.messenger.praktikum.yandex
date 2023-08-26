@@ -5,20 +5,23 @@ interface ActionProps {
     classes: string,
     text: string;
     onClick?: () => void;
+    events: {
+        click?: () => void;
+    };
     themaType: string,
     thema: string,
     href: string,
 }
 
-export default class Action extends Block {
+export default class Action extends Block<ActionProps> {
     static className = 'Action';
 
-    constructor(props?: ActionProps) {
+    constructor(props: ActionProps) {
         super({
-            events: {
-                click: props?.onClick
-            },
             ...props,
+            events: {
+                click: props.onClick
+            },
         }, template);
     }
 }

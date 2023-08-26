@@ -2,8 +2,7 @@ import path from 'path';
 import express from 'express';
 
 const app = express();
-const PORT = 3000;
-// eslint-disable-next-line @typescript-eslint/naming-convention
+const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, 'dist')));

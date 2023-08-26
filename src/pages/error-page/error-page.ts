@@ -1,9 +1,13 @@
 import Block from '../../utils/block';
 import template from './error-page.hbs';
-import { PropsType } from '../../types';
 
-export default class ErrorPage extends Block {
-    constructor(props?: PropsType) {
+interface ErrorPageProps {
+    code: string,
+    description: string,
+}
+
+export default class ErrorPage extends Block<ErrorPageProps> {
+    constructor(props: ErrorPageProps) {
         super({
             ...props,
         }, template);

@@ -6,10 +6,10 @@ interface FormfieldProps {
     error?: string,
 }
 
-export default class FormfieldError extends Block {
+export default class FormfieldError extends Block<FormfieldProps> {
     static className = 'FormfieldError';
 
-    constructor(props?: FormfieldProps) {
+    constructor(props: FormfieldProps) {
         super({
             ...props,
         }, template);
