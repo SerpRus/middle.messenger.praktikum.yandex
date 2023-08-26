@@ -1,6 +1,7 @@
-// import NotFoundPage from '../pages/not-found-page';
 import ErrorPage from '../pages/error-page';
 import Template from './template';
+
+import Block from '../utils/block';
 
 import { RouteType, PropsType } from '../types';
 
@@ -65,7 +66,7 @@ export default class Router {
 
         if (!route) {
             new Template(
-                ErrorPage,
+                ErrorPage as typeof Block,
                 this.$root,
                 {
                     code: '404',
@@ -74,7 +75,7 @@ export default class Router {
             );
         } else {
             const { page } = route;
-            const currentProps = (props) || route.props;
+            const currentProps = (props) || route.props as PropsType;
 
             new Template(page, this.$root, currentProps);
         }

@@ -3,8 +3,6 @@ import { TemplateDelegate } from 'handlebars';
 
 import EventBus from './event-bus';
 
-// import { PropsType, EventsType } from '../types';
-
 class Block<P extends Record<string, any>> {
     static EVENTS = {
         INIT: 'init',
@@ -40,7 +38,7 @@ class Block<P extends Record<string, any>> {
     }
 
     _removeEvents() {
-        const { events} : Record<string, () => void> = this.props;
+        const { events } : Record<string, () => void> = this.props;
 
         if (!events || !this._element) {
             return;
@@ -84,7 +82,7 @@ class Block<P extends Record<string, any>> {
         this._eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _componentDidUpdate(oldProps: any, newProps: any) {
+    private _componentDidUpdate(oldProps: P, newProps: P) {
         if (this.componentDidUpdate(oldProps, newProps)) {
             this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
         }
@@ -123,7 +121,7 @@ class Block<P extends Record<string, any>> {
         this._addEvents();
     }
 
-    protected compile(template: TemplateDelegate, context: any) {
+    protected compile(template: TemplateDelegate, context: P) {
         const contextAndStubs = { ...context, __refs: this.refs };
 
         const html = template(contextAndStubs);
@@ -132,7 +130,7 @@ class Block<P extends Record<string, any>> {
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({ embed }: any) => {
+        contextAndStubs.__children?.forEach(({ embed }: P) => {
             embed(temp.content);
         });
 
@@ -141,8 +139,8 @@ class Block<P extends Record<string, any>> {
 
     protected render() {}
 
-    getElement() {
-        return this._element;
+    getElement(): HTMLElement {
+        return this._element as HTMLElement;
     }
 
     _makePropsProxy(props: Record<string, any>) {

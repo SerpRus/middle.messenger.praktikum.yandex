@@ -1,7 +1,7 @@
 import Block from '../../utils/block';
 import template from './sign-in.hbs';
 
-// import EventBus from '../../utils/event-bus';
+import EventBus from '../../utils/event-bus';
 
 interface SignInProps {
     fields:  {
@@ -11,7 +11,9 @@ interface SignInProps {
         type: string,
         label: string,
     }[],
-    onSubmit: (e: Event) => void,
+    onSubmit?: (e: Event) => void,
+    onFocusout?: (e: Event) => void,
+    eventBus?: EventBus,
 }
 
 export default class SignIn extends Block<SignInProps> {
@@ -21,28 +23,25 @@ export default class SignIn extends Block<SignInProps> {
             onSubmit: (e: Event) => {
                 e.preventDefault();
 
-                const form = this.refs.form?.getElement() as HTMLFormElement;
+                const form = e.currentTarget as HTMLFormElement;
                 const formData = new FormData(form);
                 const formDataKeys = formData.keys();
                 for (const key of formDataKeys) {
                     console.log(`${key}: '${formData.get(key)}'`);
                 }
-            }
-            // submitOnClick: () => {
-            //     const form = this.refs.form?.getElement() as HTMLFormElement;
-            //     const formData = new FormData(form);
-            //     const formDataKeys = formData.keys();
-            //     for (const key of formDataKeys) {
-            //         console.log(`${key}: '${formData.get(key)}'`);
-            //     }
-            // },
-            // eventBus: new EventBus(),
-        }, template);
-    }
 
-    render() {
-        // if (this.props.eventBus) {
-        //     this.props.eventBus.emit('form-validate');
-        // }
+                if (this.props.eventBus) {
+                    this.props.eventBus.emit('form-validate');
+                }
+            },
+            onFocusout: (e: Event) => {
+                const target = e.target as EventTarget;
+
+                if (this.props.eventBus) {
+                    this.props.eventBus.emit('field-validate', target);
+                }
+            },
+            eventBus: new EventBus(),
+        }, template);
     }
 }

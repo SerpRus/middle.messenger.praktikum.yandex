@@ -2,6 +2,8 @@ import '../scss/style.scss';
 
 import Router from './router';
 import routes from './routes';
+import { RouteType } from '../types';
+import Block from '../utils/block';
 
 import components from './components';
 import registerComponent from '../utils/register-component';
@@ -14,7 +16,7 @@ export default class Chat {
     $root: HTMLElement;
 
     constructor($app: HTMLElement) {
-        components.forEach((component: any) => registerComponent(component));
+        components.forEach((component) => registerComponent(component as typeof Block));
 
         this.$root = $app;
 
@@ -25,7 +27,7 @@ export default class Chat {
         const router = new Router(this.$root);
         window.router = router;
 
-        router.routes = routes;
+        router.routes = routes as Record<string, RouteType>;
 
         const { pathname } = new URL(window.location.href);
 

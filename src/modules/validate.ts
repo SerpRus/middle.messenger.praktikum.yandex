@@ -32,7 +32,8 @@ export default class Validate {
         email: /^[\w\-.!#$%&'*+/=?^`{|}~]+@\w+?\.[a-z]{2,3}$/i,
         // требованя в тз: от 10 до 15 символов, состоит из цифр, может начинается с плюса
         // phone: /^((8)\d{9,14}|(\+7)\d{8,13})$/,
-        // мне кажется требования некорректные (например номер +790012312 по этим требования является валидным)
+        // мне кажется требования некорректные
+        // (например номер +790012312 по этим требования является валидным)
         // поэтому реализовал свою валидацию
         phone: /^(8|\+7)9\d{9}$/,
     };
@@ -57,18 +58,9 @@ export default class Validate {
 
     private _init() {
         this._setPatterns();
-
-        this._initHandlers();
     }
 
-    private _initHandlers() {
-        this._form.addEventListener('focusout', this._formFocusoutHandler);
-        this._form.addEventListener('submit', this._formSubmitHandler);
-    }
-
-    private _formFocusoutHandler = (e: Event) => {
-        const field = e.target as HTMLInputElement;
-
+    public onFieldFocusout = (field: HTMLInputElement) => {
         const name = field.getAttribute('name') as string;
 
         if (!name) {
@@ -82,9 +74,7 @@ export default class Validate {
         this._valid(name, value);
     };
 
-    private _formSubmitHandler = (e: Event) => {
-        e.preventDefault();
-
+    public onFormSubmit = () => {
         const fields: NodeListOf<HTMLInputElement> = this._form.querySelectorAll('input, textarea');
 
         fields.forEach((field) => {

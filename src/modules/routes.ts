@@ -1,11 +1,3 @@
-// import chatPage from '../templates/chat-page/chat-page.hbs';
-// import signIn from '../templates/sign-in/sign-in.hbs';
-// import signUp from '../templates/sign-up/sign-up.hbs';
-// import errorPage from '../templates/error-page/error-page.hbs';
-// import profile from '../templates/profile/profile.hbs';
-// import modals from '../templates/modals/modals.hbs';
-// import siteMap from '../templates/site-map/site-map.hbs';
-
 import ErrorPage from '../pages/error-page';
 import SiteMap from '../pages/site-map';
 import SignIn from '../pages/sign-in';
