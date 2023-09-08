@@ -28,9 +28,10 @@
 
         & .modal {
             position: static;
-            transform: translate(0, 0);
 
             height: auto;
+
+            transform: translate(0, 0);
 
             &:not(:last-child) {
                 margin-bottom: rem(16);
@@ -47,7 +48,8 @@
     }
 
     #{$root} &__form-page {
-        padding-top: rem(100);
         align-items: flex-start;
+
+        padding-top: rem(100);
     }
 }

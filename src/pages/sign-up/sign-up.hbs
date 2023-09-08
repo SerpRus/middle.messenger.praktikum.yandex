@@ -3,6 +3,8 @@
         ref="form"
         isValidate=this.isValidate
         eventBus=this.eventBus
+        onSubmit=this.onSubmit
+        onFocusout=this.onFocusout
     }}
         <div class="form__wrapper">
             <h1 class="form__title">
@@ -33,10 +35,10 @@
                     onClick=submitOnClick
                 }}}
 
-                {{{Action
-                    thema="link"
-                    href="/sign-in"
-                    text="Войти"
+                {{{Link
+                        thema="link"
+                        href="/"
+                        text="Войти"
                 }}}
             </div>
         </div>

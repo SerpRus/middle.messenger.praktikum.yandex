@@ -1,3 +1,5 @@
+import Block from '../utils/block';
+
 export type AppType = new ($app: HTMLElement | null) => void;
 
 export type PropsType = Record<string, any>;
@@ -8,6 +10,10 @@ export type EventsType = {
 };
 
 export type RouteType = {
-    page: any,
+    page: typeof Block,
     props?: PropsType,
+};
+
+export type Indexed<T = unknown> = {
+    [key in string]: T;
 };

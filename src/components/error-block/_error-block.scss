@@ -1,0 +1,21 @@
+.error-block {
+    &__title {
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
+
+        @include text-props(40, 40);
+    }
+
+    &__description {
+        &:not(:last-child) {
+            margin-bottom: rem(70);
+        }
+
+        @include text-props(20, 20);
+    }
+
+    &__link {
+        @include text-props(11, 11);
+    }
+}

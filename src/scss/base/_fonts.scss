@@ -6,11 +6,11 @@
     font-weight: 500;
 
     font-display: block;
-    src: url('#{$pathFonts}#{$font-name}.eot');
-    src: url('#{$pathFonts}#{$font-name}.eot?#iefix') format('embedded-opentype'),
-         url('#{$pathFonts}#{$font-name}.woff') format('woff'),
-         url("#{$pathFonts}#{$font-name}.woff2") format("woff2"),
-         url('#{$pathFonts}#{$font-name}.ttf') format('truetype'),
+    src: url('#{$path-fonts}#{$font-name}.eot');
+    src: url('#{$path-fonts}#{$font-name}.eot?#iefix') format('embedded-opentype'),
+         url('#{$path-fonts}#{$font-name}.woff') format('woff'),
+         url("#{$path-fonts}#{$font-name}.woff2") format("woff2"),
+         url('#{$path-fonts}#{$font-name}.ttf') format('truetype'),
 }
 
 @font-face {
@@ -19,9 +19,9 @@
     font-weight: 600;
 
     font-display: block;
-    src: url('#{$pathFonts}#{$font-name}.eot');
-    src: url('#{$pathFonts}#{$font-name}.eot?#iefix') format('embedded-opentype'),
-    url('#{$pathFonts}#{$font-name}.woff') format('woff'),
-    url("#{$pathFonts}#{$font-name}.woff2") format("woff2"),
-    url('#{$pathFonts}#{$font-name}.ttf') format('truetype'),
+    src: url('#{$path-fonts}#{$font-name}.eot');
+    src: url('#{$path-fonts}#{$font-name}.eot?#iefix') format('embedded-opentype'),
+    url('#{$path-fonts}#{$font-name}.woff') format('woff'),
+    url("#{$path-fonts}#{$font-name}.woff2") format("woff2"),
+    url('#{$path-fonts}#{$font-name}.ttf') format('truetype'),
 }

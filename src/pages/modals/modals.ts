@@ -1,11 +1,10 @@
 import Block from '../../utils/block';
 import template from './modals.hbs';
-import { PropsType } from '../../types';
 
-export default class ErrorPage extends Block {
-    constructor(props?: PropsType) {
+
+export default class ModalsPage extends Block<{}> {
+    constructor() {
         super({
-            ...props,
         }, template);
     }
 }

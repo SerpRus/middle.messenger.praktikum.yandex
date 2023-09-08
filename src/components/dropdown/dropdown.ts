@@ -2,13 +2,13 @@ import Block from '../../utils/block';
 import template from './dropdown.hbs';
 
 interface DropdownProps {
-    classes: string,
+    classes?: string,
 }
 
-export default class Dropdown extends Block {
+export default class Dropdown extends Block<DropdownProps> {
     static className = 'Dropdown';
 
-    constructor(props?: DropdownProps) {
+    constructor(props: DropdownProps) {
         super({
             ...props,
         }, template);

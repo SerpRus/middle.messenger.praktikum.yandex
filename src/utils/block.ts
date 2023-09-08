@@ -3,23 +3,21 @@ import { TemplateDelegate } from 'handlebars';
 
 import EventBus from './event-bus';
 
-import { PropsType, EventsType } from '../types';
-
-class Block {
+class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
         FLOW_RENDER: 'flow:render'
-    };
+    } as const;
 
     public id = nanoid(6);
 
     public static className: string = '';
 
-    protected props: PropsType;
+    protected props: P;
 
-    protected refs: Record<string, Block> = {};
+    protected refs: Record<string, any> = {};
 
     private _eventBus: EventBus;
 
@@ -27,8 +25,8 @@ class Block {
 
     private readonly _template: TemplateDelegate | undefined;
 
-    constructor(props: PropsType, template?: TemplateDelegate) {
-        this.props = this._makePropsProxy(props);
+    constructor(props: P, template?: TemplateDelegate) {
+        this.props = this._makePropsProxy(props) as P;
 
         this._template = template;
 
@@ -39,9 +37,20 @@ class Block {
         this._eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _addEvents() {
-        const { events = {} } = this.props as EventsType;
+    _removeEvents() {
+        const { events } : Record<string, () => void> = this.props;
 
+        if (!events || !this._element) {
+            return;
+        }
+
+        Object.entries(events).forEach(([event, listener]) => {
+            this._element!.removeEventListener(event, listener);
+        });
+    }
+
+    _addEvents() {
+        const { events = {} } = this.props;
         Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName]);
         });
@@ -72,17 +81,17 @@ class Block {
         this._eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _componentDidUpdate(oldProps: any, newProps: any) {
+    private _componentDidUpdate(oldProps: P, newProps: P) {
         if (this.componentDidUpdate(oldProps, newProps)) {
             this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
         }
     }
 
-    protected componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
+    protected componentDidUpdate(oldProps: P, newProps: P) {
         return oldProps !== newProps;
     }
 
-    setProps = (nextProps: PropsType) => {
+    setProps = (nextProps: P) => {
         if (!nextProps) {
             return;
         }
@@ -102,6 +111,7 @@ class Block {
         const newElement = fragment.firstElementChild as HTMLElement;
 
         if (this._element) {
+            this._removeEvents();
             this._element.replaceWith(newElement);
         }
 
@@ -110,7 +120,7 @@ class Block {
         this._addEvents();
     }
 
-    protected compile(template: TemplateDelegate, context: any) {
+    protected compile(template: TemplateDelegate, context: P) {
         const contextAndStubs = { ...context, __refs: this.refs };
 
         const html = template(contextAndStubs);
@@ -119,7 +129,7 @@ class Block {
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({ embed }: any) => {
+        contextAndStubs.__children?.forEach(({ embed }: P) => {
             embed(temp.content);
         });
 
@@ -128,11 +138,11 @@ class Block {
 
     protected render() {}
 
-    getElement() {
-        return this._element;
+    getElement(): HTMLElement {
+        return this._element as HTMLElement;
     }
 
-    _makePropsProxy(props: PropsType) {
+    _makePropsProxy(props: Record<string, any>) {
         const self = this;
 
         return new Proxy(props, {

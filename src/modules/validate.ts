@@ -14,6 +14,8 @@ type ValidOptionsType = {
 };
 
 export default class Validate {
+    public isValidForm: Boolean = true;
+
     private readonly _form;
 
     private _patterns: Record<string, PatternType> = {};
@@ -30,7 +32,12 @@ export default class Validate {
         charsLimit: /^.{8,40}$/,
         capitalLetter: /[A-ZА-ЯЁ]/,
         email: /^[\w\-.!#$%&'*+/=?^`{|}~]+@\w+?\.[a-z]{2,3}$/i,
-        phone: /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{10,15}$/,
+        // требованя в тз: от 10 до 15 символов, состоит из цифр, может начинается с плюса
+        // phone: /^((8)\d{9,14}|(\+7)\d{8,13})$/,
+        // мне кажется требования некорректные
+        // (например номер +790012312 по этим требования является валидным)
+        // поэтому реализовал свою валидацию
+        phone: /^(8|\+7)9\d{9}$/,
     };
 
     private ERRORS = {
@@ -42,7 +49,7 @@ export default class Validate {
         email: 'Введите корректный адрес электронной почты',
         nameOrSurname: `Латиница или кириллица, первая буква должна быть заглавной,
          без пробелов и без цифр, нет спецсимволов (допустим только дефис)`,
-        phone: 'Введите корректный номер телефона',
+        phone: 'Допустимые форматы: +79********* или 89*********',
     };
 
     constructor(element: HTMLFormElement) {
@@ -53,18 +60,9 @@ export default class Validate {
 
     private _init() {
         this._setPatterns();
-
-        this._initHandlers();
     }
 
-    private _initHandlers() {
-        this._form.addEventListener('focusout', this._formFocusoutHandler);
-        this._form.addEventListener('submit', this._formSubmitHandler);
-    }
-
-    private _formFocusoutHandler = (e: Event) => {
-        const field = e.target as HTMLInputElement;
-
+    public onFieldFocusout = (field: HTMLInputElement) => {
         const name = field.getAttribute('name') as string;
 
         if (!name) {
@@ -76,11 +74,11 @@ export default class Validate {
         const { value } = this._activeField;
 
         this._valid(name, value);
+
+        this.checkValidForm();
     };
 
-    private _formSubmitHandler = (e: Event) => {
-        e.preventDefault();
-
+    public onFormSubmit = () => {
         const fields: NodeListOf<HTMLInputElement> = this._form.querySelectorAll('input, textarea');
 
         fields.forEach((field) => {
@@ -91,7 +89,22 @@ export default class Validate {
 
             this._valid(name, value);
         });
+
+        this.checkValidForm();
     };
+
+    displayRequestError(errorMessage: string) {
+        const fields: NodeListOf<HTMLInputElement> = this._form.querySelectorAll('input, textarea');
+        const lastField: HTMLInputElement = fields[fields.length - 1];
+
+        const name = lastField.getAttribute('name') as string;
+
+        const error = new FormfieldError({ error: errorMessage }).getElement() as HTMLElement;
+
+        this._formfiledsErrors[name] = error;
+
+        lastField.parentNode?.appendChild(error);
+    }
 
     _valid(name: string, value: string) {
         const isValid = this._checkPatterns(name, value);
@@ -257,12 +270,6 @@ export default class Validate {
             },
             display_name: {
                 required: requiredPattern,
-                checkWords: {
-                    error: this.ERRORS.nameOrSurname,
-                    cb: (value: string) => {
-                        return this.REG_EXPS.words.test(value);
-                    },
-                },
             },
             phone: {
                 required: requiredPattern,
@@ -304,6 +311,18 @@ export default class Validate {
 
             this._formfiledsErrors[name] = null;
         }
+    }
+
+    checkValidForm() {
+        this.isValidForm = true;
+
+        const errors = Object.values(this._formfiledsErrors);
+
+        errors.forEach((error) => {
+            if (error) {
+                this.isValidForm = false;
+            }
+        })
     }
 
     get form() {

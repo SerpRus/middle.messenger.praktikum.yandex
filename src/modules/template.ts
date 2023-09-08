@@ -1,17 +1,13 @@
-// import Block from '../utils/block';
-// import { IBlock } from '../types/block';
+import Block from '../utils/block';
 
-import { PropsType } from '../types';
-
-export default class Template {
-    // template: IBlock;
-    template: any;
+export default class Template<P extends Record<string, any>> {
+    template: typeof Block;
 
     $root: HTMLElement;
 
-    props?: PropsType;
+    props: P;
 
-    constructor(template: any, $root: HTMLElement, props?: PropsType) {
+    constructor(template: typeof Block, $root: HTMLElement, props: P) {
         this.template = template;
         this.$root = $root;
 

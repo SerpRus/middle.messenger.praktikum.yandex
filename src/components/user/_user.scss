@@ -19,16 +19,14 @@
     }
 
     &__name {
-        @include text-props(13, 13);
-
         &:not(:last-child) {
             margin-bottom: rem(4);
         }
+
+        @include text-props(13, 13);
     }
 
     &__last-message {
-        @include text-props(12, 15);
-
         &-you {
             color: $color-text;
         }
@@ -36,9 +34,11 @@
         &-text {
             padding-right: rem(10);
 
-            @include text-truncate-by-row();
-
             color: $color-unobtrusive;
+
+            @include text-truncate-by-row;
         }
+
+        @include text-props(12, 15);
     }
 }

@@ -7,7 +7,8 @@
     "node": "18.8.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run sl && vite",
+    "sl": "npx stylelint \"**/*.scss\" --fix",
     "build": "tsc && vite build",
     "start": "npm run build && node src/server.js"
   },
@@ -17,8 +18,13 @@
     "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.46.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "sass": "^1.64.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.5",

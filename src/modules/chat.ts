@@ -1,34 +1,75 @@
 import '../scss/style.scss';
 
-import Router from './router';
-import routes from './routes';
+import AuthController from '../controllers/auth-controller';
+import Router from '../utils/router';
+
+import Block from '../utils/block';
+import SignIn from '../pages/sign-in';
+import SignUp from '../pages/sign-up';
+import Messenger from '../pages/messenger';
+import Settings from '../pages/settings';
+import ChangeUserInfo from '../pages/change-user-info';
+import ChangePassword from '../pages/change-password';
+import Error500 from '../pages/error-500';
 
 import components from './components';
 import registerComponent from '../utils/register-component';
 
-declare global {
-    interface Window { router: Router; }
+enum Routes {
+    Index = '/',
+    Register = '/register',
+    Messenger = '/messenger',
+    Test500 = '/test500',
+    Settings = '/settings',
+    ChangeUserInfo = '/change-user-info',
+    ChangePassword = '/change-password',
 }
 
 export default class Chat {
     $root: HTMLElement;
 
     constructor($app: HTMLElement) {
-        components.forEach((component: any) => registerComponent(component));
+        components.forEach((component) => registerComponent(component as typeof Block));
 
         this.$root = $app;
 
         this.init();
     }
 
-    init() {
-        const router = new Router(this.$root);
-        window.router = router;
+    init = async () => {
+        Router
+            .use(Routes.Index, SignIn)
+            .use(Routes.Register, SignUp)
+            .use(Routes.Messenger, Messenger)
+            .use(Routes.Settings, Settings)
+            .use(Routes.ChangeUserInfo, ChangeUserInfo)
+            .use(Routes.ChangePassword, ChangePassword)
+            .use(Routes.Test500, Error500)
 
-        router.routes = routes;
+        const { pathname } = window.location;
+        let isProtectedRoute = true;
 
-        const { pathname } = new URL(window.location.href);
+        switch (pathname) {
+            case Routes.Index:
+            case Routes.Register:
+                isProtectedRoute = false;
+                break;
+        }
 
-        window.router.render(pathname);
+        try {
+            await AuthController.fetchUser();
+
+            Router.start();
+
+            if (!isProtectedRoute) {
+                Router.go(Routes.Messenger)
+            }
+        } catch (e) {
+            Router.start();
+
+            if (isProtectedRoute) {
+                Router.go(Routes.Index);
+            }
+        }
     }
 }

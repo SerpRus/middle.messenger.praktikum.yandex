@@ -1,8 +1,7 @@
 @use "sass:math";
-
 @import './utils/index';
 
-//* colors */
+/* colors */
 $white: #fff;
 $alabaster: #fbfbfb;
 $alabaster-2: #f8f8f8;
@@ -18,9 +17,8 @@ $malibu: #6590ff;
 $hawkes-blue: #e4edfd;
 $red-orange: #ff2f2f;
 
-//* dynamic colors */
+/* dynamic colors */
 $color-brand: $royal-blue;
-
 $color-text: $cod-gray;
 $color-unobtrusive: $dusty-gray;
 $color-text-button: $white;
@@ -29,17 +27,12 @@ $color-link: $color-brand;
 $color-error: $red-orange;
 $color-highlighted: $red-orange;
 $color-chat-message: $alabaster-2;
-
 $color-icon: $color-brand;
 $color-icon-unobtrusive: $silver;
-
 $color-hover-link: $malibu;
-
 $color-border-input: $color-brand;
 $color-border-light-gray: $gallery;
-
 $color-outline-button: $cod-gray;
-
 $color-bg-button: $color-brand;
 $color-bg-inout-filled: $gallery;
 $color-bg-hover-button: $malibu;
@@ -54,7 +47,7 @@ $color-bg-user-message: $hawkes-blue;
 $color-bg-overlay: $black;
 
 
-//* gaps */
+/* gaps */
 $gap-miniature: 8px;
 $gap-small: 10px;
 $gap-mini: 12px;
@@ -66,20 +59,20 @@ $gap-huge: 40px;
 $gap-awesome: 42px;
 $gap-big: 48px;
 
-//* dynamic gaps */
+/* dynamic gaps */
 
 
-//* fonts */
+/* fonts */
 $base-font-size: 16px;
 $base-line-height: 24px;
-$base-font-family: Verdana, Geneva, sans-serif;
+$base-font-family: verdana, geneva, sans-serif;
 $font-family: 'Inter';
 
-//* dynamic fonts */
+/* dynamic fonts */
 $font-family-default: $font-family, $base-font-family;
 
 
-//* font-size */
+/* font-size */
 $font-size-text-main: 14px;
 $font-size: $base-font-size;
 $font-size-medium: 22px;
@@ -88,17 +81,17 @@ $font-size-very-average: 36px;
 $font-size-big: 40px;
 $font-size-very-big: 48px;
 
-//* dynamic font-size */
+/* dynamic font-size */
 
 
-//* font-weight */
+/* font-weight */
 $font-weight-medium: 500;
 
-//* dynamic font-weight */
+/* dynamic font-weight */
 $font-weight-default-text: 500;
 
 
-//* line-height */
+/* line-height */
 $line-height-small: 16px;
 $line-height: $base-line-height;
 $line-height-medium: 32px;
@@ -107,26 +100,26 @@ $line-height-very-average: 44px;
 $line-height-big: 48px;
 $line-height-very-big: 56px;
 
-//* dynamic line-height */
+/* dynamic line-height */
 
 
-//* dynamic sizes */
+/* dynamic sizes */
 $size-form: 340px;
 $size-big-form: 738px;
 $size-button: 280px;
 
 
-//* transition */
+/* transition */
 $transition-small-duration: 0.1s;
 $transition-duration: 0.3s;
 $transition-easing: ease-out;
 
-//* dynamic transition */
+/* dynamic transition */
 $transition-default: $transition-duration $transition-easing;
 $transition-input: $transition-small-duration $transition-easing;
 
 
-//* border radius */
+/* border radius */
 $border-radius-micro: rem(2px);
 $border-radius-tiny: rem(4px);
 $border-radius-small: rem(5px);
@@ -137,23 +130,22 @@ $border-radius-average: rem(12px);
 $border-radius-big: rem(16px);
 $border-radius-circle: 50%;
 
-//* dynamic border radius */
+/* dynamic border radius */
 $border-radius-block: $border-radius-average;
 $border-radius-button: $border-radius-semi;
 
-//* dynamic box shadows */
-$box-shadow-block: 0 0 rem(6) 0 rgba(0, 0, 0, 0.14);
+/* dynamic box shadows */
+$box-shadow-block: 0 0 rem(6) 0 rgb(0 0 0 / 14%);
 
-//* z-index */
+/* z-index */
 
-//* dynamic z-index */
+/* dynamic z-index */
 
-//* paths */
-$pathImages: '../images/';
-$pathFonts: '../fonts/';
+/* paths */
+$path-fonts: '../fonts/';
 
-//* rules */
-$rulesDisplay: (
+/* rules */
+$rules-display: (
         hidden: (
                 display: none,
         ),
@@ -174,14 +166,14 @@ $rulesDisplay: (
         )
 );
 
-//* media queries */
+/* media queries */
 $screen-width: (
-        mobileSmall: 320,
+        mobilesmall: 320,
         mobile: 375,
         tablet: 768,
         laptop: 1024,
         desktop: 1280,
-        desktopMedium: 1440,
-        desktopLarge: 1920,
+        desktopmedium: 1440,
+        desktoplarge: 1920,
 );
-$screen: (tablet, desktop, desktopBig, desktopLarge);
+$screen: (tablet, desktop, desktopbig, desktoplarge);
