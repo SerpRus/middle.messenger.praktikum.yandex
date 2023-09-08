@@ -1,11 +1,11 @@
-{{#Main classes="chat-page"}}
-    {{#AsidePanel classes="chat-page__aside"}}
+{{#Main classes="messenger"}}
+    {{#AsidePanel classes="messenger__aside"}}
         <div class="aside-panel__header">
-            {{#Action
+            {{#Link
                 classes="aside-panel__link"
                 themaType="link"
                 thema="link-unobtrusive"
-                href="/profile"
+                href="/settings"
             }}
                 <span class="action__text">
                     Профиль
@@ -16,7 +16,7 @@
                     size="12"
                     name="icon-arrow-right"
                 }}}
-            {{/Action}}
+            {{/Link}}
 
             {{{Formfield
                 classes="aside-panel__search"
@@ -44,22 +44,22 @@
     {{/AsidePanel}}
 
     {{#if isChatSelected}}
-        <div class="chat-page__chat">
-            <header class="chat-page__chat-header">
+        <div class="messenger__chat">
+            <header class="messenger__chat-header">
                 {{{User
-                    classes="chat-page__chat-user"
+                    classes="messenger__chat-user"
                     imgSrc=chat.user.imgSrc
                     imgAlt=chat.user.imgAlt
                     name=chat.user.name
                 }}}
 
                 {{#Dropdown
-                    classes="chat-page__header-chat-dropdown-wrapper"
+                    classes="messenger__header-chat-dropdown-wrapper"
                 }}
                     {{#Action
                         themaType="button"
                         thema="button-dots"
-                        classes="chat-page__dropdown-button"
+                        classes="messenger__dropdown-button"
                     }}
                         <span class="action__icon"></span>
                     {{/Action}}
@@ -72,7 +72,7 @@
                 {{/Dropdown}}
             </header>
 
-            <div class="chat-page__chat-content chat-content">
+            <div class="messenger__chat-content chat-content">
                 <div class="chat-content__date-content">
                     <div class="chat-content__date">
                         18 июня
@@ -207,9 +207,9 @@
                 </div>
             </div>
 
-            <footer class="chat-page__footer">
+            <footer class="messenger__footer">
                 {{#Dropdown
-                    classes="chat-page__footer-chat-dropdown-wrapper"
+                    classes="messenger__footer-chat-dropdown-wrapper"
                 }}
                     {{#Action
                         thema="button-transparent-icon"
@@ -229,7 +229,7 @@
                 {{/Dropdown}}
 
                 {{{Formfield
-                    classes="chat-page__footer-message-field"
+                    classes="messenger__footer-message-field"
                     id="message"
                     name="message"
                     type="text"
@@ -250,8 +250,8 @@
             </footer>
         </div>
     {{else}}
-        <div class="chat-page__chat chat-page__chat--no-selected-chat">
-            <div class="chat-page__chat-message">
+        <div class="messenger__chat messenger__chat--no-selected-chat">
+            <div class="messenger__chat-message">
                 Выберите чат чтобы отправить сообщение
             </div>
         </div>

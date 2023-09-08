@@ -14,6 +14,7 @@ interface FormProps {
     },
     isValidate: boolean,
     eventBus: EventBus,
+    validate?: Validate
 }
 
 export default class Form extends Block<FormProps> {

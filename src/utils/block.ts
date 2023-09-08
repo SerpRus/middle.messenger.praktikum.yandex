@@ -3,7 +3,7 @@ import { TemplateDelegate } from 'handlebars';
 
 import EventBus from './event-bus';
 
-class Block<P extends Record<string, any>> {
+class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -17,7 +17,7 @@ class Block<P extends Record<string, any>> {
 
     protected props: P;
 
-    protected refs: Record<string, Block<P>> = {};
+    protected refs: Record<string, any> = {};
 
     private _eventBus: EventBus;
 
@@ -51,7 +51,6 @@ class Block<P extends Record<string, any>> {
 
     _addEvents() {
         const { events = {} } = this.props;
-
         Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName]);
         });

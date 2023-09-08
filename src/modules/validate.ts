@@ -14,6 +14,8 @@ type ValidOptionsType = {
 };
 
 export default class Validate {
+    public isValidForm: Boolean = true;
+
     private readonly _form;
 
     private _patterns: Record<string, PatternType> = {};
@@ -72,6 +74,8 @@ export default class Validate {
         const { value } = this._activeField;
 
         this._valid(name, value);
+
+        this.checkValidForm();
     };
 
     public onFormSubmit = () => {
@@ -85,7 +89,22 @@ export default class Validate {
 
             this._valid(name, value);
         });
+
+        this.checkValidForm();
     };
+
+    displayRequestError(errorMessage: string) {
+        const fields: NodeListOf<HTMLInputElement> = this._form.querySelectorAll('input, textarea');
+        const lastField: HTMLInputElement = fields[fields.length - 1];
+
+        const name = lastField.getAttribute('name') as string;
+
+        const error = new FormfieldError({ error: errorMessage }).getElement() as HTMLElement;
+
+        this._formfiledsErrors[name] = error;
+
+        lastField.parentNode?.appendChild(error);
+    }
 
     _valid(name: string, value: string) {
         const isValid = this._checkPatterns(name, value);
@@ -251,12 +270,6 @@ export default class Validate {
             },
             display_name: {
                 required: requiredPattern,
-                checkWords: {
-                    error: this.ERRORS.nameOrSurname,
-                    cb: (value: string) => {
-                        return this.REG_EXPS.words.test(value);
-                    },
-                },
             },
             phone: {
                 required: requiredPattern,
@@ -298,6 +311,18 @@ export default class Validate {
 
             this._formfiledsErrors[name] = null;
         }
+    }
+
+    checkValidForm() {
+        this.isValidForm = true;
+
+        const errors = Object.values(this._formfiledsErrors);
+
+        errors.forEach((error) => {
+            if (error) {
+                this.isValidForm = false;
+            }
+        })
     }
 
     get form() {
