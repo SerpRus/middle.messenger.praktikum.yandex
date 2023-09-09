@@ -10,6 +10,8 @@ import FormfieldError from '../components/formfield-error';
 import ErrorBlock from '../components/error-block';
 import Profile from '../components/profile';
 import Avatar from '../components/avatar';
+import Img from '../components/img';
+import Input from '../components/input';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -33,4 +35,6 @@ export default [
     ErrorBlock,
     Profile,
     Avatar,
+    Img,
+    Input,
 ];

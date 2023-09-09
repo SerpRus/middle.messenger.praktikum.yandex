@@ -4,7 +4,7 @@ import EventBus from '../../utils/event-bus';
 
 interface AvatarProps {
     classes?: string,
-    avatarSrc?: string,
+    newAvatarSrc?: string,
     eventBus?: EventBus,
 }
 
@@ -15,14 +15,5 @@ export default class Avatar extends Block<AvatarProps> {
         super({
             ...props,
         }, template);
-
-        if (this.props.eventBus) {
-            this.props.eventBus.on('change-user-avatar-img', (avatarSrc: string) => {
-                this.setProps({
-                    ...this.props,
-                    avatarSrc,
-                });
-            });
-        }
     }
 }

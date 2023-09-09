@@ -46,7 +46,8 @@ export default class Profile extends Block<ProfileProps> {
                     }
 
                     if (this.props.isChangeUserInfo) {
-                        this.props.eventBus.emit('change-user-info', values);
+                        this.props.eventBus.emit('save-user-avatar', this.refs.avatar);
+                        this.props.eventBus.emit('save-user-info', values);
                     }
                 }
             },
@@ -57,10 +58,10 @@ export default class Profile extends Block<ProfileProps> {
                     this.props.eventBus.emit('field-validate', target);
                 }
             },
-            onInput: (e: Event) => {
+            onInput: () => {
                 if (this.props.eventBus) {
                     if (this.props.isChangeUserInfo) {
-                        this.props.eventBus.emit('change-user-avatar', e.target as EventTarget);
+                        this.props.eventBus.emit('change-user-avatar', this.refs.avatar);
                     }
                 }
             }

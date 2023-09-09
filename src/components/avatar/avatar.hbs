@@ -7,6 +7,20 @@
     label=this.label
     disabled=this.disabled
     onInput=this.onInput
+    ref="avatarFormfield"
 }}
-    <img class="avatar__img" src="{{this.avatarSrc}}">
+    {{#if this.avatarSrc}}
+        {{{Img
+            classes="avatar__img"
+            src=this.avatarSrc
+            ref="avatarImg"
+        }}}
+
+    {{else}}
+        {{{Icon
+            classes="formfield__label-icon"
+            size="40"
+            name="preview-2"
+        }}}
+    {{/if}}
 {{/Formfield}}
