@@ -46,7 +46,6 @@ export default class Profile extends Block<ProfileProps> {
                     }
 
                     if (this.props.isChangeUserInfo) {
-                        this.props.eventBus.emit('save-user-avatar', this.refs.avatar);
                         this.props.eventBus.emit('save-user-info', values);
                     }
                 }

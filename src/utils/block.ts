@@ -51,6 +51,7 @@ class Block<P extends Record<string, any> = any> {
 
     _addEvents() {
         const { events = {} } = this.props;
+
         Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName]);
         });
@@ -110,7 +111,7 @@ class Block<P extends Record<string, any> = any> {
 
         const newElement = fragment.firstElementChild as HTMLElement;
 
-        if (this._element) {
+        if (this._element && newElement) {
             this._removeEvents();
             this._element.replaceWith(newElement);
         }

@@ -295,6 +295,8 @@ export default class Validate {
                 );
             }
 
+            this._formfiledsErrors[name] = null;
+
             const error = new FormfieldError({ error: errorMessage }).getElement() as HTMLElement;
 
             this._formfiledsErrors[name] = error;

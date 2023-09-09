@@ -4,6 +4,7 @@ import template from './formfield-error.hbs';
 interface FormfieldProps {
     classes?: string,
     error?: string,
+    ref?: string,
 }
 
 export default class FormfieldError extends Block<FormfieldProps> {

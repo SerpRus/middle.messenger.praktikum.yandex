@@ -91,10 +91,20 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
 
         this.props.eventBus.on('save-user-info', this._saveUserInfo);
         this.props.eventBus.on('change-user-avatar', this._changeUserAvatar);
-        this.props.eventBus.on('save-user-avatar', this._saveUserAvatar);
     }
 
     private _saveUserInfo = async (values: [string | null][]) => {
+        if (this.props.avatarFile) {
+            const formData = new FormData();
+            formData.append('avatar', this.props.avatarFile);
+            const avatarPath = await UserController.avatar(formData);
+
+            const resourcesPath = 'https://ya-praktikum.tech/api/v2/resources';
+            const avatarSrc = `${resourcesPath}${avatarPath}`;
+
+            this.props.eventBus.emit('change-user-avatar-img', avatarSrc);
+        }
+
         const currentValues = values.filter((value) => {
             return value[0] !== 'avatar';
         });
@@ -102,22 +112,6 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
         const data: ProfileData = Object.fromEntries(currentValues);
 
         await UserController.profile(data);
-    }
-
-    private _saveUserAvatar = async () => {
-        if (!this.props.avatarFile) {
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('avatar', this.props.avatarFile);
-
-        const avatarPath = await UserController.avatar(formData);
-
-        const resourcesPath = 'https://ya-praktikum.tech/api/v2/resources';
-        const avatarSrc = `${resourcesPath}${avatarPath}`;
-
-        this.props.eventBus.emit('change-user-avatar-img', avatarSrc);
     }
 
     private _changeUserAvatar = async (target: any) => {
