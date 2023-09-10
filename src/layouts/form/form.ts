@@ -28,14 +28,21 @@ export default class Form extends Block<FormProps> {
             events: {
                 submit: props.onSubmit,
                 focusout: props.onFocusout,
-            }
+            },
         }, template);
 
         if (this.props.isValidate && this.props.eventBus) {
             this.validate = new Validate(this.getElement() as HTMLFormElement);
 
-            this.props.eventBus.on('form-validate', this._onFormValidate);
-            this.props.eventBus.on('field-validate', this._onFieldValidate);
+            const listeners = Object.keys(this.props.eventBus.listeners);
+
+            if (!listeners.includes('form-validate')) {
+                this.props.eventBus.on('form-validate', this._onFormValidate);
+            }
+
+            if (!listeners.includes('field-validate')) {
+                this.props.eventBus.on('field-validate', this._onFieldValidate);
+            }
         }
     }
 

@@ -21,7 +21,7 @@ class Block<P extends Record<string, any> = any> {
 
     private _eventBus: EventBus;
 
-    private _element: HTMLElement | null = null;
+    protected element: HTMLElement | null = null;
 
     private readonly _template: TemplateDelegate | undefined;
 
@@ -40,12 +40,12 @@ class Block<P extends Record<string, any> = any> {
     _removeEvents() {
         const { events } : Record<string, () => void> = this.props;
 
-        if (!events || !this._element) {
+        if (!events || !this.element) {
             return;
         }
 
         Object.entries(events).forEach(([event, listener]) => {
-            this._element!.removeEventListener(event, listener);
+            this.element!.removeEventListener(event, listener);
         });
     }
 
@@ -53,7 +53,7 @@ class Block<P extends Record<string, any> = any> {
         const { events = {} } = this.props;
 
         Object.keys(events).forEach((eventName) => {
-            this._element?.addEventListener(eventName, events[eventName]);
+            this.element?.addEventListener(eventName, events[eventName]);
         });
     }
 
@@ -105,18 +105,19 @@ class Block<P extends Record<string, any> = any> {
             return;
         }
 
+        this._removeEvents();
+
         const fragment = this.compile(this._template, this.props);
 
         this.render();
 
         const newElement = fragment.firstElementChild as HTMLElement;
 
-        if (this._element && newElement) {
-            this._removeEvents();
-            this._element.replaceWith(newElement);
+        if (this.element && newElement) {
+            this.element.replaceWith(newElement);
         }
 
-        this._element = newElement;
+        this.element = newElement;
 
         this._addEvents();
     }
@@ -140,7 +141,7 @@ class Block<P extends Record<string, any> = any> {
     protected render() {}
 
     getElement(): HTMLElement {
-        return this._element as HTMLElement;
+        return this.element as HTMLElement;
     }
 
     _makePropsProxy(props: Record<string, any>) {
@@ -157,6 +158,7 @@ class Block<P extends Record<string, any> = any> {
                 target[prop as string] = value;
 
                 self._eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+
                 return true;
             },
             deleteProperty() {

@@ -1,7 +1,7 @@
 type CallbackType = (...args: any[]) => void;
 
 export default class EventBus {
-    private readonly listeners: {
+    public readonly listeners: {
         [key: string]: CallbackType[],
     } = {};
 
