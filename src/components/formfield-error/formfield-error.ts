@@ -8,11 +8,15 @@ interface FormfieldProps {
 }
 
 export default class FormfieldError extends Block<FormfieldProps> {
-    static className = 'FormfieldError';
+    static componentName = 'FormfieldError';
 
     constructor(props: FormfieldProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

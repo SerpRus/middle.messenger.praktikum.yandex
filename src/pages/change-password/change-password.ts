@@ -63,7 +63,11 @@ export class ChangePasswordBase extends Block<ChangePasswordProps> {
                     },
                 ],
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }
 

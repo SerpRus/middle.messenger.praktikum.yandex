@@ -10,7 +10,7 @@ interface FormfieldProps {
 }
 
 export default class Formfield extends Block<FormfieldProps> {
-    static className = 'Formfield';
+    static componentName = 'Formfield';
 
     constructor(props: FormfieldProps) {
         super({
@@ -18,6 +18,10 @@ export default class Formfield extends Block<FormfieldProps> {
             events: {
                 input: props.onInput
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

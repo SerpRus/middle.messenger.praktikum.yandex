@@ -6,11 +6,15 @@ interface ModalProps {
 }
 
 export default class Modal extends Block<ModalProps> {
-    static className = 'Modal';
+    static componentName = 'Modal';
 
     constructor(props: ModalProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

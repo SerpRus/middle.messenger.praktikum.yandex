@@ -101,7 +101,11 @@ class SettingsBase extends Block<SettingsProps> {
                     },
                 ],
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }
 

@@ -9,11 +9,15 @@ interface AvatarProps {
 }
 
 export default class Avatar extends Block<AvatarProps> {
-    static className = 'Avatar';
+    static componentName = 'Avatar';
 
     constructor(props: AvatarProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

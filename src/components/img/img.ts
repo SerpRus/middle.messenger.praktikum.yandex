@@ -7,11 +7,15 @@ interface ImgProps {
 }
 
 export default class Img extends Block<ImgProps> {
-    static className = 'Img';
+    static componentName = 'Img';
 
     constructor(props: ImgProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

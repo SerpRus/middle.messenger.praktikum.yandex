@@ -109,6 +109,10 @@ export default class SignUp extends Block<SignInProps> {
                 }
             },
             eventBus: new EventBus(),
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

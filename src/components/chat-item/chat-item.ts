@@ -7,11 +7,15 @@ interface ChatItemProps {
 }
 
 export default class ChatItem extends Block<ChatItemProps> {
-    static className = 'ChatItem';
+    static componentName = 'ChatItem';
 
     constructor(props: ChatItemProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

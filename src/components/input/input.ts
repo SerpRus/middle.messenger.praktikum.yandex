@@ -12,11 +12,15 @@ interface InputProps {
 }
 
 export default class Input extends Block<InputProps> {
-    static className = 'Input';
+    static componentName = 'Input';
 
     constructor(props: InputProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

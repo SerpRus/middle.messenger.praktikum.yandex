@@ -186,6 +186,10 @@ export default class Messenger extends Block<MessengerProps> {
                     asdasdas sa d asd asd asd`,
                 date: '12:00',
             }],
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

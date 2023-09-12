@@ -15,7 +15,7 @@ interface ActionProps extends PropsWithRouter{
 }
 
 export default class Action extends Block<ActionProps> {
-    static className = 'Action';
+    static componentName = 'Action';
 
     constructor(props: ActionProps) {
         super({
@@ -27,7 +27,11 @@ export default class Action extends Block<ActionProps> {
                         this.navigate();
                     } : props.onClick
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 
     navigate() {

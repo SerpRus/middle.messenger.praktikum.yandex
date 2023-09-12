@@ -10,6 +10,10 @@ export default class Error500 extends Block<Error500Props> {
     constructor(props: Error500Props) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

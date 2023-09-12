@@ -6,11 +6,15 @@ interface UserProps {
 }
 
 export default class User extends Block<UserProps> {
-    static className = 'User';
+    static componentName = 'User';
 
     constructor(props: UserProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

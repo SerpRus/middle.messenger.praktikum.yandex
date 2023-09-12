@@ -87,10 +87,14 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
                 ],
             },
             eventBus: new EventBus(),
-        }, template);
+        });
 
         this.props.eventBus.on('save-user-info', this._saveUserInfo);
         this.props.eventBus.on('change-user-avatar', this._changeUserAvatar);
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 
     private _saveUserInfo = async (values: [string | null][]) => {

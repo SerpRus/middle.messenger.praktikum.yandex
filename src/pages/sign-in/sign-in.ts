@@ -81,6 +81,10 @@ export default class SignIn extends Block<SignInProps> {
                 }
             },
             eventBus: new EventBus(),
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

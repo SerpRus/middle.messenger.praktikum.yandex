@@ -13,6 +13,10 @@ export default class SiteMap extends Block<IconProps> {
     constructor(props: IconProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

@@ -6,11 +6,15 @@ interface DropdownActionsListProps {
 }
 
 export default class DropdownActionsList extends Block<DropdownActionsListProps> {
-    static className = 'DropdownActionsList';
+    static componentName = 'DropdownActionsList';
 
     constructor(props: DropdownActionsListProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

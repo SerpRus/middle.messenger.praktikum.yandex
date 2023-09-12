@@ -16,7 +16,7 @@ interface ProfileProps {
 }
 
 export default class Profile extends Block<ProfileProps> {
-    static className = 'Profile';
+    static componentName = 'Profile';
 
     constructor(props: ProfileProps) {
         super({
@@ -64,6 +64,10 @@ export default class Profile extends Block<ProfileProps> {
                     }
                 }
             }
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

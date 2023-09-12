@@ -1,6 +1,6 @@
 type CallbackType = (...args: any[]) => void;
 
-export default class EventBus {
+export class EventBus {
     public readonly listeners: {
         [key: string]: CallbackType[],
     } = {};
@@ -33,3 +33,5 @@ export default class EventBus {
         });
     }
 }
+
+export default new EventBus();

@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
-import EventBus from './event-bus';
+import eventBus, { EventBus } from './event-bus';
 
-class Block<P extends Record<string, any> = any> {
+export default abstract class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -13,7 +13,7 @@ class Block<P extends Record<string, any> = any> {
 
     public id = nanoid(6);
 
-    public static className: string = '';
+    public static componentName: string = '';
 
     protected props: P;
 
@@ -23,14 +23,10 @@ class Block<P extends Record<string, any> = any> {
 
     protected element: HTMLElement | null = null;
 
-    private readonly _template: TemplateDelegate | undefined;
-
-    constructor(props: P, template?: TemplateDelegate) {
+    protected constructor(props: P) {
         this.props = this._makePropsProxy(props) as P;
 
-        this._template = template;
-
-        this._eventBus = new EventBus();
+        this._eventBus = eventBus;
 
         this._registerEvents();
 
@@ -88,8 +84,9 @@ class Block<P extends Record<string, any> = any> {
         }
     }
 
+    // @ts-ignore
     protected componentDidUpdate(oldProps: P, newProps: P) {
-        return oldProps !== newProps;
+        return true;
     }
 
     setProps = (nextProps: P) => {
@@ -101,19 +98,13 @@ class Block<P extends Record<string, any> = any> {
     };
 
     private _render() {
-        if (!this._template) {
-            return;
-        }
+        // this._removeEvents();
 
-        this._removeEvents();
-
-        const fragment = this.compile(this._template, this.props);
-
-        this.render();
+        const fragment = this.render();
 
         const newElement = fragment.firstElementChild as HTMLElement;
 
-        if (this.element && newElement) {
+        if (this.element) {
             this.element.replaceWith(newElement);
         }
 
@@ -123,7 +114,7 @@ class Block<P extends Record<string, any> = any> {
     }
 
     protected compile(template: TemplateDelegate, context: P) {
-        const contextAndStubs = { ...context, __refs: this.refs };
+        const contextAndStubs = {...context, __refs: this.refs};
 
         const html = template(contextAndStubs);
 
@@ -131,14 +122,16 @@ class Block<P extends Record<string, any> = any> {
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({ embed }: P) => {
+        contextAndStubs.__children?.forEach(({embed}: any) => {
             embed(temp.content);
         });
 
         return temp.content;
     }
 
-    protected render() {}
+    protected render() {
+        return new DocumentFragment();
+    }
 
     getElement(): HTMLElement {
         return this.element as HTMLElement;
@@ -175,5 +168,3 @@ class Block<P extends Record<string, any> = any> {
         this.getElement()!.style.display = 'none';
     }
 }
-
-export default Block;

@@ -18,7 +18,7 @@ interface FormProps {
 }
 
 export default class Form extends Block<FormProps> {
-    static className = 'Form';
+    static componentName = 'Form';
 
     validate: Validate | null = null;
 
@@ -29,7 +29,7 @@ export default class Form extends Block<FormProps> {
                 submit: props.onSubmit,
                 focusout: props.onFocusout,
             },
-        }, template);
+        });
 
         if (this.props.isValidate && this.props.eventBus) {
             this.validate = new Validate(this.getElement() as HTMLFormElement);
@@ -44,6 +44,10 @@ export default class Form extends Block<FormProps> {
                 this.props.eventBus.on('field-validate', this._onFieldValidate);
             }
         }
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 
     private _onFormValidate = () => {
