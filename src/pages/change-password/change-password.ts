@@ -1,7 +1,6 @@
-import Block from '../../utils/block';
 import template from './change-password.hbs';
-import EventBus from "../../utils/event-bus";
-import {withStore} from "../../utils/store";
+import Block from '../../utils/block';
+import { withStore } from '../../utils/store';
 
 interface ChangePasswordProps {
     username: string,
@@ -12,7 +11,6 @@ interface ChangePasswordProps {
     data: Record<string, any>,
     onSubmit: (e: Event) => void,
     onFocusout: (e: Event) => void,
-    eventBus?: EventBus,
 }
 
 export class ChangePasswordBase extends Block<ChangePasswordProps> {

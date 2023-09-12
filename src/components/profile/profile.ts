@@ -1,6 +1,6 @@
 import Block from '../../utils/block';
 import template from './profile.hbs';
-import EventBus from "../../utils/event-bus";
+import eventBus from '../../utils/event-bus';
 
 interface ProfileProps {
     username: string,
@@ -12,7 +12,6 @@ interface ProfileProps {
     onFocusout: (e: Event) => void,
     onClick: (e: Event) => void,
     onInput: (e: Event) => void,
-    eventBus?: EventBus,
 }
 
 export default class Profile extends Block<ProfileProps> {
@@ -38,30 +37,26 @@ export default class Profile extends Block<ProfileProps> {
                     console.log(`${value[0]}: '${value[1]}'`);
                 });
 
-                if (this.props.eventBus) {
-                    this.props.eventBus.emit('form-validate');
 
-                    if (!this.refs.form.validate.isValidForm) {
-                        return;
-                    }
+                eventBus.emit('form-validate');
 
-                    if (this.props.isChangeUserInfo) {
-                        this.props.eventBus.emit('save-user-info', values);
-                    }
+                if (!this.refs.form.validate.isValidForm) {
+                    return;
+                }
+
+                if (this.props.isChangeUserInfo) {
+                    eventBus.emit('save-user-info', values);
                 }
             },
             onFocusout: (e: Event) => {
                 const target = e.target as EventTarget;
 
-                if (this.props.eventBus) {
-                    this.props.eventBus.emit('field-validate', target);
-                }
+
+                eventBus.emit('field-validate', target);
             },
             onInput: () => {
-                if (this.props.eventBus) {
-                    if (this.props.isChangeUserInfo) {
-                        this.props.eventBus.emit('change-user-avatar', this.refs.avatar);
-                    }
+                if (this.props.isChangeUserInfo) {
+                    eventBus.emit('change-user-avatar', this.refs.avatar);
                 }
             }
         });

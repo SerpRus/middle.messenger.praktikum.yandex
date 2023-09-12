@@ -1,8 +1,8 @@
 import Block from '../../utils/block';
 import template from './form.hbs';
 
-import EventBus from '../../utils/event-bus';
-import Validate from '../../modules/validate';
+import eventBus from '../../utils/event-bus';
+import Validate from '../../utils/validate';
 
 interface FormProps {
     classes?: string,
@@ -13,7 +13,6 @@ interface FormProps {
         focusout?: () => void,
     },
     isValidate: boolean,
-    eventBus: EventBus,
     validate?: Validate
 }
 
@@ -31,17 +30,17 @@ export default class Form extends Block<FormProps> {
             },
         });
 
-        if (this.props.isValidate && this.props.eventBus) {
+        if (this.props.isValidate) {
             this.validate = new Validate(this.getElement() as HTMLFormElement);
 
-            const listeners = Object.keys(this.props.eventBus.listeners);
+            const listeners = Object.keys(eventBus.listeners);
 
             if (!listeners.includes('form-validate')) {
-                this.props.eventBus.on('form-validate', this._onFormValidate);
+                eventBus.on('form-validate', this._onFormValidate);
             }
 
             if (!listeners.includes('field-validate')) {
-                this.props.eventBus.on('field-validate', this._onFieldValidate);
+                eventBus.on('field-validate', this._onFieldValidate);
             }
         }
     }

@@ -1,6 +1,5 @@
 import Block from '../../utils/block';
 import template from './settings.hbs';
-import EventBus from "../../utils/event-bus";
 import { withStore } from '../../utils/store';
 import AuthController from '../../controllers/auth-controller';
 
@@ -16,7 +15,6 @@ interface SettingsProps {
     avatar?: string,
     onSubmit: (e: Event) => void,
     onFocusout: (e: Event) => void,
-    eventBus?: EventBus,
     events: {
         click?: () => void,
     },

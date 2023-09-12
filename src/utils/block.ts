@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
-import eventBus, { EventBus } from './event-bus';
+import { EventBus } from './event-bus';
 
-export default abstract class Block<P extends Record<string, any> = any> {
+export default class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -23,10 +23,10 @@ export default abstract class Block<P extends Record<string, any> = any> {
 
     protected element: HTMLElement | null = null;
 
-    protected constructor(props: P) {
+    constructor(props: P) {
         this.props = this._makePropsProxy(props) as P;
 
-        this._eventBus = eventBus;
+        this._eventBus = new EventBus();
 
         this._registerEvents();
 

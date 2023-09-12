@@ -1,9 +1,9 @@
 import '../scss/style.scss';
 
 import AuthController from '../controllers/auth-controller';
-import Router from '../utils/router';
+import Router from './router';
 
-import Block from '../utils/block';
+import Block from './block';
 import SignIn from '../pages/sign-in';
 import SignUp from '../pages/sign-up';
 import Messenger from '../pages/messenger';
@@ -13,7 +13,7 @@ import ChangePassword from '../pages/change-password';
 import Error500 from '../pages/error-500';
 
 import components from './components';
-import registerComponent from '../utils/register-component';
+import registerComponent from './register-component';
 
 enum Routes {
     Index = '/',

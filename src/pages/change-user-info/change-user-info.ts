@@ -1,6 +1,6 @@
 import Block from '../../utils/block';
 import template from './change-user-info.hbs';
-import EventBus from '../../utils/event-bus';
+import eventBus from '../../utils/event-bus';
 import { withStore } from '../../utils/store';
 import { ProfileData } from "../../api/user-api";
 import UserController from '../../controllers/user-controller';
@@ -19,7 +19,6 @@ interface ChangeUserInfoProps {
     avatarFile?: File,
     onSubmit: (e: Event) => void,
     onFocusout: (e: Event) => void,
-    eventBus: EventBus,
 }
 
 class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
@@ -86,11 +85,10 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
                     },
                 ],
             },
-            eventBus: new EventBus(),
         });
 
-        this.props.eventBus.on('save-user-info', this._saveUserInfo);
-        this.props.eventBus.on('change-user-avatar', this._changeUserAvatar);
+        eventBus.on('save-user-info', this._saveUserInfo);
+        eventBus.on('change-user-avatar', this._changeUserAvatar);
     }
 
     render() {
@@ -106,7 +104,7 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
             const resourcesPath = 'https://ya-praktikum.tech/api/v2/resources';
             const avatarSrc = `${resourcesPath}${avatarPath}`;
 
-            this.props.eventBus.emit('change-user-avatar-img', avatarSrc);
+            eventBus.emit('change-user-avatar-img', avatarSrc);
         }
 
         const currentValues = values.filter((value) => {

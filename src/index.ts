@@ -1,5 +1,5 @@
-import CreateApp from './modules/create-app';
-import Chat from './modules/chat';
+import CreateApp from './utils/create-app';
+import Chat from './utils/chat';
 
 import { AppType } from './types';
 
