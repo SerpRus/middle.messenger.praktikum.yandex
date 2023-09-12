@@ -10,7 +10,6 @@ import Messenger from '../pages/messenger';
 import Settings from '../pages/settings';
 import ChangeUserInfo from '../pages/change-user-info';
 import ChangePassword from '../pages/change-password';
-import Error500 from '../pages/error-500';
 
 import components from './components';
 import registerComponent from './register-component';
@@ -44,7 +43,6 @@ export default class Chat {
             .use(Routes.Settings, Settings)
             .use(Routes.ChangeUserInfo, ChangeUserInfo)
             .use(Routes.ChangePassword, ChangePassword)
-            .use(Routes.Test500, Error500)
 
         const { pathname } = window.location;
         let isProtectedRoute = true;
