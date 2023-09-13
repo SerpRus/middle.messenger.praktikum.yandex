@@ -1,17 +1,19 @@
 import Action from '../components/action';
-import { Link } from '../components/action/action';
+import { Link, PopupButton } from '../components/action/action';
 import Formfield from '../components/formfield';
 import Icon from '../components/icon';
 import ChatItem from '../components/chat-item';
 import User from '../components/user';
 import Dropdown from '../components/dropdown';
-import DropdownActionsList from '../components/dropdown-actions-list';
+import DropdownContent from '../components/dropdown-content';
 import FormfieldError from '../components/formfield-error';
 import ErrorBlock from '../components/error-block';
 import Profile from '../components/profile';
 import Avatar from '../components/avatar';
 import Img from '../components/img';
 import Input from '../components/input';
+import Popup from '../components/popup';
+import PopupOverlay from '../components/popup-overlay';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -29,7 +31,7 @@ export default [
     ChatItem,
     User,
     Dropdown,
-    DropdownActionsList,
+    DropdownContent,
     Modal,
     FormfieldError,
     ErrorBlock,
@@ -37,4 +39,7 @@ export default [
     Avatar,
     Img,
     Input,
+    Popup,
+    PopupButton,
+    PopupOverlay,
 ];

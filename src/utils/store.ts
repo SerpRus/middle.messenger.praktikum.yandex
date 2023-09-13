@@ -2,8 +2,7 @@ import set from './helpers/set';
 import { EventBus } from './event-bus';
 import Block from './block';
 import { User } from '../api/auth-api';
-// import { ChatInfo } from '../api/ChatsAPI';
-// import { Message } from '../controllers/MessagesController';
+import { Chats } from '../api/chats-api';
 
 export enum StoreEvents {
     Updated = 'updated'
@@ -11,8 +10,7 @@ export enum StoreEvents {
 
 interface State {
     user: User;
-    // chats: ChatInfo[];
-    // messages: Record<number, Message[]>;
+    chats: Chats[];
     selectedChat?: number;
 }
 

@@ -1,3 +1,5 @@
+import queryStringify, { StringIndexed } from './helpers/queryStringify';
+
 export enum Method {
     Get = 'Get',
     Post = 'Post',
@@ -19,33 +21,35 @@ export default class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get<Response>(path = '/'): Promise<Response> {
-        return this.request<Response>(this.endpoint + path);
+    public get<Response>(path = '/', data?: StringIndexed): Promise<Response> {
+        const query = (data) ? queryStringify(data) : '';
+
+        return this.request<Response>(`${this.endpoint}${path}?${query}`);
     }
 
     public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request<Response>(`${this.endpoint}${path}`, {
             method: Method.Post,
             data,
         });
     }
 
     public put<Response = void>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request<Response>(`${this.endpoint}${path}`, {
             method: Method.Put,
             data,
         });
     }
 
     public patch<Response = void>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request<Response>(`${this.endpoint}${path}`, {
             method: Method.Patch,
             data,
         });
     }
 
     public delete<Response>(path: string, data?: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request<Response>(`${this.endpoint}${path}`, {
             method: Method.Delete,
             data
         });

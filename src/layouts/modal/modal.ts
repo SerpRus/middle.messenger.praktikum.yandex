@@ -1,8 +1,10 @@
 import Block from '../../utils/block';
 import template from './modal.hbs';
+import modalUtil from '../../utils/modal-util';
 
 interface ModalProps {
     classes?: string,
+    onOverlayCLick?: () => void,
 }
 
 export default class Modal extends Block<ModalProps> {
@@ -11,6 +13,9 @@ export default class Modal extends Block<ModalProps> {
     constructor(props: ModalProps) {
         super({
             ...props,
+            onOverlayCLick: () => {
+                modalUtil.close();
+            }
         });
     }
 

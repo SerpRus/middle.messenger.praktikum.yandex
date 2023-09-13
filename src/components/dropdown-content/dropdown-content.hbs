@@ -1,0 +1,25 @@
+<div class="{{ classes }} dropdown-content">
+    <ul class="dropdown-content__list">
+        {{#each dropdownActionsList}}
+            <li class="dropdown-content__item">
+                {{#Action
+                    classes="dropdown-content__item-action"
+                    themaType="button"
+                    thema="button-transparent"
+                    onClick=action.onClick
+                }}
+                    {{{Icon
+                        classes="action__icon"
+                        size="22"
+                        rotate=icon.rotate
+                        name=icon.name
+                    }}}
+
+                    <span class="action__text">
+                        {{action.text}}
+                    </span>
+                {{/Action}}
+            </li>
+        {{/each}}
+    </ul>
+</div>

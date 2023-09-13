@@ -1,6 +1,10 @@
 import Block from '../utils/block';
 import Router from '../utils/router';
 
+export interface PropsWithRouter {
+    router: typeof Router;
+}
+
 export function withRouter(Component: typeof Block<any>, componentName: string) {
     type Props = typeof Component extends typeof Block<Record<string, any>> ? Record<string, any> : any;
 
@@ -11,8 +15,4 @@ export function withRouter(Component: typeof Block<any>, componentName: string) 
             super({ ...props, router: Router });
         }
     }
-}
-
-export interface PropsWithRouter {
-    router: typeof Router;
 }
