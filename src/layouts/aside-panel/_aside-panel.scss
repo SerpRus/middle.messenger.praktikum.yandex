@@ -6,27 +6,4 @@
 
     border-right: rem(1) solid $color-border-light-gray;
     background-color: $color-bg-light-gray;
-
-    &__header {
-        margin: 0 rem(10);
-
-        &:not(:last-child) {
-            margin-bottom: rem(14);
-        }
-
-        &-actions {
-            display: flex;
-            justify-content: space-between;
-
-            &:not(:last-child) {
-                margin-bottom: rem(22);
-            }
-        }
-    }
-
-    &__chats {
-        overflow: auto;
-
-        max-height: calc(100vh - #{rem(110)});
-    }
 }

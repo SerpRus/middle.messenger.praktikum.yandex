@@ -44,7 +44,7 @@ export class ChatsAPI extends BaseAPI {
         super('/chats');
     }
 
-    fetchChats(data?: StringIndexed): Promise<Chats> {
+    fetchChats(data?: StringIndexed): Promise<Chats[]> {
         return this.http.get('', data);
     }
 
@@ -54,6 +54,12 @@ export class ChatsAPI extends BaseAPI {
 
     deleteChat(data: DeleteChat): Promise<DeletedChat> {
         return this.http.delete('', data);
+    }
+
+    async getToken(id: number): Promise<string> {
+        const response = await this.http.post<{ token: string }>(`/token/${id}`);
+
+        return response.token;
     }
 
     read = undefined;

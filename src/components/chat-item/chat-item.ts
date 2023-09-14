@@ -6,9 +6,11 @@ interface ChatItemProps {
     classes?: string,
     selected?: boolean;
     events: {
-        contextmenu: (e: Event) => void
+        click: (e: Event) => void,
+        contextmenu: (e: Event) => void,
     },
     chatId: number,
+    onClick: (e: Event) => void,
 }
 
 export type ChatData = {
@@ -23,6 +25,7 @@ export default class ChatItem extends Block<ChatItemProps> {
         super({
             ...props,
             events: {
+                click: props.onClick,
                 contextmenu: (e: Event) => {
                     e.preventDefault();
 
@@ -30,8 +33,8 @@ export default class ChatItem extends Block<ChatItemProps> {
                         target: e.currentTarget,
                         chatId: this.props.chatId,
                     });
-                }
-            }
+                },
+            },
         });
     }
 

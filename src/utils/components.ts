@@ -14,6 +14,8 @@ import Img from '../components/img';
 import Input from '../components/input';
 import Popup from '../components/popup';
 import PopupOverlay from '../components/popup-overlay';
+import Chats from '../components/chats';
+import CurrentChat from '../components/current-chat';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -42,4 +44,6 @@ export default [
     Popup,
     PopupButton,
     PopupOverlay,
+    Chats,
+    CurrentChat,
 ];

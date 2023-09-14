@@ -18,7 +18,6 @@ enum Routes {
     Index = '/',
     Register = '/register',
     Messenger = '/messenger',
-    Test500 = '/test500',
     Settings = '/settings',
     ChangeUserInfo = '/change-user-info',
     ChangePassword = '/change-password',

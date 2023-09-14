@@ -12,6 +12,7 @@ interface State {
     user: User;
     chats: Chats[];
     selectedChat?: number;
+    messages?: any;
 }
 
 export class Store extends EventBus {
@@ -34,7 +35,6 @@ const store = new Store();
 window.store = store;
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-    // return function wrap<P>(Component: typeof Block<SP & P>){
     return function wrap<P>(Component: typeof Block<any>){
         return class WithStore extends Component {
             constructor(props: Omit<P, keyof SP>) {

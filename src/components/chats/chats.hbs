@@ -1,0 +1,85 @@
+{{#AsidePanel classes=classes}}
+    <div class="chats">
+        <div class="chats__header">
+            <div class="chats__header-actions">
+                {{#PopupButton
+                    themaType="link"
+                    thema="link-unobtrusive"
+                    modalId="createChat"
+                }}
+                    <span class="action__text">
+                        Создать чат
+                    </span>
+                {{/PopupButton}}
+
+                {{#Link
+                    themaType="link"
+                    thema="link-unobtrusive"
+                    href="/settings"
+                }}
+                    <span class="action__text">
+                        Профиль
+                    </span>
+
+                    {{{Icon
+                        classes="action__icon"
+                        size="12"
+                        name="icon-arrow-right"
+                    }}}
+                {{/Link}}
+            </div>
+
+            {{{Formfield
+                classes="chats__search"
+                id="search"
+                name="search"
+                type="text"
+                thema="filled"
+                label="Поиск"
+                value=search.value
+                iconName="icon-loupe"
+                iconSize="20"
+                onInput=search.onSearch
+                ref="search"
+            }}}
+        </div>
+
+        <div class="chats__chats">
+            {{#each chats}}
+                {{{ChatItem
+                    classes="chats__chats-item"
+                    chatId=this.id
+                    avatar=this.avatar
+                    title=this.title
+                    lastMessage=this.last_message
+                    onClick=this.onClick
+                    selected=this.selected
+                }}}
+            {{/each}}
+        </div>
+    </div>
+
+    {{{Popup
+        id=this.createChatPopup.id
+        classes=this.createChatPopup.classes
+        title=this.createChatPopup.title
+        imgSrc=this.createChatPopup.img.src
+        fieldId=this.createChatPopup.field.id
+        fieldName=this.createChatPopup.field.name
+        fieldType=this.createChatPopup.field.type
+        fieldLabel=this.createChatPopup.field.label
+        fieldValue=this.createChatPopup.field.value
+        fieldRef=this.createChatPopup.field.ref
+        actionThemaType=this.createChatPopup.action.themaType
+        actionThema=this.createChatPopup.action.thema
+        actionText=this.createChatPopup.action.text
+        actionOnClick=this.createChatPopup.action.onClick
+        ref=this.createChatPopup.ref
+    }}}
+
+    {{{DropdownContent
+        classes="dropdown-content--icon-red"
+        dropdownActionsList=this.deleChatActionsList
+        ref="deleteChat"
+    }}}
+{{/AsidePanel}}
