@@ -1,5 +1,5 @@
 import Action from '../components/action';
-import { Link, PopupButton } from '../components/action/action';
+import { Link, PopupButton, DropdownButton } from '../components/action/action';
 import Formfield from '../components/formfield';
 import Icon from '../components/icon';
 import ChatItem from '../components/chat-item';
@@ -48,4 +48,5 @@ export default [
     Chats,
     CurrentChat,
     Message,
+    DropdownButton,
 ];

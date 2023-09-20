@@ -12,7 +12,16 @@ export function withRouter(Component: typeof Block<any>, componentName: string) 
         static componentName = componentName;
 
         constructor(props: Props & PropsWithRouter) {
-            super({ ...props, router: Router });
+            super({
+                ...props,
+                router: Router,
+                events: {
+                    click: (e: Event) => {
+                        e.preventDefault();
+                        this.props.router.go(this.props.href as string);
+                    }
+                }
+            });
         }
     }
 }

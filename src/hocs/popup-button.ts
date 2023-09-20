@@ -1,5 +1,6 @@
 import Block from '../utils/block';
 import modalUtil from '../utils/modal-util';
+import eventBus from '../utils/event-bus';
 
 export interface PropsPopupButton {
     modal: typeof modalUtil;
@@ -16,6 +17,11 @@ export function popupButton(Component: typeof Block<any>, componentName: string)
             super({
                 ...props,
                 modal: modalUtil,
+                events: {
+                    click: () => {
+                        eventBus.emit('open-popup', props.modalId);
+                    }
+                }
             });
         }
     }

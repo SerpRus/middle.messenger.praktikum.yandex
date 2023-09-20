@@ -121,7 +121,7 @@ export class ChatsBase extends Block<ChatsProps> {
 
         ChatsBase.activeChatIdToDelete = chatId;
 
-        dropdown.open(target, contextMenu);
+        dropdown.openByTarget(target, contextMenu);
     }
 }
 

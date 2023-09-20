@@ -8,23 +8,14 @@
                     name=chatName
                 }}}
 
-                {{#Dropdown
-                    classes="current-chat__header-chat-dropdown-wrapper"
+                {{#DropdownButton
+                    themaType="button"
+                    thema="button-dots"
+                    classes="current-chat__dropdown-button"
+                    dropdownId="editChatUsers"
                 }}
-                    {{#Action
-                        themaType="button"
-                        thema="button-dots"
-                        classes="current-chat__dropdown-button"
-                    }}
-                        <span class="action__icon"></span>
-                    {{/Action}}
-
-                    <div class="dropdown__content" style="{{contentStyle}}">
-                        {{{DropdownActionsList
-                            dropdownActionsList=chat.dropdownActionsList
-                        }}}
-                    </div>
-                {{/Dropdown}}
+                    <span class="action__icon"></span>
+                {{/DropdownButton}}
             </header>
 
             <div class="current-chat__chat-content chat-content">
@@ -89,6 +80,11 @@
                 {{/Form}}
             </footer>
         </div>
+
+        {{{DropdownContent
+            id="editChatUsers"
+            dropdownActionsList=chat.dropdownActionsList
+        }}}
     {{else}}
         <div class="current-chat__chat messenger__chat--no-selected-chat">
             <div class="messenger__chat-message">
