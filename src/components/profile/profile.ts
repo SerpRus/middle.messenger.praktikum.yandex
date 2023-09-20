@@ -37,7 +37,6 @@ export default class Profile extends Block<ProfileProps> {
                     console.log(`${value[0]}: '${value[1]}'`);
                 });
 
-
                 eventBus.emit('form-validate');
 
                 if (!this.refs.form.validate.isValidForm) {

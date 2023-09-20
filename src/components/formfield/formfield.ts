@@ -5,6 +5,8 @@ interface FormfieldProps {
     classes?: string,
     events?: {
         input?: (e: Event) => void;
+        focusin?: (e: Event) => void;
+        focusout?: (e: Event) => void;
     };
     onInput: (e: Event) => void;
 }
@@ -16,7 +18,7 @@ export default class Formfield extends Block<FormfieldProps> {
         super({
             ...props,
             events: {
-                input: props.onInput
+                input: props.onInput,
             },
         });
     }

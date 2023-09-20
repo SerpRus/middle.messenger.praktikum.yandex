@@ -58,6 +58,7 @@ export default class WSTransport extends EventBus {
         socket.addEventListener('open', () => {
             this.emit(WSTransportEvents.Connected)
         });
+
         socket.addEventListener('close', () => {
             this.emit(WSTransportEvents.Close)
         });

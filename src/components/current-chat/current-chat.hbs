@@ -1,12 +1,11 @@
 <div class="{{classes}} current-chat">
-    {{#if isChatSelected}}
+    {{#if selectedChat}}
         <div class="current-chat__chat">
             <header class="current-chat__chat-header">
                 {{{User
                     classes="current-chat__chat-user"
-                    imgSrc=chat.user.imgSrc
-                    imgAlt=chat.user.imgAlt
-                    name=chat.user.name
+                    imgSrc=chatAvatar
+                    name=chatName
                 }}}
 
                 {{#Dropdown
@@ -29,180 +28,65 @@
             </header>
 
             <div class="current-chat__chat-content chat-content">
-                <div class="chat-content__date-content">
-                    <div class="chat-content__date">
-                        18 июня
-                    </div>
-
-                    <div class="chat-content__item">
-                        <div class="chat-content__message">
-                            <p>
-                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-
-                                <span class="chat-content__message-info">
-                                    <time class="chat-content__message-date">
-                                        11:30
-                                    </time>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="chat-content__img-wrapper">
-                            <img class="chat-content__img"
-                                 src="images/tests/test-img.jpg"
-                                 alt="test img"
-                            >
-
-                            <span class="chat-content__message-info chat-content__message-info--img">
-                                <time class="chat-content__img-date">
-                                    11:56
-                                </time>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="chat-content__item chat-content__item--current-user">
-                        <div class="chat-content__message">
-                            <p>
-                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                            </p>
-
-                            <p>
-                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-
-                                <span class="chat-content__message-info">
-                                    {{{Icon
-                                            classes="chat-content__message-check-icon"
-                                            size="11-5"
-                                            name="check"
-                                    }}}
-
-                                    <time class="chat-content__message-date">
-                                        11:56
-                                    </time>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="chat-content__img-wrapper">
-                            <img class="chat-content__img"
-                                 src="images/tests/test-img.jpg"
-                                 alt="test img"
-                            >
-
-                            <span class="chat-content__message-info chat-content__message-info--img">
-                                {{{Icon
-                                        classes="chat-content__message-check-icon"
-                                        size="11-5"
-                                        name="check"
-                                }}}
-
-                                <time class="chat-content__img-date">
-                                    11:56
-                                </time>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chat-content__date-content">
-                    <div class="chat-content__date">
-                        19 июня
-                    </div>
-
-                    <div class="chat-content__item">
-                        <div class="chat-content__message">
-                            <p>
-                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                            </p>
-
-                            <p>
-                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-
-                                <span class="chat-content__message-info">
-                                    <time class="chat-content__message-date">
-                                        11:56
-                                    </time>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="chat-content__img-wrapper">
-                            <img class="chat-content__img"
-                                 src="/images/users/user-plug.jpg"
-                                 alt="test img"
-                            >
-
-                            <span class="chat-content__message-info chat-content__message-info--img">
-                                <time class="chat-content__img-date">
-                                    11:56
-                                </time>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="chat-content__item chat-content__item--current-user">
-                        <div class="chat-content__message">
-                            <p>
-                                Круто!
-
-                                <span class="chat-content__message-info">
-                                    {{{Icon
-                                            classes="chat-content__message-check-icon"
-                                            size="11-5"
-                                            name="check"
-                                    }}}
-
-                                    <time class="chat-content__message-date">
-                                        11:56
-                                    </time>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {{#each messages}}
+                    {{{Message
+                        classes="chat-content__item"
+                        isMine=this.isMine
+                        content=this.content
+                        time=this.time
+                    }}}
+                {{/each}}
             </div>
 
             <footer class="current-chat__footer">
-                {{#Dropdown
-                    classes="current-chat__footer-chat-dropdown-wrapper"
+                {{#Form
+                    onSubmit=this.onSendMessage
+                    classes="form--no-styles current-chat__footer-form"
+                    ref="form"
                 }}
+                    {{#Dropdown
+                        classes="current-chat__footer-chat-dropdown-wrapper"
+                    }}
+                        {{#Action
+                            thema="button-transparent-icon"
+                        }}
+                            {{{Icon
+                                classes="chat-content__message-check-icon"
+                                size="32"
+                                name="clip"
+                            }}}
+                        {{/Action}}
+
+                        <div class="dropdown__content" style="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px">
+                            {{{DropdownActionsList
+                                dropdownActionsList=chat.footerDropdownActionsList
+                            }}}
+                        </div>
+                    {{/Dropdown}}
+
+                    {{{Formfield
+                        classes="current-chat__footer-message-field"
+                        id="message"
+                        name="message"
+                        type="text"
+                        thema="filled-2"
+                        placeholder="Сообщение"
+                        ref="message"
+                    }}}
+
                     {{#Action
-                        thema="button-transparent-icon"
+                        themaType="button"
+                        thema="button-circle-icon"
+                        type="submit"
+                        onClick=onSendMessage
                     }}
                         {{{Icon
                             classes="chat-content__message-check-icon"
-                            size="32"
-                            name="clip"
+                            size="13-12"
+                            name="arrow-right-2"
                         }}}
                     {{/Action}}
-
-                    <div class="dropdown__content" style="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px">
-                        {{{DropdownActionsList
-                            dropdownActionsList=chat.footerDropdownActionsList
-                        }}}
-                    </div>
-                {{/Dropdown}}
-
-                {{{Formfield
-                    classes="current-chat__footer-message-field"
-                    id="message"
-                    name="message"
-                    type="text"
-                    thema="filled-2"
-                    placeholder="Сообщение"
-                }}}
-
-                {{#Action
-                    themaType="button"
-                    thema="button-circle-icon"
-                }}
-                    {{{Icon
-                        classes="chat-content__message-check-icon"
-                        size="13-12"
-                        name="arrow-right-2"
-                    }}}
-                {{/Action}}
+                {{/Form}}
             </footer>
         </div>
     {{else}}

@@ -112,9 +112,6 @@ export class ChatsBase extends Block<ChatsProps> {
 
     async init() {
         await ChatsController.fetchChats();
-
-        console.log(this)
-        console.log(store)
     }
 
     private _openContextMenu = (chatData: ChatData) => {
@@ -138,7 +135,7 @@ const withUser = withStore((state) => {
             return {
                 ...chat,
                 onClick: () => {
-                    ChatsController.selectChat(chat.id);
+                    ChatsController.selectChat(chat);
                 },
                 selected: chat.id === store.getState().selectedChat,
             };

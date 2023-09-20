@@ -27,13 +27,13 @@
     }
 
     &__title {
-        @include text-props(15, 20);
-
         text-align: center;
 
         &:not(:last-child) {
             margin-bottom: rem(50);
         }
+
+        @include text-props(15, 20);
     }
 
     &__content {

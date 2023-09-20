@@ -1,9 +1,27 @@
 import Block from '../../utils/block';
 import template from './current-chat.hbs';
 import { withStore } from '../../utils/store';
+import MessagesController from '../../controllers/messages-controller';
 
 interface CurrentChatProps {
+    selectedChat?: number,
+    chatName: string,
+    chatAvatar: string,
+    chat: Record<string, any>,
+    onSendMessage: (e: Event) => void,
+    onFocusinMessage: () => void,
+    onFocusoutMessage: () => void,
+}
 
+type MessageType = {
+    chat_id: number,
+    content: string,
+    file: null | File,
+    id: number,
+    is_read: boolean,
+    time: string,
+    type: string,
+    user_id: number,
 }
 
 export class CurrentChatBase extends Block<CurrentChatProps> {
@@ -12,13 +30,9 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
     constructor(props: CurrentChatProps) {
         super({
             ...props,
+            chatName: 'Вадим',
+            chatAvatar: '/images/users/user-plug.jpg',
             chat: {
-                user: {
-                    name: 'Вадим',
-                    imgSrc: '/images/users/user-plug.jpg',
-                    imgAlt: 'user',
-                },
-
                 dropdownActionsList: [{
                     action: {
                         text: 'Добавить пользователя',
@@ -58,9 +72,19 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
                     },
                 }],
             },
-        });
+            onSendMessage: (e: Event) => {
+                e.preventDefault();
 
-        console.log(this)
+                const { selectedChat: id } = this.props;
+                const { value: message } = this.refs.message.refs.input.getElement();
+
+                if (!message) {
+                    return;
+                }
+
+                MessagesController.sendMessage(id as number, message);
+            },
+        });
     }
 
     render() {
@@ -69,19 +93,36 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
 }
 
 const withSelectedChatMessages = withStore(state => {
-    const selectedChatId = state.selectedChat;
+    const selectedChatId = state.selectedChat?.id;
+    const userId = state.user.id;
 
     if (!selectedChatId) {
         return {
             messages: [],
             selectedChat: undefined,
-            userId: state.user.id
+            userId,
         };
     }
 
+    let messages = (
+        (state.messages)
+            ? state.messages
+            : {}
+        )[selectedChatId];
+
+    if (messages && messages.length) {
+        messages = messages.map((message: MessageType) => {
+            return {
+                ...message,
+                isMine: message.user_id === userId,
+            };
+        });
+    }
+
     return {
-        messages: (state.messages || {})[selectedChatId] || [],
-        selectedChat: state.selectedChat,
+        chatName: state.selectedChat?.title,
+        messages: messages || [],
+        selectedChat: state.selectedChat?.id,
         userId: state.user.id
     };
 });

@@ -1,6 +1,5 @@
 {{#Form
     isValidate=this.isValidate
-    eventBus=this.eventBus
     onSubmit=this.onSubmit
     onFocusout=this.onFocusout
     classes="form--profile"
@@ -16,7 +15,6 @@
             label="Поменять аватар"
             disabled=isAvatarDisabled
             avatarSrc=this.avatarSrc
-            eventBus=this.eventBus
             onInput=this.onInput
             ref="avatar"
         }}}

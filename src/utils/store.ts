@@ -11,7 +11,7 @@ export enum StoreEvents {
 interface State {
     user: User;
     chats: Chats[];
-    selectedChat?: number;
+    selectedChat?: Record<string, any>;
     messages?: any;
 }
 

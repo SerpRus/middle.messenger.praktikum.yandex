@@ -4,6 +4,15 @@ import { StringIndexed } from '../utils/helpers/queryStringify';
 import { CreateChat, DeleteChat } from '../api/chats-api';
 import MessagesController from './messages-controller';
 
+type ChatType = {
+    avatar: null | string,
+    created_by: number,
+    id: number,
+    last_message: Record<string, any>,
+    title: string,
+    unread_count: number,
+}
+
 export class ChatsController {
     private readonly api: ChatsAPI;
 
@@ -35,8 +44,8 @@ export class ChatsController {
         return this.api.getToken(id);
     }
 
-    selectChat(id: number) {
-        store.set('selectedChat', id);
+    selectChat(chat: ChatType) {
+        store.set('selectedChat', chat);
     }
 }
 
