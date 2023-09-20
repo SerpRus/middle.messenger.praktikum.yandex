@@ -112,9 +112,6 @@ export class ChatsBase extends Block<ChatsProps> {
 
     async init() {
         await ChatsController.fetchChats();
-
-        console.log(this)
-        console.log(store)
     }
 
     private _openContextMenu = (chatData: ChatData) => {
@@ -124,7 +121,7 @@ export class ChatsBase extends Block<ChatsProps> {
 
         ChatsBase.activeChatIdToDelete = chatId;
 
-        dropdown.open(target, contextMenu);
+        dropdown.openByTarget(target, contextMenu);
     }
 }
 
