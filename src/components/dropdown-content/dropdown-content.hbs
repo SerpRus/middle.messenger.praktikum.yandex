@@ -4,23 +4,43 @@
     <ul class="dropdown-content__list">
         {{#each dropdownActionsList}}
             <li class="dropdown-content__item">
-                {{#Action
-                    classes="dropdown-content__item-action"
-                    themaType="button"
-                    thema="button-transparent"
-                    onClick=action.onClick
-                }}
-                    {{{Icon
-                        classes="action__icon"
-                        size="22"
-                        rotate=icon.rotate
-                        name=icon.name
-                    }}}
+                {{#if action.modalId}}
+                    {{#PopupButton
+                        classes=action.classes
+                        themaType="button"
+                        thema="button-transparent"
+                        modalId=action.modalId
+                    }}
+                        {{{Icon
+                            classes="action__icon"
+                            size="22"
+                            rotate=icon.rotate
+                            name=icon.name
+                        }}}
 
-                    <span class="action__text">
-                        {{action.text}}
-                    </span>
-                {{/Action}}
+                        <span class="action__text">
+                            {{action.text}}
+                        </span>
+                    {{/PopupButton}}
+                {{else}}
+                    {{#Action
+                        classes=action.classes
+                        themaType="button"
+                        thema="button-transparent"
+                        onClick=action.onClick
+                    }}
+                        {{{Icon
+                            classes="action__icon"
+                            size="22"
+                            rotate=icon.rotate
+                            name=icon.name
+                        }}}
+
+                        <span class="action__text">
+                            {{action.text}}
+                        </span>
+                    {{/Action}}
+                {{/if}}
             </li>
         {{/each}}
     </ul>

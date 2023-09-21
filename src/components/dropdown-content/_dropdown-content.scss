@@ -30,6 +30,12 @@
 
         &-action {
             flex-grow: 1;
+
+            &--red-icon {
+                & .icon {
+                    color: $color-highlighted;
+                }
+            }
         }
     }
 

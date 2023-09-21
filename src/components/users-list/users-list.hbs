@@ -1,0 +1,8 @@
+<ul class="{{ classes }} users-list">
+    {{#each users}}
+        {{{AddUser
+            login=login
+            id=this.id
+        }}}
+    {{/each}}
+</ul>

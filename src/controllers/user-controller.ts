@@ -1,4 +1,4 @@
-import API, { UserApi, ProfileData } from '../api/user-api';
+import API, {UserApi, ProfileData, UsersResponse, SearchData} from '../api/user-api';
 import AuthController from '../controllers/auth-controller';
 import router from '../utils/router';
 import store from '../utils/store';
@@ -17,7 +17,6 @@ export class UserController {
             await AuthController.fetchUser();
 
             router.go('/settings');
-            // router.go('/messenger');
         } catch (e: any) {
             throw new Error(e.reason);
         }
@@ -32,6 +31,14 @@ export class UserController {
             const { avatar } = user;
 
             return avatar;
+        } catch (e: any) {
+            throw new Error(e.reason);
+        }
+    }
+
+    async search(data: SearchData): Promise<UsersResponse> {
+        try {
+            return await this.api.search(data);
         } catch (e: any) {
             throw new Error(e.reason);
         }

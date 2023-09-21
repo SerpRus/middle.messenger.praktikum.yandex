@@ -10,6 +10,10 @@
             &-info {
                 color: $color-brand;
             }
+
+            @include media-query(desktopmedium) {
+                margin-left: 0;
+            }
         }
 
         &__img {

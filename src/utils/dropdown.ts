@@ -3,6 +3,7 @@ import eventBus from "./event-bus";
 export class Dropdown {
     activeDropdown: HTMLElement | null = null;
     lastTarget: HTMLElement | null = null;
+    activeDropdownId: string | null = null;
 
     classes = {
         open: 'open',
@@ -18,6 +19,8 @@ export class Dropdown {
 
     private _openById = (data: Record<string, any>) => {
         const { target, id } = data;
+
+        this.activeDropdownId = id;
 
         const dropdown = document.querySelector(`#${id}`) as HTMLElement;
 
@@ -71,11 +74,11 @@ export class Dropdown {
     private _documentClickHandler = (e: Event) => {
         e.stopPropagation();
 
-        this.close();
+        this.close(e.target as HTMLElement);
     }
 
-    public close = () => {
-        if (!this.activeDropdown) {
+    public close = (target?: HTMLElement) => {
+        if (!this.activeDropdown || (this.activeDropdownId && target?.closest(`#${this.activeDropdownId}`))) {
             return;
         }
 
@@ -83,6 +86,7 @@ export class Dropdown {
 
         this.activeDropdown = null;
         this.lastTarget = null;
+        this.activeDropdownId = null;
 
         document.removeEventListener('click', this._documentClickHandler);
     }
