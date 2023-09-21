@@ -1,5 +1,5 @@
 .form {
-    &:not(&--no-styles) {
+    &--box {
         display: flex;
         flex-direction: column;
 

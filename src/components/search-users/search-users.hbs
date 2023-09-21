@@ -1,0 +1,19 @@
+<div class="search-users">
+    {{#if this.fieldId}}
+        {{{Formfield
+            classes="search-users__field"
+            id=this.fieldId
+            name=this.fieldName
+            type=this.fieldType
+            label=this.fieldLabel
+            value=this.fieldValue
+            ref=this.fieldRef
+            onInput=this.onSearch
+        }}}
+    {{/if}}
+
+    {{{UsersList
+        classes="search-users__users"
+        users=this.users
+    }}}
+</div>

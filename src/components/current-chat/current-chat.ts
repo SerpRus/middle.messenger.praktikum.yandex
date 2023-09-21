@@ -8,6 +8,7 @@ interface CurrentChatProps {
     chatName: string,
     chatAvatar: string,
     chat: Record<string, any>,
+    addUserPopup: Record<string, any>,
     onSendMessage: (e: Event) => void,
     onFocusinMessage: () => void,
     onFocusoutMessage: () => void,
@@ -35,13 +36,16 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
             chat: {
                 dropdownActionsList: [{
                     action: {
+                        classes: 'dropdown-content__item-action',
                         text: 'Добавить пользователя',
+                        modalId: 'addUser',
                     },
                     icon: {
                         name: 'cross-in-circle',
                     },
                 }, {
                     action: {
+                        classes: 'dropdown-content__item-action',
                         text: 'Удалить пользователя',
                     },
                     icon: {
@@ -93,6 +97,10 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
 }
 
 const withSelectedChatMessages = withStore(state => {
+    if (!state || !state.selectedChat || !state.user) {
+        return;
+    }
+
     const selectedChatId = state.selectedChat?.id;
     const userId = state.user.id;
 

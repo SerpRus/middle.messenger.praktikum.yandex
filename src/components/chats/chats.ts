@@ -15,6 +15,7 @@ interface ChatsProps {
     },
     deleChatActionsList: [{
         action: {
+            classes: string,
             text: string,
             onClick: () => void,
 
@@ -86,6 +87,7 @@ export class ChatsBase extends Block<ChatsProps> {
             },
             deleChatActionsList: [{
                 action: {
+                    classes: 'dropdown-content__item-action dropdown-content__item-action--red-icon',
                     text: 'Удалить чат',
                     onClick: async () => {
                         const deleteChatData: DeleteChat = {
@@ -137,7 +139,7 @@ const withUser = withStore((state) => {
                 onClick: () => {
                     ChatsController.selectChat(chat);
                 },
-                selected: chat.id === store.getState().selectedChat,
+                selected: chat.id === store.getState().selectedChat?.id,
             };
         })
     }

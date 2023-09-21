@@ -39,6 +39,11 @@ export interface DeletedChat {
     }
 }
 
+export interface AddUserData {
+    users: number[],
+    chatId: number,
+}
+
 export class ChatsAPI extends BaseAPI {
     constructor() {
         super('/chats');
@@ -60,6 +65,10 @@ export class ChatsAPI extends BaseAPI {
         const response = await this.http.post<{ token: string }>(`/token/${id}`);
 
         return response.token;
+    }
+
+    addUsers(data: AddUserData) {
+        return this.http.put('/users', data);
     }
 
     read = undefined;

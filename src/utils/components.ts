@@ -17,6 +17,10 @@ import PopupOverlay from '../components/popup-overlay';
 import Chats from '../components/chats';
 import CurrentChat from '../components/current-chat';
 import Message from '../components/message';
+import UsersList from '../components/users-list';
+import SearchUsersPopup from '../components/search-useers-popup';
+import SearchUsers from '../components/search-users';
+import AddUser from '../components/add-user';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -49,4 +53,8 @@ export default [
     CurrentChat,
     Message,
     DropdownButton,
+    UsersList,
+    SearchUsersPopup,
+    SearchUsers,
+    AddUser,
 ];
