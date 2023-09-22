@@ -7,11 +7,15 @@ interface ErrorBlockProps {
 }
 
 export default class ErrorBlock extends Block<ErrorBlockProps> {
-    static className = 'ErrorBlock';
+    static componentName = 'ErrorBlock';
 
     constructor(props: ErrorBlockProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

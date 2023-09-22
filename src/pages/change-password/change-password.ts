@@ -1,17 +1,16 @@
-import Block from '../../utils/block';
 import template from './change-password.hbs';
-import EventBus from "../../utils/event-bus";
-import {withStore} from "../../utils/store";
+import Block from '../../utils/block';
+import { withStore } from '../../utils/store';
 
 interface ChangePasswordProps {
     username: string,
     first_name: string,
     second_name: string,
     display_name: string,
+    avatar?: string,
     data: Record<string, any>,
     onSubmit: (e: Event) => void,
     onFocusout: (e: Event) => void,
-    eventBus?: EventBus,
 }
 
 export class ChangePasswordBase extends Block<ChangePasswordProps> {
@@ -25,6 +24,7 @@ export class ChangePasswordBase extends Block<ChangePasswordProps> {
                 isAvatarDisabled: true,
                 footerActionsClasses: 'profile__footer-actions--change-info',
                 username: displayName,
+                avatarSrc: (props.avatar) ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}` : null,
                 formfields: [
                     {
                         id: 'oldPassword',
@@ -61,7 +61,11 @@ export class ChangePasswordBase extends Block<ChangePasswordProps> {
                     },
                 ],
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }
 

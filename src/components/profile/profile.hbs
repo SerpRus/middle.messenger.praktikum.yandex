@@ -1,10 +1,9 @@
 {{#Form
-        isValidate=this.isValidate
-        eventBus=this.eventBus
-        onSubmit=this.onSubmit
-        onFocusout=this.onFocusout
-        classes="form--profile"
-        ref="form"
+    isValidate=this.isValidate
+    onSubmit=this.onSubmit
+    onFocusout=this.onFocusout
+    classes="form--profile"
+    ref="form"
 }}
     <header class="profile__header">
         {{{Avatar
@@ -16,8 +15,8 @@
             label="Поменять аватар"
             disabled=isAvatarDisabled
             avatarSrc=this.avatarSrc
-            eventBus=this.eventBus
             onInput=this.onInput
+            ref="avatar"
         }}}
 
         <div class="profile__name">
@@ -28,14 +27,14 @@
     <div class="profile__fields">
         {{#each formfields}}
             {{{Formfield
-                    classes="profile__fields-item"
-                    thema="edges-row"
-                    id=this.id
-                    name=this.name
-                    type=this.type
-                    label=this.label
-                    value=this.value
-                    disabled=this.disabled
+                classes="profile__fields-item"
+                thema="edges-row"
+                id=this.id
+                name=this.name
+                type=this.type
+                label=this.label
+                value=this.value
+                disabled=this.disabled
             }}}
         {{/each}}
     </div>

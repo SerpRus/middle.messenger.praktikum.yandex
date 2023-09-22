@@ -7,11 +7,15 @@ interface MainProps {
 }
 
 export default class Main extends Block<MainProps> {
-    static className = 'Main';
+    static componentName = 'Main';
 
     constructor(props: PropsType) {
         super({
             ...props
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

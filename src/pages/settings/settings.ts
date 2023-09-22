@@ -1,6 +1,5 @@
 import Block from '../../utils/block';
 import template from './settings.hbs';
-import EventBus from "../../utils/event-bus";
 import { withStore } from '../../utils/store';
 import AuthController from '../../controllers/auth-controller';
 
@@ -13,9 +12,9 @@ interface SettingsProps {
     second_name: string,
     display_name: string,
     phone: string,
+    avatar?: string,
     onSubmit: (e: Event) => void,
     onFocusout: (e: Event) => void,
-    eventBus?: EventBus,
     events: {
         click?: () => void,
     },
@@ -32,6 +31,7 @@ class SettingsBase extends Block<SettingsProps> {
             data: {
                 isAvatarDisabled: true,
                 username: displayName,
+                avatarSrc: (props.avatar) ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}` : null,
                 formfields: [
                     {
                         id: 'email',
@@ -99,7 +99,11 @@ class SettingsBase extends Block<SettingsProps> {
                     },
                 ],
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }
 

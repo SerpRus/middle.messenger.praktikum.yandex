@@ -10,6 +10,10 @@ export default class Error404 extends Block<Error404Props> {
     constructor(props: Error404Props) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

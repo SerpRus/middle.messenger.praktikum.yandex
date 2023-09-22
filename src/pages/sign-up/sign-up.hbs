@@ -1,8 +1,8 @@
 {{#Main classes="page__form-page form-page"}}
     {{#Form
+        classes="form--box"
         ref="form"
         isValidate=this.isValidate
-        eventBus=this.eventBus
         onSubmit=this.onSubmit
         onFocusout=this.onFocusout
     }}
@@ -36,9 +36,9 @@
                 }}}
 
                 {{{Link
-                        thema="link"
-                        href="/"
-                        text="Войти"
+                    thema="link"
+                    href="/"
+                    text="Войти"
                 }}}
             </div>
         </div>

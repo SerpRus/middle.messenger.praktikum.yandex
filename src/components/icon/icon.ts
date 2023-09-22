@@ -6,11 +6,15 @@ interface IconProps {
 }
 
 export default class Icon extends Block<IconProps> {
-    static className = 'Icon';
+    static componentName = 'Icon';
 
     constructor(props: IconProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

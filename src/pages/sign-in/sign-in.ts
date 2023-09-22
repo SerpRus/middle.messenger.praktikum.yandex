@@ -3,7 +3,7 @@ import template from './sign-in.hbs';
 import { SigninData } from '../../api/auth-api';
 import AuthController from '../../controllers/auth-controller';
 
-import EventBus from '../../utils/event-bus';
+import eventBus from '../../utils/event-bus';
 
 interface SignInProps {
     fields:  {
@@ -16,7 +16,6 @@ interface SignInProps {
     isValidate?: boolean,
     onSubmit?: (e: Event) => void,
     onFocusout?: (e: Event) => void,
-    eventBus?: EventBus,
 }
 
 export default class SignIn extends Block<SignInProps> {
@@ -55,9 +54,7 @@ export default class SignIn extends Block<SignInProps> {
                     console.log(`${value[0]}: '${value[1]}'`);
                 })
 
-                if (this.props.eventBus) {
-                    this.props.eventBus.emit('form-validate');
-                }
+                eventBus.emit('form-validate');
 
                 if (!this.refs.form.validate.isValidForm) {
                     return;
@@ -76,11 +73,12 @@ export default class SignIn extends Block<SignInProps> {
             onFocusout: (e: Event) => {
                 const target = e.target as EventTarget;
 
-                if (this.props.eventBus) {
-                    this.props.eventBus.emit('field-validate', target);
-                }
+                eventBus.emit('field-validate', target);
             },
-            eventBus: new EventBus(),
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

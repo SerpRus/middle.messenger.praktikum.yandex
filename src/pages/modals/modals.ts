@@ -5,6 +5,10 @@ import template from './modals.hbs';
 export default class ModalsPage extends Block<{}> {
     constructor() {
         super({
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

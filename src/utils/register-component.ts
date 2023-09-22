@@ -3,8 +3,14 @@ import Handlebars, { HelperOptions } from 'handlebars';
 import Block from './block';
 
 export default function registerComponent(Component: typeof Block) {
+    const { componentName } = Component;
+
+    if (componentName in Handlebars.helpers) {
+        throw `The ${componentName} component is already registered!`;
+    }
+
     Handlebars.registerHelper(
-        Component.className,
+        componentName,
         function (this: unknown, { hash, data, fn }: HelperOptions) {
             const component = new Component(hash);
             const dataAttribute = `data-id="${component.id}"`;

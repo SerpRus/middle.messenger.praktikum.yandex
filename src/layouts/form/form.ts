@@ -1,8 +1,8 @@
 import Block from '../../utils/block';
 import template from './form.hbs';
 
-import EventBus from '../../utils/event-bus';
-import Validate from '../../modules/validate';
+import eventBus from '../../utils/event-bus';
+import Validate from '../../utils/validate';
 
 interface FormProps {
     classes?: string,
@@ -13,12 +13,11 @@ interface FormProps {
         focusout?: () => void,
     },
     isValidate: boolean,
-    eventBus: EventBus,
     validate?: Validate
 }
 
 export default class Form extends Block<FormProps> {
-    static className = 'Form';
+    static componentName = 'Form';
 
     validate: Validate | null = null;
 
@@ -28,15 +27,26 @@ export default class Form extends Block<FormProps> {
             events: {
                 submit: props.onSubmit,
                 focusout: props.onFocusout,
-            }
-        }, template);
+            },
+        });
 
-        if (this.props.isValidate && this.props.eventBus) {
+        if (this.props.isValidate) {
             this.validate = new Validate(this.getElement() as HTMLFormElement);
 
-            this.props.eventBus.on('form-validate', this._onFormValidate);
-            this.props.eventBus.on('field-validate', this._onFieldValidate);
+            const listeners = Object.keys(eventBus.listeners);
+
+            if (!listeners.includes('form-validate')) {
+                eventBus.on('form-validate', this._onFormValidate);
+            }
+
+            if (!listeners.includes('field-validate')) {
+                eventBus.on('field-validate', this._onFieldValidate);
+            }
         }
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 
     private _onFormValidate = () => {

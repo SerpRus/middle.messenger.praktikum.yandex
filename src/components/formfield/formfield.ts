@@ -5,19 +5,25 @@ interface FormfieldProps {
     classes?: string,
     events?: {
         input?: (e: Event) => void;
+        focusin?: (e: Event) => void;
+        focusout?: (e: Event) => void;
     };
     onInput: (e: Event) => void;
 }
 
 export default class Formfield extends Block<FormfieldProps> {
-    static className = 'Formfield';
+    static componentName = 'Formfield';
 
     constructor(props: FormfieldProps) {
         super({
             ...props,
             events: {
-                input: props.onInput
+                input: props.onInput,
             },
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }

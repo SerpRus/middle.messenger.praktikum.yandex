@@ -13,6 +13,21 @@ export interface AvatarResponse {
     avatar: string,
 }
 
+export interface SearchData {
+    login: string,
+}
+
+export interface UsersResponse {
+    id: number,
+    first_name: string,
+    second_name: string,
+    display_name: string,
+    phone: string,
+    login: string,
+    avatar: string,
+    email: string,
+}
+
 export class UserApi extends BaseAPI {
     constructor() {
         super('/user');
@@ -24,6 +39,10 @@ export class UserApi extends BaseAPI {
 
     avatar(formData: FormData): Promise<AvatarResponse> {
         return this.http.put('/profile/avatar', formData);
+    }
+
+    search(data: SearchData): Promise<UsersResponse> {
+        return this.http.post('/search', data);
     }
 
     read = undefined;

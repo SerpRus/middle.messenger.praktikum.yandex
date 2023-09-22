@@ -1,0 +1,47 @@
+.dropdown-content {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+
+    visibility: hidden;
+
+    padding: rem(8);
+
+    transition: opacity $transition-default,
+                visibility $transition-default;
+
+    opacity: 0;
+    border-radius: $border-radius-block;
+    background-color: $color-bg-light;
+    box-shadow: $box-shadow-block;
+
+    &__list {
+        width: rem(194);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: rem(4);
+        }
+
+        &-action {
+            flex-grow: 1;
+
+            &--red-icon {
+                & .icon {
+                    color: $color-highlighted;
+                }
+            }
+        }
+    }
+
+    &.open {
+        visibility: visible;
+
+        opacity: 1;
+    }
+}

@@ -1,14 +1,16 @@
 .form {
-    display: flex;
-    flex-direction: column;
+    &--box {
+        display: flex;
+        flex-direction: column;
 
-    width: rem($size-form);
-    max-width: 100%;
-    min-height: rem(450);
-    padding: rem(50) rem(30) rem(30);
+        width: rem($size-form);
+        max-width: 100%;
+        min-height: rem(450);
+        padding: rem(50) rem(30) rem(30);
 
-    border-radius: $border-radius-block;
-    box-shadow: $box-shadow-block;
+        border-radius: $border-radius-block;
+        box-shadow: $box-shadow-block;
+    }
 
     &--profile {
         width: auto;

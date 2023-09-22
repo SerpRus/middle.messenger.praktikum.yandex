@@ -1,0 +1,95 @@
+<div class="{{classes}} current-chat">
+    {{#if selectedChat}}
+        <div class="current-chat__chat">
+            <header class="current-chat__chat-header">
+                {{{User
+                    classes="current-chat__chat-user"
+                    imgSrc=chatAvatar
+                    name=chatName
+                }}}
+
+                {{#DropdownButton
+                    themaType="button"
+                    thema="button-dots"
+                    classes="current-chat__dropdown-button"
+                    dropdownId="editChatUsers"
+                }}
+                    <span class="action__icon"></span>
+                {{/DropdownButton}}
+            </header>
+
+            <div class="current-chat__chat-content chat-content">
+                {{#each messages}}
+                    {{{Message
+                        classes="chat-content__item"
+                        isMine=this.isMine
+                        content=this.content
+                        time=this.time
+                    }}}
+                {{/each}}
+            </div>
+
+            <footer class="current-chat__footer">
+                {{#Form
+                    onSubmit=this.onSendMessage
+                    classes="form--no-styles current-chat__footer-form"
+                    ref="form"
+                }}
+                    {{#Dropdown
+                        classes="current-chat__footer-chat-dropdown-wrapper"
+                    }}
+                        {{#Action
+                            thema="button-transparent-icon"
+                        }}
+                            {{{Icon
+                                classes="chat-content__message-check-icon"
+                                size="32"
+                                name="clip"
+                            }}}
+                        {{/Action}}
+
+                        <div class="dropdown__content" style="top: unset; right: unset; bottom: calc(100% + 22px); left: -10px">
+                            {{{DropdownActionsList
+                                dropdownActionsList=chat.footerDropdownActionsList
+                            }}}
+                        </div>
+                    {{/Dropdown}}
+
+                    {{{Formfield
+                        classes="current-chat__footer-message-field"
+                        id="message"
+                        name="message"
+                        type="text"
+                        thema="filled-2"
+                        placeholder="Сообщение"
+                        ref="message"
+                    }}}
+
+                    {{#Action
+                        themaType="button"
+                        thema="button-circle-icon"
+                        type="submit"
+                        onClick=onSendMessage
+                    }}
+                        {{{Icon
+                            classes="chat-content__message-check-icon"
+                            size="13-12"
+                            name="arrow-right-2"
+                        }}}
+                    {{/Action}}
+                {{/Form}}
+            </footer>
+        </div>
+
+        {{{DropdownContent
+            id="editChatUsers"
+            dropdownActionsList=chat.dropdownActionsList
+        }}}
+    {{else}}
+        <div class="current-chat__chat messenger__chat--no-selected-chat">
+            <div class="messenger__chat-message">
+                Выберите чат чтобы отправить сообщение
+            </div>
+        </div>
+    {{/if}}
+</div>

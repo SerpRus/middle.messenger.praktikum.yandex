@@ -6,11 +6,15 @@ interface AsidePanelProps {
 }
 
 export default class AsidePanel extends Block<AsidePanelProps> {
-    static className = 'AsidePanel';
+    static componentName = 'AsidePanel';
 
     constructor(props: AsidePanelProps) {
         super({
             ...props,
-        }, template);
+        });
+    }
+
+    render() {
+        return this.compile(template, this.props);
     }
 }
