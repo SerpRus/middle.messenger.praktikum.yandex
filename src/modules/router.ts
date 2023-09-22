@@ -1,13 +1,14 @@
-import RouteType from '../types/route';
+import ErrorPage from '../pages/error-page';
+import Template from './template';
 
-import errorPage from '../templates/error-page/error-page.hbs';
+import Block from '../utils/block';
 
-import Template from './template.ts';
+import { RouteType, PropsType } from '../types';
 
 export default class Router {
     $root: HTMLElement | null;
 
-    routes: RouteType = {};
+    routes: Record<string, RouteType> = {};
 
     pageHistory: string[] = [];
 
@@ -34,10 +35,9 @@ export default class Router {
     linkClickHandler = (e: Event) => {
         e.preventDefault();
 
-        const currentPath = location.pathname;
+        const currentPath = window.location.pathname;
 
         this.pageHistory.push(currentPath);
-
 
         const $target = e.currentTarget as HTMLLinkElement;
 
@@ -55,9 +55,9 @@ export default class Router {
         this.pageHistory.pop();
 
         this.render(path);
-    }
+    };
 
-    render(path: string, props?: object) {
+    render(path: string, props?: PropsType) {
         if (!this.$root) {
             return;
         }
@@ -65,22 +65,19 @@ export default class Router {
         const route = this.routes[path];
 
         if (!route) {
-            new Template(errorPage, this.$root, {
-                code: '404',
-                description: 'Не туда попали',
-                link: {
-                    href: '/chats',
-                    text: 'Назад к чатам',
-                },
-            });
+            new Template(
+                ErrorPage as typeof Block,
+                this.$root,
+                {
+                    code: '404',
+                    description: 'Не туда попали'
+                } as PropsType
+            );
         } else {
             const { page } = route;
+            const currentProps = (props) || route.props as PropsType;
 
-            if (!props) {
-                props = route.props;
-            }
-
-            new Template(page, this.$root, props);
+            new Template(page, this.$root, currentProps);
         }
 
         this.initHandlers();

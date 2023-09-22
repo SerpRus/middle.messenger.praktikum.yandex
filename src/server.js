@@ -1,16 +1,16 @@
-import express from 'express';
 import path from 'path';
+import express from 'express';
 
 const app = express();
-const PORT = 3000;
-const __dirname = path.resolve();
+const PORT = process.env.PORT || 3000;
+const dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(dirname, 'dist')));
 
-app.get('*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(dirname, 'dist', 'index.html'));
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}! Link: http://localhost:3000/`);
 });

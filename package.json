@@ -7,20 +7,33 @@
     "node": "18.8.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run sl && vite",
+    "sl": "npx stylelint \"**/*.scss\" --fix",
     "build": "tsc && vite build",
     "start": "npm run build && node src/server.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.46.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "sass": "^1.64.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.5",
+    "vite-plugin-checker": "^0.6.1"
   },
   "dependencies": {
     "express": "^4.18.2",
     "handlebars": "^4.7.7",
+    "nanoid": "^4.0.2",
     "vite-plugin-clean": "^1.0.0",
     "vite-plugin-handlebars": "^1.6.0"
   }

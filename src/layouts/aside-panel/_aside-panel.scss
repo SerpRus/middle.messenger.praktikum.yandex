@@ -9,17 +9,15 @@
 
     &__header {
         margin: 0 rem(10);
+
+        &:not(:last-child) {
+            margin-bottom: rem(14);
+        }
     }
 
     &__link {
         &:not(:last-child) {
             margin-bottom: rem(22);
-        }
-    }
-
-    &__search {
-        &:not(:last-child) {
-            margin-bottom: rem(14);
         }
     }
 

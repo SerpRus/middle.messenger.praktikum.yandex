@@ -1,0 +1,45 @@
+{{#Main classes="page__form-page form-page"}}
+    {{#Form
+        ref="form"
+        isValidate=this.isValidate
+        eventBus=this.eventBus
+        onSubmit=this.onSubmit
+        onFocusout=this.onFocusout
+    }}
+        <div class="form__wrapper">
+            <h1 class="form__title">
+                Вход
+            </h1>
+
+            <div class="form__fileds">
+                {{#each fields}}
+                    {{{Formfield
+                        classes=this.classes
+                        id=this.id
+                        name=this.name
+                        type=this.type
+                        label=this.label
+                        error=this.error
+                    }}}
+                {{/each}}
+            </div>
+
+            <div class="form__actions">
+                {{{Action
+                    classes="form__actions-item"
+                    themaType="button"
+                    thema="button-brand"
+                    text="Войти"
+                    type="submit"
+                    onClick=submitOnClick
+                }}}
+
+                {{{Action
+                    thema="link"
+                    href="/sign-up"
+                    text="Нет аккаунта?"
+                }}}
+            </div>
+        </div>
+    {{/Form}}
+{{/Main}}

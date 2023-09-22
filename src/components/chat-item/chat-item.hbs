@@ -1,11 +1,15 @@
 <article class="{{classes}}
                 chat-item
-                {{#if selected}}chat-item--selected{{thema}}{{/if}}"
+                {{#if selected}}chat-item--selected{{/if}}"
 >
     <div class="chat-item__wrapper">
-        {{> user
+        {{{User
             classes="chat-item__user"
-        }}
+            imgSrc=userImgSrc
+            imgAlt=userImgAlt
+            name=userName
+            lastMessage=userLastMessage
+        }}}
 
         <div class="chat-item__info">
             <time class="chat-item__date">

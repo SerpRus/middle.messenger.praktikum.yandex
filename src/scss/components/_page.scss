@@ -1,4 +1,6 @@
 .page {
+    $root: &;
+
     display: flex;
     flex-direction: column;
 
@@ -26,9 +28,10 @@
 
         & .modal {
             position: static;
-            transform: translate(0, 0);
 
             height: auto;
+
+            transform: translate(0, 0);
 
             &:not(:last-child) {
                 margin-bottom: rem(16);
@@ -42,5 +45,11 @@
                 transform: translate(0, 0);
             }
         }
+    }
+
+    #{$root} &__form-page {
+        align-items: flex-start;
+
+        padding-top: rem(100);
     }
 }
