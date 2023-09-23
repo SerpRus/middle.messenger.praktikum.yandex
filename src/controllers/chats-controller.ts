@@ -1,4 +1,4 @@
-import API, { AddUserData, CreateChat, DeleteChat, ChatsAPI } from '../api/chats-api';
+import API, { UsersData, CreateChat, DeleteChat, ChatsAPI, UserType } from '../api/chats-api';
 import store from '../utils/store';
 import { StringIndexed } from '../utils/helpers/queryStringify';
 import MessagesController from './messages-controller';
@@ -27,12 +27,12 @@ export class ChatsController {
             chats.map(async (chat) => {
                 const token = await this.getToken(chat.id);
 
-                await MessagesController.connect(chat.id, token);
+                await MessagesController.connect(chat.id, token as string);
             });
 
             store.set('chats', chats);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
@@ -40,7 +40,7 @@ export class ChatsController {
         try {
             await this.api.create(data);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
@@ -48,30 +48,56 @@ export class ChatsController {
         try {
             await this.api.deleteChat(data);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
-    getToken(id: number) {
+    getToken(id: number): Promise<string> | void {
         try {
             return this.api.getToken(id);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason);
         }
     }
 
-    async addUsers (data: AddUserData) {
+    async addUsers(data: UsersData) {
         try {
             await this.api.addUsers(data);
 
+            await this.getUsers(data.chatId);
+
             ModalUtil.close();
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
     selectChat(chat: ChatType) {
         store.set('selectedChat', chat);
+    }
+
+    async getUsers(id: number) {
+        try {
+            let users: UserType[] = await this.api.getUsers(id);
+
+            users = users.filter((user: any) => user.id !== store.getState().user.id);
+
+            store.set('chatUsers', users);
+        } catch (e: any) {
+            console.error(e.reason)
+        }
+    }
+
+    async deleteUsers(data: UsersData) {
+        try {
+            await this.api.deleteUsers(data);
+
+            await this.getUsers(data.chatId);
+
+            ModalUtil.close();
+        } catch (e: any) {
+            console.error(e.reason);
+        }
     }
 }
 

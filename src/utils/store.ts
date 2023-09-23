@@ -5,14 +5,15 @@ import { User } from '../api/auth-api';
 import { Chats } from '../api/chats-api';
 
 export enum StoreEvents {
-    Updated = 'updated'
+    Updated = 'updated',
 }
 
 interface State {
-    user: User;
-    chats: Chats[];
-    selectedChat?: Record<string, any>;
-    messages?: any;
+    user: User,
+    chats: Chats[],
+    selectedChat?: Record<string, any>,
+    messages?: any,
+    chatUsers?: any,
 }
 
 export class Store extends EventBus {

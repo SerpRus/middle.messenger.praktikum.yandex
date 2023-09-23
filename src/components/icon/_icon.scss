@@ -61,4 +61,8 @@
             transform: rotate(180deg);
         }
     }
+
+    &#{&}--highlighted {
+        color: $color-highlighted;
+    }
 }

@@ -34,12 +34,14 @@
             {{/if}}
         </div>
 
-        {{{Action
-            classes="modal__action"
-            themaType=this.actionThemaType
-            thema=this.actionThema
-            text=this.actionText
-            onClick=this.actionOnClick
-        }}}
+        {{#if this.actionText}}
+            {{{Action
+                classes="modal__action"
+                themaType=this.actionThemaType
+                thema=this.actionThema
+                text=this.actionText
+                onClick=this.actionOnClick
+            }}}
+        {{/if}}
     </div>
 {{/Modal}}

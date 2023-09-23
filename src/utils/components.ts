@@ -18,9 +18,11 @@ import Chats from '../components/chats';
 import CurrentChat from '../components/current-chat';
 import Message from '../components/message';
 import UsersList from '../components/users-list';
-import SearchUsersPopup from '../components/search-useers-popup';
+import { AddUsersList } from '../components/users-list/users-list';
+import SearchUsersPopup from '../components/search-users-popup';
 import SearchUsers from '../components/search-users';
-import AddUser from '../components/add-user';
+import TextWithAction from '../components/text-with-action';
+import DeleteUsersPopup from '../components/delete-users-popup';
 
 import Main from '../layouts/main';
 import Form from '../layouts/form';
@@ -56,5 +58,7 @@ export default [
     UsersList,
     SearchUsersPopup,
     SearchUsers,
-    AddUser,
+    TextWithAction,
+    DeleteUsersPopup,
+    AddUsersList,
 ];

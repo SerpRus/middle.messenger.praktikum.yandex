@@ -47,10 +47,12 @@ export class CurrentChatBase extends Block<CurrentChatProps> {
                     action: {
                         classes: 'dropdown-content__item-action',
                         text: 'Удалить пользователя',
+                        modalId: 'deleteUser',
                     },
                     icon: {
                         rotate: '45',
                         name: 'cross-in-circle',
+                        theme: 'highlighted',
                     },
                 }],
                 footerDropdownActionsList: [{
@@ -130,7 +132,7 @@ const withSelectedChatMessages = withStore(state => {
     return {
         chatName: state.selectedChat?.title,
         messages: messages || [],
-        selectedChat: state.selectedChat?.id,
+        selectedChat: selectedChatId,
         userId: state.user.id
     };
 });
