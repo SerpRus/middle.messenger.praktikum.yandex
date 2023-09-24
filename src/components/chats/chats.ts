@@ -136,8 +136,12 @@ const withUser = withStore((state) => {
         chats: state.chats.map((chat) => {
             return {
                 ...chat,
-                onClick: () => {
+                onClick: async () => {
                     ChatsController.selectChat(chat);
+
+                    await ChatsController.getUsers(chat.id);
+
+                    eventBus.emit('getChatUsers');
                 },
                 selected: chat.id === store.getState().selectedChat?.id,
             };

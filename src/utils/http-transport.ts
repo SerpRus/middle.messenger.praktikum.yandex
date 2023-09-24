@@ -1,4 +1,6 @@
-import queryStringify, { StringIndexed } from './helpers/queryStringify';
+import queryStringify from './helpers/queryStringify';
+
+type HTTPMethod = <R=unknown>(url: string, options?: unknown) => Promise<R>
 
 export enum Method {
     Get = 'Get',
@@ -21,35 +23,35 @@ export default class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get<Response>(path = '/', data?: StringIndexed): Promise<Response> {
+    public get: HTTPMethod = (path = '/', data) => {
         const query = (data) ? queryStringify(data) : '';
 
-        return this.request<Response>(`${this.endpoint}${path}?${query}`);
+        return this.request(`${this.endpoint}${path}?${query}`);
     }
 
-    public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-        return this.request<Response>(`${this.endpoint}${path}`, {
+    public post: HTTPMethod = (path: string, data?: unknown) => {
+        return this.request(`${this.endpoint}${path}`, {
             method: Method.Post,
             data,
         });
     }
 
-    public put<Response = void>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(`${this.endpoint}${path}`, {
+    public put: HTTPMethod = (path: string, data: unknown) => {
+        return this.request(`${this.endpoint}${path}`, {
             method: Method.Put,
             data,
         });
     }
 
-    public patch<Response = void>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(`${this.endpoint}${path}`, {
+    public patch: HTTPMethod = (path: string, data: unknown) => {
+        return this.request(`${this.endpoint}${path}`, {
             method: Method.Patch,
             data,
         });
     }
 
-    public delete<Response>(path: string, data?: unknown): Promise<Response> {
-        return this.request<Response>(`${this.endpoint}${path}`, {
+    public delete: HTTPMethod = (path: string, data?: unknown) => {
+        return this.request(`${this.endpoint}${path}`, {
             method: Method.Delete,
             data
         });

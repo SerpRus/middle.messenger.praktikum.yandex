@@ -39,9 +39,19 @@ export interface DeletedChat {
     }
 }
 
-export interface AddUserData {
+export interface UsersData {
     users: number[],
     chatId: number,
+}
+
+export type UserType = {
+    id: number,
+    first_name: string,
+    second_name: string,
+    display_name: string,
+    login: string,
+    avatar: string,
+    role: string,
 }
 
 export class ChatsAPI extends BaseAPI {
@@ -67,8 +77,16 @@ export class ChatsAPI extends BaseAPI {
         return response.token;
     }
 
-    addUsers(data: AddUserData) {
+    addUsers(data: UsersData) {
         return this.http.put('/users', data);
+    }
+
+    getUsers(id: number): Promise<UserType[]> {
+        return this.http.get(`/${id}/users`);
+    }
+
+    deleteUsers(data: UsersData) {
+        return this.http.delete('/users', data);
     }
 
     read = undefined;

@@ -18,7 +18,10 @@ export default class Messenger extends Block<MessengerProps> {
                     label: 'Логин пользователя',
                     ref: 'newUserName',
                 },
-                ref: 'addUserPopup',
+            },
+            deleteUsersPopup: {
+                id: 'deleteUser',
+                title: 'Удалить пользователей',
             },
         });
     }

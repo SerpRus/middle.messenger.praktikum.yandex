@@ -38,7 +38,7 @@ class MessagesController {
             this.subscribe(wsTransport, id);
             this.fetchOldMessages(id);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
@@ -85,7 +85,7 @@ class MessagesController {
 
             store.set(`messages.${id}`, messagesToAdd);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
@@ -93,7 +93,7 @@ class MessagesController {
         try {
             this.sockets.delete(id);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 

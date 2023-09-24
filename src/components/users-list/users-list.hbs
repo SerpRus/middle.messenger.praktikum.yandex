@@ -1,8 +1,11 @@
 <ul class="{{ classes }} users-list">
     {{#each users}}
-        {{{AddUser
+        {{{TextWithAction
             login=login
             id=this.id
+            iconName=../iconName
+            iconTheme=../iconTheme
+            eventBusName=../eventBusName
         }}}
     {{/each}}
 </ul>

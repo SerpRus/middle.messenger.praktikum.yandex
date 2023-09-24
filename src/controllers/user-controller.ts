@@ -18,11 +18,11 @@ export class UserController {
 
             router.go('/settings');
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
-    async avatar(formData: FormData): Promise<string> {
+    async avatar(formData: FormData): Promise<string | void> {
         try {
             const user = await this.api.avatar(formData);
 
@@ -32,15 +32,15 @@ export class UserController {
 
             return avatar;
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 
-    async search(data: SearchData): Promise<UsersResponse> {
+    async search(data: SearchData): Promise<UsersResponse | void> {
         try {
             return await this.api.search(data);
         } catch (e: any) {
-            throw new Error(e.reason);
+            console.error(e.reason)
         }
     }
 }
