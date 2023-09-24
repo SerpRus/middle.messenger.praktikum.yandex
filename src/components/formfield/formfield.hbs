@@ -1,15 +1,19 @@
 <div class="{{classes}}
             formfield
-            {{#if thema}}formfield--{{thema}}{{/if}}"
+            {{#if thema}}formfield--{{thema}}{{/if}}
+            {{#if disabled}}formfield--disabled{{/if}}"
 >
-    <input id="{{id}}"
-           class="formfield__element"
-           name="{{name}}"
-           type="{{type}}"
-           {{#if value}}value="{{value}}"{{/if}}
-           placeholder="{{placeholder}}"
-           {{#if disabled}}disabled{{/if}}
-    >
+    {{{Input
+        id=id
+        classes="formfield__element"
+        name=name
+        type=type
+        value=value
+        placeholder=placeholder
+        disabled=disabled
+        ref="input"
+    }}}
+
     <label for="{{id}}"
            class="formfield__label"
     >
@@ -27,8 +31,4 @@
             </span>
         {{/if}}
     </label>
-
-    <div class="formfield__error">
-        {{error}}
-    </div>
 </div>

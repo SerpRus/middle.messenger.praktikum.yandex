@@ -8,17 +8,23 @@
 @import '/components/chat-item/chat-item';
 @import '/components/dropdown/dropdown';
 @import '/components/user/user';
-@import '/components/dropdown-actions-list/dropdown-actions-list';
-@import '/layouts/modal/modal';
+@import '/components/dropdown-content/dropdown-content';
+@import '/components/error-block/error-block';
+@import '/components/profile/profile';
+@import '/components/avatar/avatar';
+@import '/components/current-chat/current-chat';
+@import '/components/chats/chats';
+@import '/components/message/message';
+@import '/components/search-users/search-users';
+@import '/components/users-list/users-list';
+@import '/components/text-with-action/text-with-action';
 
 /* layouts */
 @import '/layouts/main/main';
 @import '/layouts/aside-panel/aside-panel';
 @import '/layouts/form/form';
+@import '/layouts/modal/modal';
 
 /* templates */
-@import '/pages/error-page/error-page';
-@import '/pages/chat-page/chat-page';
-@import '/pages/site-map/site-map';
-@import '/pages/profile/profile';
+@import '/pages/messenger/messenger';
 

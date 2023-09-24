@@ -1,0 +1,8 @@
+.avatar {
+    &__img {
+        border-radius: 50%;
+
+        @include position-stretching;
+        @include object-fit(cover);
+    }
+}

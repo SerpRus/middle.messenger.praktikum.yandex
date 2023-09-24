@@ -132,7 +132,6 @@
             width: rem(122);
             margin: 0 auto;
 
-            cursor: pointer;
             text-decoration: underline;
 
             color: $color-brand;
@@ -154,13 +153,19 @@
         border-radius: 50%;
         background-color: $color-bg-inout-filled;
 
-        &:hover {
-            & #{$root}__label-text {
-                display: block;
+        &:not(#{$root}--disabled) {
+            &:hover {
+                & #{$root}__label-text {
+                    display: block;
 
-                opacity: 0.5;
+                    opacity: 0.5;
 
-                background-color: #000;
+                    background-color: #000;
+                }
+            }
+
+            #{$root}__label {
+                cursor: pointer;
             }
         }
     }
@@ -178,8 +183,6 @@
 
                 width: 100%;
                 height: 100%;
-
-                cursor: pointer;
             }
         }
 
@@ -229,6 +232,7 @@
 
     &__label {
         position: absolute;
+        z-index: 1;
         top: rem(8);
         left: 0;
 

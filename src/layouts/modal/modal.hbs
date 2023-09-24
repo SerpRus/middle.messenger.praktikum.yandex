@@ -1,11 +1,6 @@
-<div id="{{modalId}}"
-     class="{{classes}}
-     modal
-     {{#if thema}}modal--{{thema}}{{/if}}"
-     {{#each attributes}}
-        {{this.key}}="{{this.value}}"
-     {{/each}}
+<div id="{{id}}"
+     class="{{classes}} modal"
 >
-    <div class="modal__overlay"></div>
+   {{{PopupOverlay ref="overlay" onClick=onOverlayCLick}}}
 
 </div>

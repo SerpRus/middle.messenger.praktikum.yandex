@@ -13,3 +13,7 @@ export type RouteType = {
     page: typeof Block,
     props?: PropsType,
 };
+
+export type Indexed<T = unknown> = {
+    [key in string]: T;
+};

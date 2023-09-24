@@ -1,0 +1,24 @@
+{{#Main classes="messenger"}}
+    {{{Chats classes="messenger__aside"}}}
+
+    {{{CurrentChat classes="messenger__current-chat"}}}
+
+    {{{SearchUsersPopup
+        id=this.addUserPopup.id
+        classes=this.addUserPopup.classes
+        title=this.addUserPopup.title
+        fieldId=this.addUserPopup.field.id
+        fieldName=this.addUserPopup.field.name
+        fieldType=this.addUserPopup.field.type
+        fieldLabel=this.addUserPopup.field.label
+        fieldValue=this.addUserPopup.field.value
+        fieldRef=this.addUserPopup.field.ref
+        fieldOnInput=this.addUserPopup.field.onSearch
+    }}}
+
+    {{{DeleteUsersPopup
+        id=this.deleteUsersPopup.id
+        classes=this.deleteUsersPopup.classes
+        title=this.deleteUsersPopup.title
+    }}}
+{{/Main}}

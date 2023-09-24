@@ -1,7 +1,7 @@
 type CallbackType = (...args: any[]) => void;
 
-export default class EventBus {
-    private readonly listeners: {
+export class EventBus {
+    public readonly listeners: {
         [key: string]: CallbackType[],
     } = {};
 
@@ -23,7 +23,7 @@ export default class EventBus {
         );
     }
 
-    emit(event: string, ...args: { [key: string]: any }[]) {
+    emit(event: string, ...args: { [key: string]: any }[] | string[]) {
         if (!this.listeners[event]) {
             return;
         }
@@ -33,3 +33,5 @@ export default class EventBus {
         });
     }
 }
+
+export default new EventBus();

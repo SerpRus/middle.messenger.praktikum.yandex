@@ -1,8 +1,8 @@
 {{#Main classes="page__form-page form-page"}}
     {{#Form
+        classes="form--box"
         ref="form"
         isValidate=this.isValidate
-        eventBus=this.eventBus
         onSubmit=this.onSubmit
         onFocusout=this.onFocusout
     }}
@@ -34,9 +34,9 @@
                     onClick=submitOnClick
                 }}}
 
-                {{{Action
+                {{{Link
                     thema="link"
-                    href="/sign-up"
+                    href="/register"
                     text="Нет аккаунта?"
                 }}}
             </div>

@@ -1,0 +1,70 @@
+{{#Form
+    isValidate=this.isValidate
+    onSubmit=this.onSubmit
+    onFocusout=this.onFocusout
+    classes="form--profile"
+    ref="form"
+}}
+    <header class="profile__header">
+        {{{Avatar
+            id="avatar"
+            name="avatar"
+            thema="button-big-circle-icon"
+            type="file"
+            classes="avatar profile__change-img-button"
+            label="Поменять аватар"
+            disabled=isAvatarDisabled
+            avatarSrc=this.avatarSrc
+            onInput=this.onInput
+            ref="avatar"
+        }}}
+
+        <div class="profile__name">
+            {{username}}
+        </div>
+    </header>
+
+    <div class="profile__fields">
+        {{#each formfields}}
+            {{{Formfield
+                classes="profile__fields-item"
+                thema="edges-row"
+                id=this.id
+                name=this.name
+                type=this.type
+                label=this.label
+                value=this.value
+                disabled=this.disabled
+            }}}
+        {{/each}}
+    </div>
+
+    <footer class="profile__footer">
+        <ul class="profile__footer-actions {{footerActionsClasses}}">
+            {{#each footerActions}}
+                <li class="profile__footer-actions-item">
+                    {{#if this.href}}
+                        {{{Link
+                            text=this.text
+                            themaType=this.themaType
+                            thema=this.thema
+                            href=this.href
+                            ref=this.ref
+                            onClick=this.onClick
+                        }}}
+                    {{else}}
+                        {{{Action
+                            text=this.text
+                            themaType=this.themaType
+                            thema=this.thema
+                            href=this.href
+                            ref=this.ref
+                            type=this.type
+                            onClick=this.onClick
+                        }}}
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </footer>
+{{/Form}}

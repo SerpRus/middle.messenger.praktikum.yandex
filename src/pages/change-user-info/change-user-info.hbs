@@ -1,0 +1,57 @@
+{{#Main
+    classes="profile"
+}}
+    <div class="profile__wrapper">
+        {{#Link
+            classes="profile__back-link"
+            thema="full-height-with-icon"
+            href="/messenger"
+        }}
+            {{{Icon
+                classes="action__icon"
+                size="13-12"
+                rotate="180"
+                name="arrow-right-2"
+            }}}
+        {{/Link}}
+
+        <div class="profile__content-wrapper">
+            <div class="profile__content">
+                {{{Profile
+                    data=this.data
+                    isChangeUserInfo=true
+                }}}
+            </div>
+        </div>
+    </div>
+
+    {{#if modalOpen}}
+        {{#Modal
+            classes="open"
+        }}
+            <div class="modal__content">
+                <h2 class="modal__title">
+                    Загрузите файл
+                </h2>
+
+                <div class="modal__content-inner">
+                    {{{Formfield
+                        id="file"
+                        name="file"
+                        classes="modal__field modal__field--file"
+                        thema="file"
+                        type="file"
+                        label="Выбрать файл на компьютере"
+                    }}}
+                </div>
+
+                {{{Action
+                    classes="modal__action"
+                    themaType="button"
+                    thema="button-brand"
+                    text="Поменять"
+                }}}
+            </div>
+        {{/Modal}}
+    {{/if}}
+{{/Main}}

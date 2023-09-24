@@ -1,0 +1,17 @@
+<li class="text-with-action">
+    {{ login }}
+
+    {{#Action
+        classes="text-with-action__action"
+        themaType="button"
+        thema="button-transparent"
+        onClick=onClick
+    }}
+        {{{Icon
+            classes="text-with-action__action-icon"
+            size="22"
+            name=iconName
+            theme=iconTheme
+        }}}
+    {{/Action}}
+</li>

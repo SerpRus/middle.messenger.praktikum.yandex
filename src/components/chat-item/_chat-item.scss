@@ -8,6 +8,8 @@
     &--selected & {
         &__wrapper {
             margin: rem(1) 0;
+            padding-top: rem(11);
+            padding-bottom: rem(11);
 
             background-color: $color-bg-user-message;
         }

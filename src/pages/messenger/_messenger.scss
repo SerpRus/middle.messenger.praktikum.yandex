@@ -1,0 +1,16 @@
+.messenger {
+    display: flex;
+
+    &__aside {
+        flex-shrink: 0;
+
+        width: rem(310);
+        height: 100%;
+    }
+
+    &__current-chat {
+        flex-grow: 1;
+
+        height: 100%;
+    }
+}
