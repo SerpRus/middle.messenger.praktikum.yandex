@@ -82,7 +82,7 @@ export default class SignUp extends Block<SignInProps> {
 
                 values.forEach((value) => {
                     console.log(`${value[0]}: '${value[1]}'`);
-                })
+                });
 
                 eventBus.emit('form-validate');
 

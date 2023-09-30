@@ -1,6 +1,6 @@
-import queryStringify from './helpers/queryStringify';
+import queryStringify from './helpers/queryStringify.ts';
 
-type HTTPMethod = <R=unknown>(url: string, options?: unknown) => Promise<R>
+type HTTPMethod = <R=unknown>(url: string, options?: unknown) => Promise<R>;
 
 export enum Method {
     Get = 'Get',
@@ -17,48 +17,51 @@ type Options = {
 
 export default class HTTPTransport {
     static API_URL = 'https://ya-praktikum.tech/api/v2';
+
     protected endpoint: string;
 
     constructor(endpoint: string) {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get: HTTPMethod = (path = '/', data) => {
+    public get: HTTPMethod = (path, data) => {
         const query = (data) ? queryStringify(data) : '';
 
         return this.request(`${this.endpoint}${path}?${query}`);
-    }
+    };
 
     public post: HTTPMethod = (path: string, data?: unknown) => {
         return this.request(`${this.endpoint}${path}`, {
             method: Method.Post,
             data,
         });
-    }
+    };
 
     public put: HTTPMethod = (path: string, data: unknown) => {
         return this.request(`${this.endpoint}${path}`, {
             method: Method.Put,
             data,
         });
-    }
+    };
 
     public patch: HTTPMethod = (path: string, data: unknown) => {
         return this.request(`${this.endpoint}${path}`, {
             method: Method.Patch,
             data,
         });
-    }
+    };
 
     public delete: HTTPMethod = (path: string, data?: unknown) => {
         return this.request(`${this.endpoint}${path}`, {
             method: Method.Delete,
             data
         });
-    }
+    };
 
-    private request<Response>(url: string, options: Options = {method: Method.Get}): Promise<Response> {
-        const {method, data} = options;
+    private request<Response>(url: string, options: Options = {
+        method: Method.Get
+    }): Promise<Response> {
+        const { method, data } = options;
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
@@ -74,9 +77,9 @@ export default class HTTPTransport {
                 }
             };
 
-            xhr.onabort = () => reject({reason: 'abort'});
-            xhr.onerror = () => reject({reason: 'network error'});
-            xhr.ontimeout = () => reject({reason: 'timeout'});
+            xhr.onabort = () => reject({ reason: 'abort' });
+            xhr.onerror = () => reject({ reason: 'network error' });
+            xhr.ontimeout = () => reject({ reason: 'timeout' });
 
             if (!(data instanceof FormData)) {
                 xhr.setRequestHeader('Content-Type', 'application/json');

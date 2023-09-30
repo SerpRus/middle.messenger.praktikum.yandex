@@ -324,7 +324,7 @@ export default class Validate {
             if (error) {
                 this.isValidForm = false;
             }
-        })
+        });
     }
 
     get form() {

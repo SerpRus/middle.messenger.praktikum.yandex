@@ -15,6 +15,9 @@ export default defineConfig({
         cleanPlugin(),
         checker({
             typescript: true,
+            eslint: {
+                lintCommand: 'eslint "**/*.ts"',
+            },
         }),
     ],
     css: {

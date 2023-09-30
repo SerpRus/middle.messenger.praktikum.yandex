@@ -13,7 +13,7 @@ interface DeleteUsersPopupProps {
 
 type ChatId = {
     userId: number,
-}
+};
 
 export class DeleteUsersPopupBase extends Block<DeleteUsersPopupProps> {
     static componentName = 'DeleteUsersPopup';
@@ -42,16 +42,16 @@ export class DeleteUsersPopupBase extends Block<DeleteUsersPopupProps> {
                 userId
             ],
             chatId: selectedChatId,
-        }
+        };
 
         await ChatController.deleteUsers(deleteUserData);
 
         this._getChatUsers();
-    }
+    };
 
     private _getChatUsers = () => {
         this.props.users = store.getState().chatUsers;
-    }
+    };
 }
 
 const withUsers = withStore((state) => {
@@ -64,4 +64,4 @@ const withUsers = withStore((state) => {
     };
 });
 const DeleteUsersPopup = withUsers(DeleteUsersPopupBase);
-export default DeleteUsersPopup
+export default DeleteUsersPopup;

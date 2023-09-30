@@ -15,7 +15,7 @@ interface SearchUsersProps {
 
 type ChatId = {
     userId: number,
-}
+};
 
 export default class SearchUsers extends Block<SearchUsersProps> {
     static componentName = 'SearchUsers';
@@ -48,7 +48,7 @@ export default class SearchUsers extends Block<SearchUsersProps> {
                 userId
             ],
             chatId: selectedChatId,
-        }
+        };
 
         await ChatController.addUsers(addUserData);
     }

@@ -1,4 +1,4 @@
-import eventBus from '../utils/event-bus';
+import eventBus from '../utils/event-bus.ts';
 
 export class ModalUtil {
     classes = {
@@ -21,7 +21,7 @@ export class ModalUtil {
         this.activeModal = popup;
 
         popup.classList.add(this.classes.open);
-    }
+    };
 
     public close() {
         if (!this.activeModal) {

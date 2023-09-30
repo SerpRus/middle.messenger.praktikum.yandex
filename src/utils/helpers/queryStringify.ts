@@ -1,4 +1,4 @@
-import isObject from './is-object';
+import isObject from './is-object.ts';
 
 export type StringIndexed = Record<string, any>;
 
@@ -8,6 +8,19 @@ export default function queryStringify(data: StringIndexed): string | never {
     }
 
     let result = '';
+
+    function findParamsInObject(object: StringIndexed) {
+        const entries = Object.entries(object);
+        entries.forEach(([key, value]) => {
+            result += `[${key}]`;
+
+            if (isObject(value)) {
+                findParamsInObject(value);
+            } else {
+                result += `=${value}&`;
+            }
+        });
+    }
 
     function converter(item: StringIndexed) {
         const entries = Object.entries(item);
@@ -26,25 +39,12 @@ export default function queryStringify(data: StringIndexed): string | never {
             } else {
                 result += `${key}=${value}&`;
             }
-        })
+        });
 
         return result;
     }
 
-    function findParamsInObject(object: StringIndexed) {
-        const entries = Object.entries(object);
-        entries.forEach(([key, value]) => {
-            result += `[${key}]`;
-
-            if (isObject(value)) {
-                findParamsInObject(value)
-            } else {
-                result += `=${value}&`;
-            }
-        });
-    }
-
-    converter(data)
+    converter(data);
 
     return result.slice(0, -1);
 }
