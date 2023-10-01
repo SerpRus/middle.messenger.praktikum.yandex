@@ -35,8 +35,6 @@ describe('Router', () => {
     });
 
     it('should render a page on start', () => {
-        console.log(RouterInstance);
-
         RouterInstance
             .use('/', BlockMock)
             .start();
