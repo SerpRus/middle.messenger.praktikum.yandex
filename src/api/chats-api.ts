@@ -52,7 +52,7 @@ export type UserType = {
     login: string,
     avatar: string,
     role: string,
-}
+};
 
 export class ChatsAPI extends BaseAPI {
     constructor() {
@@ -90,7 +90,9 @@ export class ChatsAPI extends BaseAPI {
     }
 
     read = undefined;
+
     update = undefined;
+
     delete = undefined;
 }
 

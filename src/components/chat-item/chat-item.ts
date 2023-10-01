@@ -10,13 +10,14 @@ interface ChatItemProps {
         contextmenu: (e: Event) => void,
     },
     chatId: number,
+    avatar?: string,
     onClick: (e: Event) => void,
 }
 
 export type ChatData = {
     target: HTMLElement,
     chatId: number,
-}
+};
 
 export default class ChatItem extends Block<ChatItemProps> {
     static componentName = 'ChatItem';
@@ -35,6 +36,7 @@ export default class ChatItem extends Block<ChatItemProps> {
                     });
                 },
             },
+            avatar: props.avatar || '/images/stubs/stub.svg',
         });
     }
 

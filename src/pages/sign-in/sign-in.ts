@@ -52,7 +52,7 @@ export default class SignIn extends Block<SignInProps> {
 
                 values.forEach((value) => {
                     console.log(`${value[0]}: '${value[1]}'`);
-                })
+                });
 
                 eventBus.emit('form-validate');
 
@@ -64,9 +64,9 @@ export default class SignIn extends Block<SignInProps> {
 
                 try {
                     await AuthController.signin(data);
-                } catch (e) {
-                    if (e instanceof Error) {
-                        this.refs.form.validate.displayRequestError(e.message);
+                } catch (error) {
+                    if (error instanceof Error) {
+                        this.refs.form.validate.displayRequestError(error.message);
                     }
                 }
             },

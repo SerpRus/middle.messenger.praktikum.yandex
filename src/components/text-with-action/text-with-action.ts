@@ -1,6 +1,6 @@
 import Block from '../../utils/block';
 import template from './text-with-action.hbs';
-import eventBus from "../../utils/event-bus";
+import eventBus from '../../utils/event-bus';
 
 interface TextWithActionProps {
     id: number,
@@ -17,7 +17,7 @@ export default class TextWithAction extends Block<TextWithActionProps> {
             onClick: () => {
                 eventBus.emit(this.props.eventBusName, {
                     userId: this.props.id
-                })
+                });
             }
         });
     }

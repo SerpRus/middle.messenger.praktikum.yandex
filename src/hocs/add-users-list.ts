@@ -7,7 +7,9 @@ export interface PropsUsersList {
 }
 
 export default function addUsersList(Component: typeof Block<any>, componentName: string) {
-    type Props = typeof Component extends typeof Block<Record<string, any>> ? Record<string, any> : any;
+    type Props = typeof Component extends typeof Block<Record<string, any>>
+        ? Record<string, any>
+        : any;
 
     return class AddUsersList extends Component {
         static componentName = componentName;
@@ -23,9 +25,9 @@ export default function addUsersList(Component: typeof Block<any>, componentName
         private _searchUsers = async (value: string) => {
             const searchUsersData: any = {
                 login: value,
-            }
+            };
 
             this.props.users = await UserController.search(searchUsersData);
-        }
-    }
+        };
+    };
 }

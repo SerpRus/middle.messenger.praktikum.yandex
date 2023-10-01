@@ -15,12 +15,12 @@ import components from './components';
 import registerComponent from './register-component';
 
 enum Routes {
-    Index = '/',
-    Register = '/register',
-    Messenger = '/messenger',
-    Settings = '/settings',
-    ChangeUserInfo = '/change-user-info',
-    ChangePassword = '/change-password',
+    index = '/',
+    register = '/register',
+    messenger = '/messenger',
+    settings = '/settings',
+    changeUserInfo = '/change-user-info',
+    changePassword = '/change-password',
 }
 
 export default class Chat {
@@ -36,19 +36,19 @@ export default class Chat {
 
     init = async () => {
         Router
-            .use(Routes.Index, SignIn)
-            .use(Routes.Register, SignUp)
-            .use(Routes.Messenger, Messenger)
-            .use(Routes.Settings, Settings)
-            .use(Routes.ChangeUserInfo, ChangeUserInfo)
-            .use(Routes.ChangePassword, ChangePassword)
+            .use(Routes.index, SignIn)
+            .use(Routes.register, SignUp)
+            .use(Routes.messenger, Messenger)
+            .use(Routes.settings, Settings)
+            .use(Routes.changeUserInfo, ChangeUserInfo)
+            .use(Routes.changePassword, ChangePassword);
 
         const { pathname } = window.location;
         let isProtectedRoute = true;
 
         switch (pathname) {
-            case Routes.Index:
-            case Routes.Register:
+            case Routes.index:
+            case Routes.register:
                 isProtectedRoute = false;
                 break;
         }
@@ -59,14 +59,14 @@ export default class Chat {
             Router.start();
 
             if (!isProtectedRoute) {
-                Router.go(Routes.Messenger)
+                Router.go(Routes.messenger);
             }
         } catch (e) {
             Router.start();
 
             if (isProtectedRoute) {
-                Router.go(Routes.Index);
+                Router.go(Routes.index);
             }
         }
-    }
+    };
 }

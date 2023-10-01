@@ -11,7 +11,7 @@ type ChatType = {
     last_message: Record<string, any>,
     title: string,
     unread_count: number,
-}
+};
 
 export class ChatsController {
     private readonly api: ChatsAPI;
@@ -32,7 +32,7 @@ export class ChatsController {
 
             store.set('chats', chats);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -40,7 +40,7 @@ export class ChatsController {
         try {
             await this.api.create(data);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -48,7 +48,7 @@ export class ChatsController {
         try {
             await this.api.deleteChat(data);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -68,7 +68,7 @@ export class ChatsController {
 
             ModalUtil.close();
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -84,7 +84,7 @@ export class ChatsController {
 
             store.set('chatUsers', users);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 

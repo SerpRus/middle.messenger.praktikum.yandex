@@ -23,7 +23,7 @@ type MessageType = {
     time: string,
     type: string,
     user_id: number,
-}
+};
 
 export class CurrentChatBase extends Block<CurrentChatProps> {
     static componentName = 'CurrentChat';
@@ -118,7 +118,7 @@ const withSelectedChatMessages = withStore(state => {
         (state.messages)
             ? state.messages
             : {}
-        )[selectedChatId];
+    )[selectedChatId];
 
     if (messages && messages.length) {
         messages = messages.map((message: MessageType) => {

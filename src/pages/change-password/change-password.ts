@@ -24,7 +24,9 @@ export class ChangePasswordBase extends Block<ChangePasswordProps> {
                 isAvatarDisabled: true,
                 footerActionsClasses: 'profile__footer-actions--change-info',
                 username: displayName,
-                avatarSrc: (props.avatar) ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}` : null,
+                avatarSrc: (props.avatar)
+                    ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}`
+                    : null,
                 formfields: [
                     {
                         id: 'oldPassword',
@@ -71,4 +73,4 @@ export class ChangePasswordBase extends Block<ChangePasswordProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 const ChangePassword = withUser(ChangePasswordBase);
-export default ChangePassword
+export default ChangePassword;

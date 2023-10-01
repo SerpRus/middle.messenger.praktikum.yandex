@@ -36,7 +36,7 @@ const store = new Store();
 window.store = store;
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-    return function wrap<P>(Component: typeof Block<any>){
+    return function wrap<P>(Component: typeof Block<any>) {
         return class WithStore extends Component {
             constructor(props: Omit<P, keyof SP>) {
                 let previousState = mapStateToProps(store.getState());
@@ -51,8 +51,8 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
                     this.setProps({ ...stateProps });
                 });
             }
-        }
-    }
+        };
+    };
 }
 
 export default store;

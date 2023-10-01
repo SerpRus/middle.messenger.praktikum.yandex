@@ -6,7 +6,7 @@ export default function registerComponent(Component: typeof Block) {
     const { componentName } = Component;
 
     if (componentName in Handlebars.helpers) {
-        throw `The ${componentName} component is already registered!`;
+        console.error(`The ${componentName} component is already registered!`);
     }
 
     Handlebars.registerHelper(

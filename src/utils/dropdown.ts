@@ -1,8 +1,10 @@
-import eventBus from "./event-bus";
+import eventBus from './event-bus.ts';
 
 export class Dropdown {
     activeDropdown: HTMLElement | null = null;
+
     lastTarget: HTMLElement | null = null;
+
     activeDropdownId: string | null = null;
 
     classes = {
@@ -15,7 +17,7 @@ export class Dropdown {
 
     public openByTarget = (target: HTMLElement, dropdown: HTMLElement) => {
         this._open(target, dropdown);
-    }
+    };
 
     private _openById = (data: Record<string, any>) => {
         const { target, id } = data;
@@ -29,7 +31,7 @@ export class Dropdown {
         }
 
         this._open(target, dropdown);
-    }
+    };
 
     private _open(target: HTMLElement, dropdown: HTMLElement) {
         if (target === this.lastTarget) {
@@ -75,10 +77,13 @@ export class Dropdown {
         e.stopPropagation();
 
         this.close(e.target as HTMLElement);
-    }
+    };
 
     public close = (target?: HTMLElement) => {
-        if (!this.activeDropdown || (this.activeDropdownId && target?.closest(`#${this.activeDropdownId}`))) {
+        if (
+            !this.activeDropdown
+            || (this.activeDropdownId && target?.closest(`#${this.activeDropdownId}`))
+        ) {
             return;
         }
 
@@ -89,7 +94,7 @@ export class Dropdown {
         this.activeDropdownId = null;
 
         document.removeEventListener('click', this._documentClickHandler);
-    }
+    };
 }
 
 export default new Dropdown();

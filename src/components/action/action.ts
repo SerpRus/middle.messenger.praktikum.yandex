@@ -1,7 +1,7 @@
-import { PropsWithRouter, withRouter } from '../../hocs/with-router';
-import { PropsPopupButton, popupButton } from '../../hocs/popup-button';
-import { PropsDropdownButton, dropdownButton } from '../../hocs/dropdown-button';
-import Block from '../../utils/block';
+import { PropsWithRouter, withRouter } from '../../hocs/with-router.ts';
+import { PropsPopupButton, popupButton } from '../../hocs/popup-button.ts';
+import { PropsDropdownButton, dropdownButton } from '../../hocs/dropdown-button.ts';
+import Block from '../../utils/block.ts';
 import template from './action.hbs';
 
 interface ActionProps extends PropsWithRouter, PropsPopupButton, PropsDropdownButton {
