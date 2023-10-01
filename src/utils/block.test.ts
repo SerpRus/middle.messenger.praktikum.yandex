@@ -13,7 +13,7 @@ describe('Block', async () => {
     let ComponentMock: typeof BlockType;
 
     before(async () => {
-        const { default: ImportenBlock } = await esmock('./block.ts', {
+        const { default: ImportenBlock } = await esmock('./block', {
             './event-bus.ts': {
                 EventBus: class {
                     emit = eventBusMock.emit;
