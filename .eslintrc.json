@@ -29,6 +29,7 @@
         "@typescript-eslint/arrow-body-style": 0,
         "@typescript-eslint/import/extensions": 0,
         "@typescript-eslint/import/no-extraneous-dependencies": 0,
-        "@typescript-eslint/ban-ts-comment": 0
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-ts-ignore": "off"
     }
 }
