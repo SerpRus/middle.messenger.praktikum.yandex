@@ -84,6 +84,7 @@ export default class Block<P extends Record<string, any> = any> {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     protected componentDidUpdate(oldProps: P, newProps: P) {
         return true;

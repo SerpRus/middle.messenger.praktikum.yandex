@@ -108,6 +108,7 @@ class MessagesController {
 
 const controller = new MessagesController();
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.messagesController = controller;
 

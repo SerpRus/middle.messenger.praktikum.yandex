@@ -32,6 +32,7 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.store = store;
 
