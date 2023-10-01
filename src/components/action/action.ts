@@ -32,7 +32,7 @@ export default class Action extends Block<ActionProps> {
     }
 
     render() {
-        return this.compile(template, this.props)
+        return this.compile(template, this.props);
     }
 }
 

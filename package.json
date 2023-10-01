@@ -6,12 +6,6 @@
   "engines": {
     "node": "18.8.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all sl lint test",
-      "pre-push": "npm run other command"
-    }
-  },
   "scripts": {
     "dev": "npm run slfix && vite",
     "sl": "npx stylelint \"**/*.scss\"",
@@ -20,7 +14,8 @@
     "lintfix": "eslint \"**/*.{ts,tsx}\" --fix",
     "build": "tsc && vite build",
     "start": "npm run build && node src/server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
