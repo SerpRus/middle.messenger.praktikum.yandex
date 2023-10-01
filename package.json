@@ -6,6 +6,12 @@
   "engines": {
     "node": "18.8.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:all",
+      "pre-push": "npm run other command"
+    }
+  },
   "scripts": {
     "dev": "npm run slfix && vite",
     "sl": "npx stylelint \"**/*.scss\"",
@@ -33,6 +39,7 @@
     "esm-loader-css": "^1.0.5",
     "esm-loader-typescript": "^1.0.5",
     "esmock": "^2.5.1",
+    "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "mocha": "^10.2.0",
     "node-esm-loader": "^0.2.5",
