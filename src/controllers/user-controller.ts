@@ -1,4 +1,4 @@
-import API, {UserApi, ProfileData, UsersResponse, SearchData} from '../api/user-api';
+import API, { UserApi, ProfileData, UsersResponse, SearchData } from '../api/user-api';
 import AuthController from '../controllers/auth-controller';
 import router from '../utils/router';
 import store from '../utils/store';
@@ -18,7 +18,7 @@ export class UserController {
 
             router.go('/settings');
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -32,7 +32,7 @@ export class UserController {
 
             return avatar;
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -40,7 +40,7 @@ export class UserController {
         try {
             return await this.api.search(data);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 }

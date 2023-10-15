@@ -42,14 +42,14 @@ export class ChatsBase extends Block<ChatsProps> {
 
                     const searchChatsData: StringIndexed = {
                         title: value,
-                    }
+                    };
 
                     this.props.search.value = value;
 
                     await ChatsController.fetchChats(searchChatsData);
 
                     const input = this.refs.search.refs.input.getElement();
-                    input.focus()
+                    input.focus();
                     input.selectionStart = input.selectionEnd = input.value.length;
                 },
             },
@@ -71,11 +71,12 @@ export class ChatsBase extends Block<ChatsProps> {
                     thema: 'button-brand',
                     text: 'Создать',
                     onClick: async () => {
-                        const {value: newChatName} = this.refs.createChatPopup.refs.newChatName.refs.input.getElement();
+                        const { value: newChatName } = this
+                            .refs.createChatPopup.refs.newChatName.refs.input.getElement();
 
                         const data: CreateChat = {
                             title: newChatName,
-                        }
+                        };
 
                         await ChatsController.createChat(data);
 
@@ -87,7 +88,8 @@ export class ChatsBase extends Block<ChatsProps> {
             },
             deleChatActionsList: [{
                 action: {
-                    classes: 'dropdown-content__item-action dropdown-content__item-action--red-icon',
+                    classes: `dropdown-content__item-action 
+                        dropdown-content__item-action--red-icon`,
                     text: 'Удалить чат',
                     onClick: async () => {
                         const deleteChatData: DeleteChat = {
@@ -124,7 +126,7 @@ export class ChatsBase extends Block<ChatsProps> {
         ChatsBase.activeChatIdToDelete = chatId;
 
         dropdown.openByTarget(target, contextMenu);
-    }
+    };
 }
 
 const withUser = withStore((state) => {
@@ -146,7 +148,7 @@ const withUser = withStore((state) => {
                 selected: chat.id === store.getState().selectedChat?.id,
             };
         })
-    }
+    };
 });
 const Chats = withUser(ChatsBase);
 export default Chats;

@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
-import { EventBus } from './event-bus';
+import { EventBus } from './event-bus.ts';
 
 export default class Block<P extends Record<string, any> = any> {
     static EVENTS = {
@@ -84,6 +84,7 @@ export default class Block<P extends Record<string, any> = any> {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     protected componentDidUpdate(oldProps: P, newProps: P) {
         return true;
@@ -98,7 +99,7 @@ export default class Block<P extends Record<string, any> = any> {
     };
 
     private _render() {
-        // this._removeEvents();
+        this._removeEvents();
 
         const fragment = this.render();
 
@@ -114,7 +115,7 @@ export default class Block<P extends Record<string, any> = any> {
     }
 
     protected compile(template: TemplateDelegate, context: P) {
-        const contextAndStubs = {...context, __refs: this.refs};
+        const contextAndStubs = { ...context, __refs: this.refs };
 
         const html = template(contextAndStubs);
 
@@ -122,7 +123,7 @@ export default class Block<P extends Record<string, any> = any> {
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({embed}: any) => {
+        contextAndStubs.__children?.forEach(({ embed }: any) => {
             embed(temp.content);
         });
 

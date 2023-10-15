@@ -1,7 +1,7 @@
 import Block from './block';
-import Error404 from '../pages/error-404';
+import Error404 from '../pages/error-404/index.ts';
 
-interface BlockConstructable<P = any> {
+export interface BlockConstructable<P = any> {
     new(props: P): Block<any>;
 }
 
@@ -51,9 +51,12 @@ class Route {
 }
 
 class Router {
-    private static __instance: Router;
+    private static __instance?: Router;
+
     private routes: Route[] = [];
+
     private currentRoute: Route | null = null;
+
     private history = window.history;
 
     constructor(private readonly rootQuery: string) {
@@ -78,7 +81,7 @@ class Router {
             const target = event.currentTarget as Window;
 
             this._onRoute(target.location.pathname);
-        }
+        };
 
         this._onRoute(window.location.pathname);
     }
@@ -117,6 +120,12 @@ class Router {
 
     private getRoute(pathname: string) {
         return this.routes.find(route => route.match(pathname));
+    }
+
+    public reset() {
+        delete Router.__instance;
+
+        return new Router(this.rootQuery);
     }
 }
 

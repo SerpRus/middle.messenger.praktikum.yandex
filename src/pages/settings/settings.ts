@@ -31,7 +31,9 @@ class SettingsBase extends Block<SettingsProps> {
             data: {
                 isAvatarDisabled: true,
                 username: displayName,
-                avatarSrc: (props.avatar) ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}` : null,
+                avatarSrc: (props.avatar)
+                    ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}`
+                    : null,
                 formfields: [
                     {
                         id: 'email',
@@ -109,4 +111,4 @@ class SettingsBase extends Block<SettingsProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 const Settings = withUser(SettingsBase);
-export default Settings
+export default Settings;

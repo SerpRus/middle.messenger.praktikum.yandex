@@ -46,8 +46,11 @@ export class UserApi extends BaseAPI {
     }
 
     read = undefined;
+
     create = undefined;
+
     update = undefined;
+
     delete = undefined;
 }
 

@@ -29,7 +29,9 @@ class MessagesController {
         try {
             const userId = store.getState().user.id;
 
-            const wsTransport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`);
+            const wsTransport = new WSTransport(
+                `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`
+            );
 
             this.sockets.set(id, wsTransport);
 
@@ -38,7 +40,7 @@ class MessagesController {
             this.subscribe(wsTransport, id);
             this.fetchOldMessages(id);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -62,7 +64,7 @@ class MessagesController {
             throw new Error(`Chat ${id} is not connected`);
         }
 
-        socket.send({type: 'get old', content: '0'});
+        socket.send({ type: 'get old', content: '0' });
     }
 
     closeAll() {
@@ -85,7 +87,7 @@ class MessagesController {
 
             store.set(`messages.${id}`, messagesToAdd);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -93,7 +95,7 @@ class MessagesController {
         try {
             this.sockets.delete(id);
         } catch (e: any) {
-            console.error(e.reason)
+            console.error(e.reason);
         }
     }
 
@@ -106,6 +108,7 @@ class MessagesController {
 
 const controller = new MessagesController();
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.messagesController = controller;
 

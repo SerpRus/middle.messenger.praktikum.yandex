@@ -2,7 +2,7 @@ import Block from '../../utils/block';
 import template from './change-user-info.hbs';
 import eventBus from '../../utils/event-bus';
 import { withStore } from '../../utils/store';
-import { ProfileData } from "../../api/user-api";
+import { ProfileData } from '../../api/user-api';
 import UserController from '../../controllers/user-controller';
 
 interface ChangeUserInfoProps {
@@ -31,7 +31,9 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
                 isValidate: true,
                 footerActionsClasses: 'profile__footer-actions--change-info',
                 username: displayName,
-                avatarSrc: (props.avatar) ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}` : null,
+                avatarSrc: (props.avatar)
+                    ? `https://ya-praktikum.tech/api/v2/resources${props.avatar}`
+                    : null,
                 formfields: [
                     {
                         id: 'email',
@@ -114,7 +116,7 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
         const data: ProfileData = Object.fromEntries(currentValues);
 
         await UserController.profile(data);
-    }
+    };
 
     private _changeUserAvatar = async (target: any) => {
         const self = this;
@@ -125,7 +127,7 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
         const avatarFile = input.getElement().files[0];
 
         const reader  = new FileReader();
-        reader.onload = function()  {
+        reader.onload = function ()  {
             self.setProps({
                 ...self.props,
                 data: {
@@ -134,11 +136,11 @@ class ChangeUserInfoBase extends Block<ChangeUserInfoProps> {
                 },
                 avatarFile: avatarFile,
             });
-        }
+        };
         reader.readAsDataURL(avatarFile);
-    }
+    };
 }
 
 const withUser = withStore((state) => ({ ...state.user }));
 const ChangeUserInfo = withUser(ChangeUserInfoBase);
-export default ChangeUserInfo
+export default ChangeUserInfo;

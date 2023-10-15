@@ -1,13 +1,15 @@
 import Block from '../utils/block';
-import dropdown from '../utils/dropdown';
-import eventBus from "../utils/event-bus";
+import dropdown from '../utils/dropdown.ts';
+import eventBus from '../utils/event-bus.ts';
 
 export interface PropsDropdownButton {
-    dropdown: typeof dropdown;
+    dropdown?: typeof dropdown;
 }
 
 export function dropdownButton(Component: typeof Block<any>, componentName: string) {
-    type Props = typeof Component extends typeof Block<Record<string, any>> ? Record<string, any> : any;
+    type Props = typeof Component extends typeof Block<Record<string, any>>
+        ? Record<string, any>
+        : any;
 
     return class DropdownButton extends Component {
         static componentName = componentName;
@@ -26,6 +28,6 @@ export function dropdownButton(Component: typeof Block<any>, componentName: stri
                 }
             });
         }
-    }
+    };
 }
 
